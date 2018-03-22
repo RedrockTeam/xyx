@@ -2,61 +2,107 @@ import Sprite from '../interfaces/sprite'
 
 const screenWidth  = window.innerWidth
 const screenHeight = window.innerHeight
+
 // 不同图片高度不一样
-const bgHeightList = [1334, 1416, 1375, 1375, 1000]
+const bgHeightListOrigin = [1334, 1416, 1375, 1375, 1000]
+// 维护前几个图片的高度梯度
+let bgStepListOrigin = []
+
+// 创建Proxy, 实现对 index >= 5 的时候返回正确的值
+// 借此方法实现对于5以后的index获取到正确的数值
+let bgHeightList = new Proxy(bgHeightListOrigin, {
+  get(target, key) {
+    if (!+key) return target[key]
+      return  +key <= 4
+            ? target[key]
+            : target[4]
+  }
+})
+let bgStepList = new Proxy(bgStepListOrigin, {
+  get(target, key) {
+    if (!+key)  return target[key]
+    return  +key <= 4
+          ? target[key]
+          : target[4] - bgHeightList[4] / 750 * screenWidth * (+key - 4)
+  }
+})
+// 对bgStepList进行赋值操作
+bgHeightList.reduce((lastRe, val, index) => {
+  bgStepListOrigin[index] = lastRe - bgHeightList[index] / 750 * screenWidth
+  return bgStepListOrigin[index]
+}, 0)
 
 export default class BackGround {
-  constructor() {
-    // 创建图片队列
-    this.queue = [...Array(5)].map((el, index, array) => {
-      return new Sprite({
+  constructor(ctx) {
+    // 维护ctx
+    this.ctx = ctx
+    /**
+     * 创建图片队列 使用Proxy实现即时创建功能
+     * bgConfig 抽离出公共属性，queueOrigin创建Proxy宿主
+     * this.queue为Proxy对象，对于大于5的值实现即时创建&使用
+     */
+    let bgConfig = {
+      width: screenWidth,
+      x: 0,
+      y: 0,
+    }
+    let queueOrigin = [...Array(5)].map((el, index, array) => {
+      return new Sprite(Object.assign(bgConfig, {
+        // 初始创建的时候就先创建到05+.png
+        // 这样的好处是日后新创建相同src的img对象的时候，无需再次从文件中读取
         imgSrc: (() => {
           return  index === 4
                 ? 'images/background/05+.png'
                 : `images/background/0${index + 1}.jpg`
         })(),
-        width: screenWidth,
-        height: bgHeightList[index] / 750 * screenWidth,
-        x: 0,
-        y: 0,
-      })
+        height: bgHeightList[index] / 750 * screenWidth
+      }))
+    })
+    this.queue = new Proxy(queueOrigin, {
+      get(target, key) {
+        if (!+key) return target[key]
+        // 如果已经创建过该键值，就不再创建
+        return  typeof target[key] === 'undefined'
+              ? target[key] = new Sprite(Object.assign(bgConfig, { 
+                   imgSrc: 'images/background/05+.png',
+                   height: bgHeightList[key] / 750 * screenWidth
+                 }))
+              : target[key]
+      }
     })
     // 控制绘画高度
     this.y = 0
-
+    // 维护需要绘画的图片列表 增加性能
     this.drawList = []
   }
 
   update() {
+    this.y += 10
+    // 清空上一次的列表
     this.drawList.length = 0
-    bgHeightList.reduce((lastRe, val, index) => {
-      //使用一个数字数组，提高性能
-      if (   lastRe <= this.y
-          && lastRe + bgHeightList[index] >= this.y - screenHeight)
-        this.drawList.push(index)
-      
-      return lastRe - bgHeightList[index]
-    }, 0)
-
+    // 创建现阶段需要渲染的背景图列表
+    let heightStandard = this.y
+    let loopIndex = 0
+    while (heightStandard + screenHeight >= 0) {
+      heightStandard -= bgHeightList[loopIndex] / 750 * screenWidth
+      if (heightStandard <= 0) {
+        this.drawList.push(loopIndex)
+      }
+      loopIndex++
+    }
   }
 
   /**
    * 绘画函数
    * 自动计算需要绘画的元素 减少绘画开销
-   * @param  {[canvas apiport]} ctx 
+   * @param  {[canvas apiport]} ctx
    */
-  render(ctx) {
-    let that = this
-    setInterval(() => {
-      this.update()
-      this.y -= 10
-      console.log(this.drawList)
-      this.drawList.forEach(el => {
-        this.queue[el].y = this.y
-        console.log(this.queue[el].y)
-        that.queue[el].draw.call(that.queue(el))
-      })
-    }, 25)
+  render(ctx = this.ctx) {
+    this.update()
+    this.drawList.forEach((el, index) => {
+        this.queue[el].y = bgStepList[el] + this.y
+        this.queue[el].draw(ctx)
+    })
   }
 
 }
