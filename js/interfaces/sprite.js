@@ -22,6 +22,7 @@ export default class Sprite {
     [this.width, this.height] = [sprObj.width, sprObj.height];
 
     this.visible = sprObj.visible
+    
   }
 
   /**
