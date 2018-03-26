@@ -15,8 +15,8 @@ let coin = new Sprite({
 let scoreNumber = [...Array(10)].map((el, index) => {
   return new Sprite({
     imgSrc: `${iconPath}${index}.png`,
-    y: -screenHeight + 20,
-    width: 16, height: 64 / 31 * 16
+    y: -screenHeight + 22,
+    width: 14, height: 64 / 31 * 14
   })
 })
 
@@ -28,14 +28,9 @@ export default class Score {
     this.coin = coin
     this.numberQueue = scoreNumber
     // 数字的x轴起始偏移量
-    this.numStartX = 60
+    this.numStartX = 62
 
     let x = 1;
-    setInterval(() => {
-      ctx.clearRect(0, 0, screenWidth, -screenHeight)
-      this.drawScoreNumber(x++)
-      this.coin.draw(ctx)
-    }, 10)
   }
   /**
    * 绘画指定数目的分数number
