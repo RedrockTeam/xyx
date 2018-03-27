@@ -7,12 +7,12 @@ import Pause from 'sprites/pause'
 import render from 'runtime/render'
 import update from 'runtime/update'
 
-let dataBus = new DataBus()
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
     ctx.translate(0, screenHeight)
 
 // 副屏，用来绘制背景等不是一直需要刷新的东西
+// 切换也简单。只需要给不同的元素传不同的ctx就好
 let ctxAssociate = canvasAssociate.getContext('2d')
     ctxAssociate.translate(0, screenHeight)
 

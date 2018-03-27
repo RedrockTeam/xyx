@@ -19,6 +19,5 @@ export default class DataBus {
     this.frame = 0
     this.score = 0
     this.paused = false
-
   }
 }
