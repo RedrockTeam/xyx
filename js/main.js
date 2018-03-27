@@ -12,13 +12,22 @@ let dataBus = new DataBus()
 let ctx = canvas.getContext('2d')
     ctx.translate(0, screenHeight)
 
+// 副屏，用来绘制背景等不是一直需要刷新的东西
+let ctxAssociate = canvasAssociate.getContext('2d')
+    ctxAssociate.translate(0, screenHeight)
+
 export default class Main {
   constructor () {
 
     this.ctx = ctx
+    this.ctxAssociate = ctxAssociate
+    // 维护aniID
+    this.aniId = 0
+
     this.dataBus = dataBus
 
-    this.background = new BackGround(ctx)
+    this.background = new BackGround(ctxAssociate)
+
     this.score = new Score(ctx)
     this.fixProgress = new FixProgress(ctx)
     this.pause = new Pause(ctx)
@@ -26,9 +35,13 @@ export default class Main {
     this.render = render.bind(this)
     this.update = update.bind(this)
 
-    setInterval(() => {
-      this.update()
-      this.render()
-    }, 16)
+    this.loop()
+  }
+
+  loop() {
+    dataBus.frame++
+    this.update()
+    this.render()
+    this.aniId = window.requestAnimationFrame( this.loop.bind(this) )
   }
 }
