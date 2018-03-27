@@ -1,8 +1,9 @@
-let flag = 0
-
+/**
+ * 逻辑更新函数
+ */
 export default function update() {
-  flag++;
-  
+  dataBus.frame++
+
   this.score.num++
   this.fixProgress.numerator += 10
   this.background.update()

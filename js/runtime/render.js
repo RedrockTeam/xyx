@@ -7,7 +7,10 @@ function ctxRender() {
   this.score.drawScoreNumber()
   this.pause.drawPauseButton()
 }
-
+/**
+ * 渲染函数
+ * ctx地层级永远在ctxAssociate之上
+ */
 export default function render() {  
   this.ctx.clearRect(0, 0, screenWidth, -screenHeight)
   this.ctxAssociate.clearRect(0, 0, screenWidth, -screenHeight)

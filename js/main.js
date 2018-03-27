@@ -1,4 +1,3 @@
-import DataBus from 'databus'
 import BackGround from 'sprites/background'
 import FixProgress from 'sprites/fix-progress'
 import Score from 'sprites/score'
@@ -24,7 +23,7 @@ export default class Main {
     // 维护aniID
     this.aniId = 0
 
-    this.dataBus = dataBus
+    this.dataBus = window.dataBus
 
     this.background = new BackGround(ctxAssociate)
 

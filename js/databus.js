@@ -7,10 +7,8 @@ export default class DataBus {
       return instance
 
     instance = this
-    window.dataBus = this
 
     this.init()
-
 
   }
 

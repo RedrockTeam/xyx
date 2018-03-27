@@ -1,1 +1,2 @@
-hourglass.js
+import Sprite from '../interfaces/sprite'
+
