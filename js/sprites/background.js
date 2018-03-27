@@ -1,7 +1,5 @@
 import Sprite from '../interfaces/sprite'
 
-const screenWidth  = window.innerWidth
-const screenHeight = window.innerHeight
 const iconPath = 'images/background/'
 
 // 不同图片高度不一样
@@ -78,7 +76,7 @@ export default class BackGround {
   }
 
   update() {
-    this.y += 10
+    this.y += 2
     // 清空上一次的列表
     this.drawList.length = 0
     // 创建现阶段需要渲染的背景图列表
@@ -95,11 +93,9 @@ export default class BackGround {
 
   /**
    * 绘画函数
-   * 自动计算需要绘画的元素 减少绘画开销
    * @param  {[canvas apiport]} ctx
    */
   render(ctx = this.ctx) {
-    this.update()
     this.drawList.forEach((el, index) => {
         this.queue[el].y = bgStepList[el] + this.y
         this.queue[el].draw(ctx)

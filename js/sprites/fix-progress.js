@@ -1,11 +1,8 @@
 import Sprite from '../interfaces/sprite'
 
-const screenWidth  = window.innerWidth
-const screenHeight = window.innerHeight
 const iconPath = 'images/fix-progress/'
 
 const scalingRatio = 1.7
-const srawPlace = { x: 10, y: -240 }
 
 // 进度条Sprite
 let progressFull = new Sprite({
@@ -21,7 +18,7 @@ let progressOut = new Sprite({
 let progressIn = new Sprite({
   imgSrc: `${iconPath}progress/progress-in.png`,
   width: 19 / scalingRatio, height: 243 / scalingRatio,
-  x: 36, y: -221
+  x: 36, y: -220
 })
 // 箱子Sprite
 let box = new Sprite({
@@ -57,22 +54,43 @@ export default class FixProgress {
     this.boxStartY = this.box.y
     this.numberStartX = this.numberList[0].x
     this.numberStartY = this.numberList[0].y
-    //分母
+    this.progressInStartY = this.progressIn.y
+    this.progressInStartHeight = this.progressIn.height
+    // 分母
     this.denominator = 10000
-    //分子
-    this.numerator = 10000
+    // 分子
+    this.numerator = 0
+    // 当前是否攒满
+    this.isSuccess = false
   }
 
   drawFixProgress(ctx = this.ctx) {
     let boxOffsetY = this.numerator / this.denominator
+
+    if (boxOffsetY >= 1) {
+      this.progressFull.draw(ctx)
+      this.isSuccess = true
+      return
+    }
+    // 数据的处理
     let numberString = `${this.numerator}/${this.denominator}`.split('')
     let numberOffsetX = this.numberStartX - numberString.length * 4
     let numberOffsetY = this.numberStartY - boxOffsetY * 132
     // 绘图点处理
     this.box.y = this.boxStartY - boxOffsetY * 132
-    this.progressFull.draw(ctx)
+
     this.progressOut.draw(ctx)
-    this.progressIn.draw(ctx)
+    // 内部状态条绘画
+    this.progressIn.y = this.progressInStartY + (1 - boxOffsetY) * 142
+    this.progressIn.height = this.progressInStartHeight * boxOffsetY
+    // 因为图片裁剪是基于原图的，所以要乘个scalingRatio
+    this.progressIn.drawClip(ctx, {
+      sx: 0, 
+      sy: this.progressInStartHeight * scalingRatio * (1 - boxOffsetY),
+      sHeight: this.progressInStartHeight * scalingRatio * boxOffsetY,
+      sWidth: this.progressIn.width * scalingRatio
+    })
+    // 盒子
     this.box.draw(ctx)
     // 画数据
     numberString.forEach((el, index, arr) => {

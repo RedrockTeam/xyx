@@ -1,6 +1,9 @@
 /**
  * 精灵类 
  */
+const screenWidth = window.innerWidth
+const screenHeight = window.innerHeight
+
 export default class Sprite {
   /**
    * 构造函数传Object 
@@ -11,7 +14,8 @@ export default class Sprite {
       imgSrc: '',
       width: 0, height: 0,
       x: 0, y: 0,
-      visible: true
+      visible: true,
+      dx: 0, dy: 0,
     }
     let sprObj = Object.assign(defConf, obj)
 
@@ -20,6 +24,7 @@ export default class Sprite {
     //解构赋值的问题 前面加个分号可以避免
     [this.x, this.y] = [sprObj.x, sprObj.y];
     [this.width, this.height] = [sprObj.width, sprObj.height];
+    [this.dx, this.dy] = [sprObj.dx, sprObj.dy];
 
     this.visible = sprObj.visible
     
@@ -35,8 +40,23 @@ export default class Sprite {
   draw(ctx, enforce = false) {
     if (!this.visible && !enforce)
       return false
+    ctx.drawImage(  this.img,
+                    this.x,
+                    this.y,
+                    this.width,
+                    this.height )
+    return true
+  }
+
+  drawClip(ctx, clipConf, enforce = false) {
+    if (!this.visible && !enforce)
+      return false
 
     ctx.drawImage(  this.img,
+                    clipConf.sx, 
+                    clipConf.sy,
+                    clipConf.sWidth,
+                    clipConf.sHeight,
                     this.x,
                     this.y,
                     this.width,

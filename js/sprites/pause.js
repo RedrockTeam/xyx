@@ -1,21 +1,21 @@
 import Sprite from '../interfaces/sprite'
 
-const screenWidth  = window.innerWidth
-const screenHeight = window.innerHeight
-const iconPath = 'images/icon/'
+const iconPath = 'images/pause/'
+const stopedIconHeight = screenWidth * 1623 / 750
 
-// 金币的Sprite
+// Sprite
 let running = new Sprite({
   imgSrc: `${iconPath}pause.png`,
   width: 50, height: 50,
-  x: screenWidth - 20,
-  y: -screenHeight + 100
+  x: screenWidth - 65,
+  y: -screenHeight + 55
 })
+
 let stoped = new Sprite({
-  imgSrc: `${iconPath}pause.png`,
-  width: 50, height: 50,
-  x: screenWidth - 20,
-  y: -screenHeight + 100
+  imgSrc: `${iconPath}start.png`,
+  width: screenWidth, height: stopedIconHeight,
+  x: 0,
+  y: -(stopedIconHeight + screenHeight) / 2
 })
 
 
@@ -26,16 +26,16 @@ export default class Pause {
 
     this.isStoped = false
 
-    this.stoped = stoped
-    this.running = running
+    this.stopedIcon = stoped
+    this.runningIcon = running
   }
   /**
    * 绘制指定的button
    * isStoped指是否暂停，ctx为绘画的幕布对象
    */
   drawPauseButton(isStoped = this.isStoped, ctx = this.ctx) {
-    if (1) {
-
-    }
+    if (isStoped) 
+      return false
+    this.runningIcon.draw(ctx)
   }
 }
