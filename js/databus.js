@@ -23,5 +23,9 @@ export default class DataBus {
     this.fixNumerator = 0
 
     this.paused = false
+
+    this.sightNumber = 0
+
+    this.hourglassNumber = 0
   }
 }

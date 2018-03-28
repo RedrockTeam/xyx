@@ -6,8 +6,8 @@ const stopedIconHeight = screenWidth * 1623 / 750
 // Sprite
 let running = new Sprite({
   imgSrc: `${iconPath}pause.png`,
-  width: 50, height: 50,
-  x: screenWidth - 65,
+  width: 65, height: 65,
+  x: screenWidth - 80,
   y: -screenHeight + 55
 })
 
@@ -33,7 +33,7 @@ export default class Pause {
   }
 
   bindToDataBus(dataBus = window.dataBus) {
-    
+
   }
   /**
    * 绘制指定的button

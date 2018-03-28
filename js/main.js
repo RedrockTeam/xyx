@@ -2,6 +2,8 @@ import BackGround from 'sprites/background'
 import FixProgress from 'sprites/fix-progress'
 import Score from 'sprites/score'
 import Pause from 'sprites/pause'
+import Sight from 'sprites/sight'
+import Hourglass from 'sprites/hourglass'
 
 import render from 'runtime/render'
 import update from 'runtime/update'
@@ -30,6 +32,8 @@ export default class Main {
     this.score = new Score(ctx)
     this.fixProgress = new FixProgress(ctx)
     this.pause = new Pause(ctx)
+    this.sight = new Sight(ctx)
+    this.hourglass = new Hourglass(ctx)
 
     this.render = render.bind(this)
     this.update = update.bind(this)

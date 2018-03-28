@@ -10,4 +10,7 @@ export default function update() {
 
   dataBus.fixNumerator += 1
   dataBus.fixDenominator += 2
+
+  dataBus.sightNumber++
+  dataBus.hourglassNumber++
 }

@@ -6,10 +6,12 @@ function ctxRender() {
   this.fixProgress.drawFixProgress()
   this.score.drawScoreNumber()
   this.pause.drawPauseButton()
+  this.sight.drawSight()
+  this.hourglass.drawHourglass()
 }
 /**
  * 渲染函数
- * ctx地层级永远在ctxAssociate之上
+ * ctx的层级永远在ctxAssociate之上
  */
 export default function render() {  
   this.ctx.clearRect(0, 0, screenWidth, -screenHeight)
