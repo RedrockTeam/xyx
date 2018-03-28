@@ -27,10 +27,19 @@ export default class Score {
 
     this.coin = coin
     this.numberQueue = scoreNumber
-    // 数字的x轴起始偏移量
+    // 数字的x轴起始偏移
     this.numStartX = 62
 
+    this.bindToDataBus()
   }
+  /**
+   * 传window.dataBus
+   * @param  {[object]} dataBus 需要绑定到的databus
+   */
+  bindToDataBus(dataBus = window.dataBus) {
+    twoWayBinding(dataBus, 'score', this, 'num')
+  }
+
   /**
    * 绘画指定数目的分数number
    * num 为绘画的数字，ctx为绘画的幕布对象

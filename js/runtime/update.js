@@ -4,7 +4,10 @@
 export default function update() {
   dataBus.frame++
 
-  this.score.num++
-  this.fixProgress.numerator += 10
-  this.background.update()
+  dataBus.score++
+
+  dataBus.height += 2
+
+  dataBus.fixNumerator += 1
+  dataBus.fixDenominator += 2
 }

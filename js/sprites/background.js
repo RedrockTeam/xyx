@@ -73,10 +73,15 @@ export default class BackGround {
     this.y = 0
     // 维护需要绘画的图片列表 增加性能
     this.drawList = []
+
+    this.bindToDataBus()
+  }
+
+  bindToDataBus(dataBus = window.dataBus) {
+    twoWayBinding(dataBus, 'height', this, 'y')
   }
 
   update() {
-    this.y += 2
     // 清空上一次的列表
     this.drawList.length = 0
     // 创建现阶段需要渲染的背景图列表
@@ -96,10 +101,10 @@ export default class BackGround {
    * @param  {[canvas apiport]} ctx
    */
   render(ctx = this.ctx) {
+    this.update()
     this.drawList.forEach((el, index) => {
         this.queue[el].y = bgStepList[el] + this.y
         this.queue[el].draw(ctx)
     })
   }
-
 }

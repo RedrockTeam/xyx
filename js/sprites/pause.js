@@ -28,13 +28,19 @@ export default class Pause {
 
     this.stopedIcon = stoped
     this.runningIcon = running
+
+    this.bindToDataBus()
+  }
+
+  bindToDataBus(dataBus = window.dataBus) {
+    
   }
   /**
    * 绘制指定的button
    * isStoped指是否暂停，ctx为绘画的幕布对象
    */
   drawPauseButton(isStoped = this.isStoped, ctx = this.ctx) {
-    if (isStoped) 
+    if (isStoped)
       return false
     this.runningIcon.draw(ctx)
   }

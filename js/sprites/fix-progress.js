@@ -62,6 +62,13 @@ export default class FixProgress {
     this.numerator = 0
     // 当前是否攒满
     this.isSuccess = false
+
+    this.bindToDataBus()
+  }
+
+  bindToDataBus(dataBus = window.dataBus) {
+    twoWayBinding(dataBus, 'fixNumerator', this, 'numerator')
+    twoWayBinding(dataBus, 'fixDenominator', this, 'denominator')
   }
 
   drawFixProgress(ctx = this.ctx) {
