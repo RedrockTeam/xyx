@@ -17,6 +17,8 @@ let ctx = canvas.getContext('2d')
 let ctxAssociate = canvasAssociate.getContext('2d')
     ctxAssociate.translate(0, screenHeight)
 
+let worker = wx.createWorker('js/worker/index.js')
+
 export default class Main {
   constructor () {
 
@@ -26,6 +28,8 @@ export default class Main {
     this.aniId = 0
 
     this.dataBus = window.dataBus
+
+    this.worker = worker
 
     this.background = new BackGround(ctxAssociate)
 

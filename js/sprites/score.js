@@ -48,7 +48,7 @@ export default class Score {
     this.coin.draw(ctx);
 
     `${num}`.split('').forEach((el, index) => {
-      this.numberQueue[el].x = this.numStartX + index * 20
+      this.numberQueue[el].x = this.numStartX + index * 14
       this.numberQueue[el].draw(ctx)
     })
   }

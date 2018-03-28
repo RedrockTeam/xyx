@@ -1,7 +1,9 @@
 import Sprite from '../../interfaces/sprite'
 
+// const iconPath = 'images/tools-number/'
 const iconPath = 'images/score/'
-const WHradio = 64 / 40
+
+const WHradio = 42 / 27
 
 let defaultConf = {
   size: 14,

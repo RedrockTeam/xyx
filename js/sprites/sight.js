@@ -53,7 +53,7 @@ export default class Sight {
 
     let numberLength = `${this.sightNumber}`.length;
     `${this.sightNumber}`.split('').forEach((el, index) => {
-      this.numberList[el].x = this.numberStartX - numberLength * 7 + index * 14
+      this.numberList[el].x = this.numberStartX - numberLength * 6.5 + index * 13
       this.numberList[el].draw(ctx)
     })
   }
