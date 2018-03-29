@@ -4,6 +4,7 @@ import Score from 'sprites/score'
 import Pause from 'sprites/pause'
 import Sight from 'sprites/sight'
 import Hourglass from 'sprites/hourglass'
+import Boxes from 'sprites/boxes'
 
 import render from 'runtime/render'
 import update from 'runtime/update'
@@ -32,6 +33,7 @@ export default class Main {
     this.worker = worker
 
     this.background = new BackGround(ctxAssociate)
+    this.boxes = new Boxes(ctxAssociate)
 
     this.score = new Score(ctx)
     this.fixProgress = new FixProgress(ctx)
@@ -41,6 +43,12 @@ export default class Main {
 
     this.render = render.bind(this)
     this.update = update.bind(this)
+
+    wx.getUserInfo({
+      success(res) {
+        console.log(res)
+      }
+    })
 
     this.loop()
   }

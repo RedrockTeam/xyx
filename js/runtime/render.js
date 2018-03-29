@@ -1,5 +1,6 @@
 function ctxAssociateRender() {
   this.background.render()
+  this.boxes.drawBoxes()
 }
 
 function ctxRender() {

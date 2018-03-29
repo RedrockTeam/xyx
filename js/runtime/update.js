@@ -6,7 +6,7 @@ export default function update() {
 
   dataBus.score++
 
-  dataBus.height += 2
+  // dataBus.height += 2
 
   dataBus.fixNumerator += 1
   dataBus.fixDenominator += 2
