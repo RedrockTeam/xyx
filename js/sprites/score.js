@@ -1,4 +1,5 @@
 import Sprite from '../interfaces/sprite'
+import Animation from '../interfaces/animation'
 
 const iconPath = 'images/score/'
 
@@ -30,7 +31,10 @@ export default class Score {
     // 数字的x轴起始偏移
     this.numStartX = 62
 
-    this.bindToDataBus()
+    this.ani = new Animation( dataBus, 'score',
+                              this, 'num',
+                              100)
+    // this.bindToDataBus()
   }
   /**
    * 传window.dataBus
@@ -45,6 +49,7 @@ export default class Score {
    * num 为绘画的数字，ctx为绘画的幕布对象
    */
   drawScoreNumber(num = this.num, ctx = this.ctx) {
+    this.ani.listen()
     this.coin.draw(ctx);
 
     `${num}`.split('').forEach((el, index) => {

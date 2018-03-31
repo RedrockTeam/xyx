@@ -4,9 +4,14 @@
 export default function update() {
   dataBus.frame++
 
-  dataBus.score++
+  // if (!(dataBus.frame % 100)) {
+  //   if (dataBus.frame >= 1000)
+  //     dataBus.score = 1000
+  //   else 
+  //     dataBus.score += 100
+  // }
 
-  // dataBus.height += 2
+  // dataBus.height += 0.5
 
   dataBus.fixNumerator += 1
   dataBus.fixDenominator += 2
