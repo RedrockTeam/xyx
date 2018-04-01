@@ -1,6 +1,6 @@
 // const aniFuncPath = 'ani-function/'
 
-import * as func from './ani-function.js'
+import * as func from '../configs/ani-function.js'
 
 /**
  * 动画class
@@ -8,7 +8,7 @@ import * as func from './ani-function.js'
  * @param  {[String]} bindStartProper  绑定的起始属性名
  * @param  {[Object]} bindTargetObject 绑定的目标对象
  * @param  {[String]} bindTargetProper 绑定的目标对象名
- * @param  {[String]} frameNum 动画需要的帧数
+ * @param  {[Number]} frameNum 动画需要的帧数
  * @param  {[String]} aniFuncName 动画函数名
  */
 export default class Animation {
@@ -18,6 +18,11 @@ export default class Animation {
               bindTargetProper,
               frameNum = 0,
               aniFuncName = 'ease' ) {
+
+    // 如果不需要动画，就是简单的绑定一下
+    // 就调用双向绑定的函数绑定即可
+    if (this.frameNum === 0)
+      return twoWayBinding(this.LO, this.LP, this.TO, this.TP)
     
     this.prevData = 0
     this.changedData = 0
@@ -27,16 +32,17 @@ export default class Animation {
 
     this.LO = bindStartObject
     this.LP = bindStartProper
-    this.TO = bindTargetObject    
+    this.TO = bindTargetObject
     this.TP = bindTargetProper
 
     this.aniFunc = func[aniFuncName] || func['ease']
-    // 如果不需要动画，就是简单的绑定一下
-    // 就调用双向绑定的函数绑定即可
-    if (this.frameNum === 0)
-      twoWayBinding(this.LO, this.LP, this.TO, this.TP)
   }
-
+  /**
+   * 监听函数，需要在每次render的时候监听一下
+   * @param  {Boolean} isListen 是否监听
+   * 注意：此处监听为单向绑定，并非双向绑定
+   * 一般情况下只建议改变dataBus，然后动画同步到元素自身之中
+   */
   listen(isListen = true) {
     if (!isListen && this.frameNum === 0)
       return false
@@ -52,13 +58,16 @@ export default class Animation {
       this.changedData = this.LO[this.LP]
       this.nowFrame = 0
     }
-    
     // 计算现在的参数    
     let aniArg = this.nowFrame / this.frameNum
     this.nowFrame++
 
     let caculatedData = (this.changedData - this.prevData) * this.aniFunc(aniArg)
-    console.log(caculatedData, this.nowFrame, this.frameNum)
+    // 此处math.floor是为了兼容诸如score这类需要整形的元素
+    // 如有疑问可以参见score.js里的渲染函数
+    // 小问题：此处如果不加判断，仅仅依据caculatedData计算的话，会出现在动画结尾处绑定双方的值不一定相同
+    // 所以三元运算符就是为了解决这个问题
+    // 具体原因仍未知
     return this.TO[this.TP] =   this.nowFrame === this.frameNum
                               ? this.changedData
                               : this.prevData + Math.floor(caculatedData)
@@ -68,77 +77,3 @@ export default class Animation {
 
 
 
-
-
-
-
-
-
-
-
-// /**
-//  * 自己实现的双向绑定 - 无延迟绑定
-//  * 采用defineProperty实现
-//  * @param  {[Object]} bindStartObject  绑定的其实对象
-//  * @param  {[String]} bindStartProper  绑定的起始属性名
-//  * @param  {[Object]} bindTargetObject 绑定的目标对象
-//  * @param  {[String]} bindTargetProper 绑定的目标对象名
-//  * @return {[Boolean]}                 是否绑定成功
-//  */
-// let twoWayBinding = function( bindStartObject, 
-//                               bindStartProper, 
-//                               bindTargetObject, 
-//                               bindTargetProper,
-//                               frameNum = 0,
-//                               aniFuncName = 'ease' ) {
-
-//   if (  typeof bindStartProper !== 'string' 
-//      || typeof bindTargetProper !== 'string'
-//      || typeof aniFuncName !== 'string' )
-//     return false
-
-//   if (  typeof bindStartObject !== 'object' 
-//      || typeof bindTargetObject !== 'object' )
-//     return false
-
-//   if (  typeof frameNum !== 'number' || frameNum < 0  )
-//     return false
-
-//   //如果没有动画，就使用defineProperty
-//   if (frameNum === 0) {
-//     bindTargetObject[bindTargetProper] = bindStartObject[bindStartProper]
-
-//     Object.defineProperty(bindStartObject, bindStartProper, {
-//       get() {
-//         return bindTargetObject[bindTargetProper]
-//       },
-//       set(value) {
-//         return bindTargetObject[bindTargetProper] = value
-//       }
-//     })
-//     return true
-//   }
-
-
-//   if (typeof this[__.objKey].prevData === 'undefined')
-//     this[__.objKey].prevData = 0
-
-//   if (typeof this[__.objKey].finishFlag === 'undefined')
-//     this[__.objKey].finishFlag = true
-
-//   //如果有动画，就使用动画函数，实现延迟绑定
-//   let listenTarget = bindStartObject[bindStartProper],
-//       listener     = bindTargetObject[bindTargetProper],
-//       aniFunction  = func[aniFuncName] || func['ease'],
-//       prevData     = this[__.objKey].prevData,
-//       flag         = this[__.objKey].finishFlag
-
-
-
-
-//   return true
-// }
-
-// window.twoWayBinding = twoWayBinding
-
-// export default twoWayBinding

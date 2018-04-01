@@ -1,4 +1,5 @@
 import Sprite from '../interfaces/sprite'
+import Animation from '../interfaces/animation'
 
 const iconPath = 'images/box/'
 const scallingRadio = 1.98 / screenWidth * 375
@@ -38,16 +39,26 @@ export default class Box {
 
     this.boxes = boxes
 
-    this.boxHeight = this.boxes[1].height - 1
-    this.boxes[1].y -= this.boxHeight * 4
-    this.boxes[2].y -= this.boxHeight
-    this.boxes[3].y -= this.boxHeight * 2
-    this.boxes[5].y -= this.boxHeight * 3
+    this.y = 0
 
+    this.boxStartY = this.boxes[1].y
+    this.boxHeight = this.boxes[1].height - 1
+    // this.boxes[1].y -= this.boxHeight * 4
+    // this.boxes[2].y -= this.boxHeight
+    // this.boxes[3].y -= this.boxHeight * 2
+    // this.boxes[5].y -= this.boxHeight * 3
+
+    this.ani = new Animation( dataBus, 'height',
+                              this, 'y',
+                              100, 'quinticInOut' )
   }
 
 
   drawBoxes(ctx = this.ctx) {
+    this.ani.listen()
+    this.boxes.forEach((el, index) => {
+      el.y = this.boxStartY - this.boxHeight * index + this.y
+    })
     this.boxes[1].draw(ctx)
     this.boxes[2].draw(ctx)
     this.boxes[3].draw(ctx)

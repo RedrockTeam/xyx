@@ -1,4 +1,5 @@
 import Sprite from '../interfaces/sprite'
+import Animation from '../interfaces/animation'
 
 const iconPath = 'images/background/'
 
@@ -74,7 +75,9 @@ export default class BackGround {
     // 维护需要绘画的图片列表 增加性能
     this.drawList = []
 
-    this.bindToDataBus()
+    this.ani = new Animation( dataBus, 'height',
+                              this, 'y',
+                              100, 'quinticInOut')
   }
 
   bindToDataBus(dataBus = window.dataBus) {
@@ -101,6 +104,7 @@ export default class BackGround {
    * @param  {[canvas apiport]} ctx
    */
   render(ctx = this.ctx) {
+    this.ani.listen()
     this.update()
     this.drawList.forEach((el, index) => {
         this.queue[el].y = bgStepList[el] + this.y
