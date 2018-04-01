@@ -1,7 +1,6 @@
 import Sprite from '../../interfaces/sprite'
 
-// const iconPath = 'images/tools-number/'
-const iconPath = 'images/score/'
+const iconPath = 'images/tools-number/'
 
 const WHradio = 42 / 27
 

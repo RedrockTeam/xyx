@@ -6,7 +6,7 @@ const scallingRadio = 1.6
 
 let numberList = new NumberList({
   size: 13,
-  x: screenWidth - 28,
+  x: screenWidth - 20,
   y: -screenHeight + 315
 })
 

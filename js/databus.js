@@ -27,5 +27,7 @@ export default class DataBus {
     this.sightNumber = 0
 
     this.hourglassNumber = 0
+
+    this.boxList = []
   }
 }

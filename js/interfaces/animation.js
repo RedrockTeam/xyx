@@ -17,12 +17,12 @@ export default class Animation {
               bindTargetObject, 
               bindTargetProper,
               frameNum = 0,
-              aniFuncName = 'ease' ) {
+              aniFuncName = 'linear' ) {
 
     // 如果不需要动画，就是简单的绑定一下
     // 就调用双向绑定的函数绑定即可
     if (this.frameNum === 0)
-      return twoWayBinding(this.LO, this.LP, this.TO, this.TP)
+      return twoWayBinding(this.TO, this.TP, this.LO, this.LP)
     
     this.prevData = 0
     this.changedData = 0
@@ -35,7 +35,7 @@ export default class Animation {
     this.TO = bindTargetObject
     this.TP = bindTargetProper
 
-    this.aniFunc = func[aniFuncName] || func['ease']
+    this.aniFunc = func[aniFuncName] || func['linear']
   }
   /**
    * 监听函数，需要在每次render的时候监听一下

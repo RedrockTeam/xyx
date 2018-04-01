@@ -33,15 +33,7 @@ export default class Score {
 
     this.ani = new Animation( dataBus, 'score',
                               this, 'num',
-                              100)
-    // this.bindToDataBus()
-  }
-  /**
-   * 传window.dataBus
-   * @param  {[object]} dataBus 需要绑定到的databus
-   */
-  bindToDataBus(dataBus = window.dataBus) {
-    twoWayBinding(dataBus, 'score', this, 'num')
+                              9)
   }
 
   /**

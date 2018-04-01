@@ -6,7 +6,7 @@ const scallingRadio = 1.6
 
 let numberList = new NumberList({
   size: 13,
-  x: screenWidth - 28,
+  x: screenWidth - 20,
   y: -screenHeight + 242
 })
 
@@ -35,7 +35,7 @@ export default class Sight {
 
     this.numberStartX = this.numberList[0].x
 
-    this.sightNumber = 123
+    this.sightNumber = 0
 
     this.bindToDataBus()
   }

@@ -77,14 +77,10 @@ export default class BackGround {
 
     this.ani = new Animation( dataBus, 'height',
                               this, 'y',
-                              100, 'quinticInOut')
+                              60, 'quinticInOut')
   }
 
-  bindToDataBus(dataBus = window.dataBus) {
-    twoWayBinding(dataBus, 'height', this, 'y')
-  }
-
-  update() {
+  updateDrawList() {
     // 清空上一次的列表
     this.drawList.length = 0
     // 创建现阶段需要渲染的背景图列表
@@ -105,7 +101,7 @@ export default class BackGround {
    */
   render(ctx = this.ctx) {
     this.ani.listen()
-    this.update()
+    this.updateDrawList()
     this.drawList.forEach((el, index) => {
         this.queue[el].y = bgStepList[el] + this.y
         this.queue[el].draw(ctx)
