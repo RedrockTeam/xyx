@@ -29,5 +29,7 @@ export default class DataBus {
     this.hourglassNumber = 0
 
     this.boxList = []
+
+    this.gameStatus = 'show_score'
   }
 }

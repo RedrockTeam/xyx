@@ -1,12 +1,12 @@
 import Sprite from '../interfaces/sprite'
-import NumberList from 'public/number'
+import NumberList from 'public/tools-number'
 
 const iconPath = 'images/icon/'
 const scallingRadio = 1.6
 
 let numberList = new NumberList({
   size: 13,
-  x: screenWidth - 20,
+  x: screenWidth - 18,
   y: -screenHeight + 242
 })
 

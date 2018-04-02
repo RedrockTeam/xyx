@@ -1,5 +1,8 @@
 import Sprite from '../../interfaces/sprite'
-
+/**
+ * 此处是用于沙漏和瞄准镜的道具,因为可以共用就抽离了出来
+ * 视觉小姐姐做图太精细了！这个游戏光0-9数字就有7种！
+ */
 const iconPath = 'images/tools-number/'
 
 const WHradio = 42 / 27
