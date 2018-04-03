@@ -117,6 +117,6 @@ export default class Pause {
 
     rankBtn.draw(ctx)
     scoreBtnA.draw(ctx)
-    this.userAvator.draw(ctx)
+    this.userAvator.drawCicle(ctx)
   }
 }

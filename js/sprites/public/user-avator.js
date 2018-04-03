@@ -28,9 +28,24 @@ export default class userAvator extends Sprite {
   }
 
   // 因为绘制头像都是绘制圆的，所以此处定义了一个画圆的方法
-  // 参考链接： http://www.zhangxinxu.com/wordpress/2014/06/svg-canvas-image-border-radius/
-  drawScicle() {
+  // 参考链接：https://www.jianshu.com/p/9a6ee2648d6f
+  drawCicle(ctx) {
+
+    ctx.save()
+
+    ctx.arc(  this.x + this.width / 2,
+              this.y + this.height / 2,
+              this.width / 2,
+              0,
+              Math.PI * 2 )
+
+    ctx.clip()
+
+    ctx.fill()
     
+    this.draw(ctx)
+
+    ctx.restore()
   }
 }
 
