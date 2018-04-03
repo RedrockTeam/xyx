@@ -48,7 +48,7 @@ export default class Main {
 
     wx.getUserInfo({
       success(res) {
-        console.log(res)
+        dataBus.userInfo = res.userInfo
       }
     })
 

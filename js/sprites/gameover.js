@@ -1,4 +1,5 @@
 import Sprite from '../interfaces/sprite'
+import UserAvator from 'public/user-avator'
 
 const iconPath = 'images/gameover/'
 const scallingRatio = 2
@@ -38,6 +39,36 @@ let button = new Sprite({
   y: -screenHeight * 0.235,
   width: 342 / scallingRatio, height: 127 / scallingRatio
 })
+let shareBtn = new Sprite({
+  imgSrc: `${iconPath}share.png`
+})
+let gohomeBtn = new Sprite({
+  imgSrc: `${iconPath}gohome.png`,
+})
+let rankBtn = new Sprite({
+  imgSrc: `${iconPath}ranking.png`,
+  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  x: screenWidth * 0.51,
+  y: -screenHeight * 0.78
+})
+let rankBtnA = new Sprite({
+  imgSrc: `${iconPath}ranking-A.png`,
+  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  x: screenWidth * 0.51,
+  y: -screenHeight * 0.78
+})
+let scoreBtn = new Sprite({
+  imgSrc: `${iconPath}score.png`,
+  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  x: screenWidth * 0.17,
+  y: -screenHeight * 0.78
+})
+let scoreBtnA = new Sprite({
+  imgSrc: `${iconPath}score-A.png`,
+  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  x: screenWidth * 0.17,
+  y: -screenHeight * 0.78
+})
 
 
 export default class Pause {
@@ -52,6 +83,8 @@ export default class Pause {
     this.winScoreNum = winScoreNum
     this.winHistoryNum = winHistoryNum
     this.button = button
+
+    this.userAvator = new UserAvator()
 
     this.winScoreNumStartX = this.winScoreNum[0].x
     this.winHistoryNumStartX = this.winHistoryNum[0].x
@@ -82,6 +115,8 @@ export default class Pause {
     
     this.button.draw(ctx)
 
-
+    rankBtn.draw(ctx)
+    scoreBtnA.draw(ctx)
+    this.userAvator.draw(ctx)
   }
 }

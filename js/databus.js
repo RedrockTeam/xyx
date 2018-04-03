@@ -31,5 +31,7 @@ export default class DataBus {
     this.boxList = []
 
     this.gameStatus = 'show_score'
+
+    this.userInfo = {}
   }
 }
