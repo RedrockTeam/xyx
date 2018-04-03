@@ -14,9 +14,9 @@ let bg = new Sprite({
 // 游戏结束页面的Sprite
 let winScoreDesk = new Sprite({
   imgSrc: `${iconPath}win-score/desk.png`,
-  x: screenWidth * 0.03, y: -screenHeight * 0.76,
-  width: screenWidth * 0.94,
-  height: screenHeight *  0.6,
+  x: screenWidth * 0.12, y: -screenHeight * 0.735,
+  width: screenWidth * 0.77,
+  height: screenHeight *  0.545,
 })
 let winScoreNum = [...Array(10)].map((el, index) => {
   return new Sprite({
@@ -33,6 +33,12 @@ let winHistoryNum = [...Array(10)].map((el, index) => {
   })
 })
 // 共用的Sprite
+let stoneDesk = new Sprite({
+  imgSrc: `${iconPath}stone-desk.png`,
+  x: screenWidth * 0.03, y: -screenHeight * 0.76,
+  width: screenWidth * 0.94,
+  height: screenHeight *  0.6,
+})
 let button = new Sprite({
   imgSrc: `${iconPath}button.png`,
   x: screenWidth * 0.5 - 342 / scallingRatio / 2, 
@@ -49,25 +55,31 @@ let rankBtn = new Sprite({
   imgSrc: `${iconPath}ranking.png`,
   width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
   x: screenWidth * 0.51,
-  y: -screenHeight * 0.78
+  y: -screenHeight * 0.785
 })
 let rankBtnA = new Sprite({
   imgSrc: `${iconPath}ranking-A.png`,
   width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
   x: screenWidth * 0.51,
-  y: -screenHeight * 0.78
+  y: -screenHeight * 0.785
 })
 let scoreBtn = new Sprite({
   imgSrc: `${iconPath}score.png`,
   width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
   x: screenWidth * 0.17,
-  y: -screenHeight * 0.78
+  y: -screenHeight * 0.785
 })
 let scoreBtnA = new Sprite({
   imgSrc: `${iconPath}score-A.png`,
   width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
   x: screenWidth * 0.17,
-  y: -screenHeight * 0.78
+  y: -screenHeight * 0.785
+})
+
+let userAvator = new UserAvator({
+  width: screenHeight * 0.12, height: screenHeight * 0.12,
+  x: screenWidth * 0.51 - screenHeight * 0.06,
+  y: -screenHeight * 0.7
 })
 
 
@@ -79,12 +91,17 @@ export default class Pause {
     this.isStoped = false
 
     this.bg = bg
+    this.stoneDesk = stoneDesk
     this.winScoreDesk = winScoreDesk
     this.winScoreNum = winScoreNum
     this.winHistoryNum = winHistoryNum
     this.button = button
+    this.userAvator = userAvator
 
-    this.userAvator = new UserAvator()
+    this.rankBtn = rankBtn
+    this.rankBtnA =rankBtnA
+    this.scoreBtnA = scoreBtnA
+    this.scoreBtn = scoreBtn
 
     this.winScoreNumStartX = this.winScoreNum[0].x
     this.winHistoryNumStartX = this.winHistoryNum[0].x
@@ -99,6 +116,8 @@ export default class Pause {
    */
   drawWinScore(ctx = this.ctx) {
     this.bg.draw(ctx)
+    this.stoneDesk.draw(ctx)
+    this.rankBtn.draw(ctx)
     this.winScoreDesk.draw(ctx);
 
     `${this.score}`.split('').forEach((el, index) => {
@@ -115,8 +134,7 @@ export default class Pause {
     
     this.button.draw(ctx)
 
-    rankBtn.draw(ctx)
-    scoreBtnA.draw(ctx)
+    this.scoreBtnA.draw(ctx)
     this.userAvator.drawCicle(ctx)
   }
 }
