@@ -21,6 +21,8 @@ export default function update() {
 
   dataBus.score++
 
+  // this.ctx.globalAlpha = dataBus.frame % 100 / 100
+
   // if (dataBus.frame % 100 === 0) {
   //   dataBus.boxList.push({type: Math.floor(Math.random() * 3) + 1, x: 0})
   //   if (dataBus.boxList.length === 3) {

@@ -32,6 +32,14 @@ let winHistoryNum = [...Array(10)].map((el, index) => {
     width: 35 / scallingRatio, height: 55 / scallingRatio
   })
 })
+
+// 排行榜的Sprite
+let rankListDesk = new Sprite({
+  imgSrc: `${iconPath}rank/desk.png`,
+  x: screenWidth * 0.12, y: -screenHeight * 0.735,
+  width: screenWidth * 0.77,
+  height: screenHeight *  0.545,
+})
 // 共用的Sprite
 let stoneDesk = new Sprite({
   imgSrc: `${iconPath}stone-desk.png`,
@@ -93,6 +101,7 @@ export default class Pause {
     this.bg = bg
     this.stoneDesk = stoneDesk
     this.winScoreDesk = winScoreDesk
+    this.rankListDesk = rankListDesk
     this.winScoreNum = winScoreNum
     this.winHistoryNum = winHistoryNum
     this.button = button
@@ -136,5 +145,17 @@ export default class Pause {
 
     this.scoreBtnA.draw(ctx)
     this.userAvator.drawCicle(ctx)
+  }
+
+  drawRankList(ctx = this.ctx) {
+    this.bg.draw(ctx)
+    this.stoneDesk.draw(ctx)
+    this.scoreBtn.draw(ctx)
+    this.rankListDesk.draw(ctx)
+
+
+    this.button.draw(ctx)
+
+    this.rankBtnA.draw(ctx)
   }
 }
