@@ -7,8 +7,10 @@ import Hourglass from 'sprites/hourglass'
 import Boxes from 'sprites/boxes'
 import GameOver from 'sprites/gameover'
 
+
 import render from 'runtime/render'
 import update from 'runtime/update'
+import touchEvent from 'runtime/touch-event'
 
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
@@ -57,6 +59,7 @@ export default class Main {
 
   loop() {
     dataBus.frame++
+    this.touchEvent()
     this.update()
     this.render()
     this.aniId = window.requestAnimationFrame( this.loop.bind(this) )
