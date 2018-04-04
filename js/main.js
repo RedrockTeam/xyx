@@ -45,6 +45,7 @@ export default class Main {
     this.hourglass = new Hourglass(ctx)
     this.gameOver = new GameOver(ctx)
 
+    this.touchEvent = touchEvent.bind(this)
     this.render = render.bind(this)
     this.update = update.bind(this)
 
