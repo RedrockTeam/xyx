@@ -54,10 +54,22 @@ let button = new Sprite({
   width: 342 / scallingRatio, height: 127 / scallingRatio
 })
 let shareBtn = new Sprite({
-  imgSrc: `${iconPath}share.png`
+  imgSrc: `${iconPath}share.png`,
+  width: 105 / scallingRatio, height: 105 / scallingRatio,
+  x: screenWidth - 80,
+  y: -screenHeight + 60
+})
+let shareTipBtn = new Sprite({
+  imgSrc: `${iconPath}share-tip.png`,
+  width: 330 / scallingRatio, height: 75 / scallingRatio,
+  x: screenWidth - 250,
+  y: -screenHeight + 68
 })
 let gohomeBtn = new Sprite({
   imgSrc: `${iconPath}gohome.png`,
+  width: 105 / scallingRatio, height: 105 / scallingRatio,
+  x: 80 - 105 / scallingRatio,
+  y: -screenHeight + 60
 })
 let rankBtn = new Sprite({
   imgSrc: `${iconPath}ranking.png`,
@@ -106,6 +118,9 @@ export default class Pause {
     this.winHistoryNum = winHistoryNum
     this.button = button
     this.userAvator = userAvator
+    this.shareBtn = shareBtn
+    this.gohomeBtn = gohomeBtn
+    this.shareTipBtn = shareTipBtn
 
     this.rankBtn = rankBtn
     this.rankBtnA =rankBtnA
@@ -142,6 +157,10 @@ export default class Pause {
     })
     
     this.button.draw(ctx)
+    
+    this.shareBtn.draw(ctx)
+    this.gohomeBtn.draw(ctx)
+    this.shareTipBtn.draw(ctx)
 
     this.scoreBtnA.draw(ctx)
     this.userAvator.drawCicle(ctx)
@@ -153,8 +172,11 @@ export default class Pause {
     this.scoreBtn.draw(ctx)
     this.rankListDesk.draw(ctx)
 
-
     this.button.draw(ctx)
+    
+    this.shareBtn.draw(ctx)
+    this.gohomeBtn.draw(ctx)
+    this.shareTipBtn.draw(ctx)
 
     this.rankBtnA.draw(ctx)
   }
