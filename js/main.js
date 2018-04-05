@@ -54,13 +54,17 @@ export default class Main {
         dataBus.userInfo = res.userInfo
       }
     })
+     wx.showShareMenu({
+      withShareTicket: false
+     })
+    wx.onShareAppMessage(console.log)
+    this.touchEvent()
 
     this.loop()
   }
 
   loop() {
     dataBus.frame++
-    this.touchEvent()
     this.update()
     this.render()
     this.aniId = window.requestAnimationFrame( this.loop.bind(this) )

@@ -33,15 +33,15 @@ export default class Pause {
   }
 
   bindToDataBus(dataBus = window.dataBus) {
-
+    twoWayBinding(dataBus, 'isPaused', this, 'isStoped')
   }
   /**
    * 绘制指定的button
    * isStoped指是否暂停，ctx为绘画的幕布对象
    */
   drawPauseButton(isStoped = this.isStoped, ctx = this.ctx) {
-    if (isStoped)
-      return false
+    if (this.isStoped)
+      return this.stopedIcon.draw(ctx)
     this.runningIcon.draw(ctx)
   }
 }

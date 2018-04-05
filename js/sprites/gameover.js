@@ -73,25 +73,25 @@ let gohomeBtn = new Sprite({
 })
 let rankBtn = new Sprite({
   imgSrc: `${iconPath}ranking.png`,
-  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  width: screenWidth * 0.35 , height: screenHeight * 0.078,
   x: screenWidth * 0.51,
   y: -screenHeight * 0.785
 })
 let rankBtnA = new Sprite({
   imgSrc: `${iconPath}ranking-A.png`,
-  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  width: screenWidth * 0.35 , height: screenHeight * 0.078,
   x: screenWidth * 0.51,
   y: -screenHeight * 0.785
 })
 let scoreBtn = new Sprite({
   imgSrc: `${iconPath}score.png`,
-  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  width: screenWidth * 0.35 , height: screenHeight * 0.078,
   x: screenWidth * 0.17,
   y: -screenHeight * 0.785
 })
 let scoreBtnA = new Sprite({
   imgSrc: `${iconPath}score-A.png`,
-  width: screenWidth * 0.35 , height: 106 / 263 * screenWidth * 0.35,
+  width: screenWidth * 0.35 , height: screenHeight * 0.078,
   x: screenWidth * 0.17,
   y: -screenHeight * 0.785
 })
@@ -101,6 +101,7 @@ let userAvator = new UserAvator({
   x: screenWidth * 0.51 - screenHeight * 0.06,
   y: -screenHeight * 0.7
 })
+
 
 
 export default class Pause {
@@ -155,9 +156,9 @@ export default class Pause {
                                 + index * 35 / scallingRatio
       this.winHistoryNum[el].draw(ctx)
     })
-    
+
     this.button.draw(ctx)
-    
+
     this.shareBtn.draw(ctx)
     this.gohomeBtn.draw(ctx)
     this.shareTipBtn.draw(ctx)

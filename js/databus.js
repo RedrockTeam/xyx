@@ -22,7 +22,7 @@ export default class DataBus {
     this.fixDenominator = 1000
     this.fixNumerator = 0
 
-    this.paused = false
+    this.isPaused = false
 
     this.sightNumber = 0
 

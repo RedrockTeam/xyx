@@ -63,4 +63,15 @@ export default class Sprite {
                     this.height )
     return true
   }
+
+  isCollideWith(sx = 0, sy = 0) {
+    if (!this.visible)
+      return false
+
+    // console.log(sx, sy, this.visible, this.x, this.y, this.x + this.width, this.y + this.height)
+    return !!(   sx >= this.x
+              && sx <= this.x + this.width
+              && sy >= this.y
+              && sy <= this.y + this.height  )
+  }
 }
