@@ -54,10 +54,13 @@ export default class Main {
         dataBus.userInfo = res.userInfo
       }
     })
-     wx.showShareMenu({
-      withShareTicket: false
-     })
+    
+    wx.showShareMenu({
+    withShareTicket: false
+    })
+    
     wx.onShareAppMessage(console.log)
+
     this.touchEvent()
 
     this.loop()

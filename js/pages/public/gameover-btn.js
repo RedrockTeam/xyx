@@ -1,3 +1,5 @@
+// 公共的监听函数
+// 用于rank和score页面上
 export default function() {
 
   if (this.gameOver.shareBtn.isCollideWith(
