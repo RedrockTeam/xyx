@@ -1,6 +1,10 @@
+import { boxHeight, boxWidth } from '../sprites/boxes'
+
 /**
  * 逻辑更新函数
  */
+
+
 export default function update() {
   if (!dataBus.isPaused) {
     dataBus.frame++
@@ -24,15 +28,15 @@ export default function update() {
 
     // this.ctx.globalAlpha = dataBus.frame % 100 / 100
 
-    // if (dataBus.frame % 100 === 0) {
-    //   dataBus.boxList.push({type: Math.floor(Math.random() * 3) + 1, x: 0})
-    //   if (dataBus.boxList.length === 3) {
-    //      dataBus.height += 200
-    //   }
-    //   if (dataBus.boxList.length >= 7) {
-    //     delete dataBus.boxList[dataBus.boxList.length - 7]
-    //     dataBus.height += 44
-    //   }
-    // }
+    // 创建下一个偏移量
+    let newBoxPoint = Math.random() * boxWidth / 2;
+
+
+    if (dataBus.frame % 120 === 0) {
+      dataBus.boxList.push({  type: Math.floor(Math.random() * 3) + 1,
+                              x: newBoxPoint  })
+      
+      if (dataBus.frame >= 300) this.dataBus.height += boxHeight
+    }
   }
 }

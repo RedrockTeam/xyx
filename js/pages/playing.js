@@ -15,7 +15,7 @@ let funcs = {
   },
 
   listenEvent() {
-
+    if (!dataBus.touchEndPoint) return false
 
     // 因为原图是全屏的，容易误点
     // 所以此处自定义了一个break point

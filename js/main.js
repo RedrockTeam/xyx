@@ -26,6 +26,8 @@ let worker = wx.createWorker('js/worker/index.js')
 export default class Main {
   constructor () {
 
+    window.main = this
+
     this.ctx = ctx
     this.ctxAssociate = ctxAssociate
     // 维护aniID
@@ -73,3 +75,4 @@ export default class Main {
     this.aniId = window.requestAnimationFrame( this.loop.bind(this) )
   }
 }
+

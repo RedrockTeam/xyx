@@ -6,8 +6,8 @@ const scallingRadio = 1.98 / screenWidth * 375
 
 const boxConfig = {
   width: 128 / scallingRadio,
-  height: 88 /scallingRadio,
-  x: (screenWidth - 88 / scallingRadio) / 2 - 10 * screenWidth / 375,
+  height: Math.ceil(88 / scallingRadio),
+  x: (screenWidth - Math.ceil(88 / scallingRadio)) / 2 - 10 * screenWidth / 375,
   y: -92 * screenWidth / 375
 }
 
@@ -43,13 +43,15 @@ export default class Box {
     this.boxList = []
 
     this.boxStartY = this.boxes[1].y
-    this.boxHeight = this.boxes[1].height - 1
+    this.boxStartX = this.boxes[1].x
+    this.boxHeight = this.boxes[1].height
 
     this.ani = new Animation( dataBus, 'height',
                               this, 'y',
                               60, 'quinticInOut' )
     // boxList 绑定
     twoWayBinding(this, 'boxList', dataBus, 'boxList')
+    twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')
   }
 
 
@@ -60,7 +62,13 @@ export default class Box {
     // })
     this.boxList.forEach((el, index) => {
       this.boxes[el.type].y = this.boxStartY - this.boxHeight * (index + 1) + this.y
+      this.boxes[el.type].x = this.boxStartX + el.x + this.boxPoint
       this.boxes[el.type].draw(ctx)
     })
   }
 }
+
+
+export const boxHeight = Math.ceil(88 / scallingRadio)
+
+export const boxWidth = 128 / scallingRadio
