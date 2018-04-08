@@ -1,9 +1,15 @@
 import Sprite from '../../interfaces/sprite'
 
 
-
-
-
+/**
+ * 扩展的用户头像Sprite
+ * 因为微信获取到的用户头像是方形的
+ * 但是我们在列表渲染的时候需要渲染出圆形的头像
+ * 所以继承一般Sprite的同时
+ * 我们也使用了另一个Sprite作为多余对象的属性
+ * 用来遮住多余部分
+ * 即userAvator.drawCircle()
+ */
 export default class userAvator extends Sprite {
   constructor(obj) {
 

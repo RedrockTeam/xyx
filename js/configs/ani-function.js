@@ -1,3 +1,8 @@
+/**
+ * 动画函数
+ * 传入的k是一个0-1之间的数值
+ * 会返回一个0-1之间的数字，用来动画
+ */
 export function linear(k) {
   return k
 }
