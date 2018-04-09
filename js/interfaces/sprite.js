@@ -74,7 +74,6 @@ export default class Sprite {
     if (!this.visible)
       return false
 
-    // console.log(sx, sy, this.visible, this.x, this.y, this.x + this.width, this.y + this.height)
     return !!(   sx >= this.x
               && sx <= this.x + this.width
               && sy >= this.y
