@@ -1,1 +1,3 @@
-export const API_PORT = 'http://cqupt.edu.cn'
+export const API_PORT = 'https://wx.idsbllp.cn'
+
+export const IMG_PATH = '/extension/img/xyx-images/'

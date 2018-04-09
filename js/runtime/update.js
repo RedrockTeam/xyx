@@ -31,7 +31,6 @@ export default function update() {
     // 创建下一个偏移量
     let newBoxPoint = Math.random() * boxWidth / 2;
 
-
     if (dataBus.frame % 120 === 0) {
       dataBus.boxList.push({  type: Math.floor(Math.random() * 3) + 1,
                               x: newBoxPoint  })

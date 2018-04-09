@@ -1,3 +1,4 @@
+import { API_PORT, IMG_PATH } from '../configs/options'
 /**
  * 精灵类 
  */
@@ -16,8 +17,13 @@ export default class Sprite {
       x: 0, y: 0,
       visible: true,
       dx: 0, dy: 0,
+      // isChain的作用是，判断该Sprite是否是外链
+      isChain: false
     }
     let sprObj = Object.assign(defConf, obj)
+
+    if (sprObj.isChain)
+      sprObj.imgSrc = `${API_PORT}/${IMG_PATH}/${sprObj.imgSrc}`
 
     this.img = wx.createImage()
     this.img.src = sprObj.imgSrc;

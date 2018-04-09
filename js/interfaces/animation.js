@@ -44,7 +44,7 @@ export default class Animation {
    * 一般情况下只建议改变dataBus，然后动画同步到元素自身之中
    */
   listen(isListen = true) {
-    if (!isListen && this.frameNum === 0)
+    if (!isListen || this.frameNum === 0)
       return false
 
     let finishFlag = this.frameNum === this.nowFrame ? true : false
@@ -58,7 +58,7 @@ export default class Animation {
       this.changedData = this.LO[this.LP]
       this.nowFrame = 0
     }
-    // 计算现在的参数    
+    // 计算现在的参数
     let aniArg = this.nowFrame / this.frameNum
     this.nowFrame++
 

@@ -69,7 +69,6 @@ export default class Main {
   }
 
   loop() {
-    dataBus.frame++
     this.update()
     this.render()
     this.aniId = window.requestAnimationFrame( this.loop.bind(this) )
