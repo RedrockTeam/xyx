@@ -51,7 +51,7 @@ export default class Box {
                               60, 'quinticInOut' )
     // boxList 绑定
     twoWayBinding(this, 'boxList', dataBus, 'boxList')
-    twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')
+    // twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')
   }
 
 
@@ -60,11 +60,15 @@ export default class Box {
     // this.boxes.forEach((el, index) => {
     //   el.y = this.boxStartY - this.boxHeight * index + this.y
     // })
-    this.boxList.forEach((el, index) => {
+    // 减少绘画的盒子数目
+    for ( let length = this.boxList.length, index = length - 8 >= 0 ? length - 8 : 0;
+          index < length;
+          index++) {
+      let el = this.boxList[index]
       this.boxes[el.type].y = this.boxStartY - this.boxHeight * (index + 1) + this.y
-      this.boxes[el.type].x = this.boxStartX + el.x + this.boxPoint
+      this.boxes[el.type].x = this.boxStartX + el.x
       this.boxes[el.type].draw(ctx)
-    })
+    }
   }
 }
 

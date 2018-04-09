@@ -29,13 +29,18 @@ export default function update() {
     // this.ctx.globalAlpha = dataBus.frame % 100 / 100
 
     // 创建下一个偏移量
-    let newBoxPoint = Math.random() * boxWidth / 2;
 
-    if (dataBus.frame % 120 === 0) {
+    if (dataBus.frame % 61 === 0) {
+
+      let newBoxPoint = Math.random() * boxWidth - (boxWidth / 2);
+
+      dataBus.boxPoint += newBoxPoint
+
       dataBus.boxList.push({  type: Math.floor(Math.random() * 3) + 1,
-                              x: newBoxPoint  })
-      
+                              x: dataBus.boxPoint  })
+
       if (dataBus.frame >= 300) this.dataBus.height += boxHeight
     }
+
   }
 }
