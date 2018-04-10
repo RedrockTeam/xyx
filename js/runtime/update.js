@@ -18,11 +18,11 @@ export default function update() {
 
     // dataBus.height += 0.5
 
-    dataBus.fixNumerator += 1
+    dataBus.fixNumerator += 3
     dataBus.fixDenominator += 2
 
-    dataBus.sightNumber++
-    dataBus.hourglassNumber++
+    dataBus.sightNumber = ++dataBus.sightNumber >= 99 ? 99 : dataBus.sightNumber
+    dataBus.hourglassNumber = ++dataBus.hourglassNumber >= 99 ? 99 : dataBus.hourglassNumber
 
     dataBus.score++
 
