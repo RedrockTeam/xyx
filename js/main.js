@@ -5,6 +5,8 @@ import Pause from 'sprites/pause'
 import Sight from 'sprites/sight'
 import Hourglass from 'sprites/hourglass'
 import Boxes from 'sprites/boxes'
+import Water from 'sprites/water'
+import Light from 'sprites/light'
 import GameOver from 'sprites/gameover'
 
 
@@ -39,6 +41,8 @@ export default class Main {
 
     this.background = new BackGround(ctxAssociate)
     this.boxes = new Boxes(ctxAssociate)
+    this.water = new Water(ctxAssociate)
+    this.light = new Light(ctxAssociate)
 
     this.score = new Score(ctx)
     this.fixProgress = new FixProgress(ctx)
