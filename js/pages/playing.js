@@ -20,7 +20,7 @@ let funcs = {
     if (!dataBus.touchEndPoint) return false
 
     // 因为原图是全屏的，容易误点
-    // 所以此处自定义了一个break point
+    // 所以此处自定义了一个area
     if (    dataBus.isPaused
          && dataBus.touchEndPoint.pageX >= screenWidth * 0.3
          && dataBus.touchEndPoint.pageX <= screenWidth * 0.7
