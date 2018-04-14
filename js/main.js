@@ -8,6 +8,7 @@ import Boxes from 'sprites/boxes'
 import Water from 'sprites/water'
 import Light from 'sprites/light'
 import GameOver from 'sprites/gameover'
+import Clover from 'sprites/clover'
 
 
 import render from 'runtime/render'
@@ -39,6 +40,7 @@ export default class Main {
 
     this.worker = worker
 
+
     this.background = new BackGround(ctxAssociate)
     this.boxes = new Boxes(ctxAssociate)
     this.water = new Water(ctxAssociate)
@@ -50,6 +52,7 @@ export default class Main {
     this.sight = new Sight(ctx)
     this.hourglass = new Hourglass(ctx)
     this.gameOver = new GameOver(ctx)
+    this.clover = new Clover(ctx)
 
     this.touchEvent = touchEvent.bind(this)
     this.render = render.bind(this)

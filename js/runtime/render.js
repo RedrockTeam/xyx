@@ -1,3 +1,4 @@
+import cloverFuncs from '../pages/clover'
 import playingFuncs from '../pages/playing'
 import showRankList from '../pages/show-rank'
 import showScoreFuncs from '../pages/show-score'
@@ -9,6 +10,12 @@ import showScoreFuncs from '../pages/show-score'
 export default function render() {  
   this.ctx.clearRect(0, 0, screenWidth, -screenHeight)
   this.ctxAssociate.clearRect(0, 0, screenWidth, -screenHeight)
+
+  if ( dataBus.gameStatus.toLowerCase() === "clover" ) {
+    cloverFuncs.call(this)
+
+    return
+  }
 
   if ( dataBus.gameStatus.toLowerCase() === "playing" ) {
     playingFuncs.call(this)
