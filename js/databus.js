@@ -25,6 +25,8 @@ export default class DataBus {
     this.isPaused = false
 
     this.sightNumber = 0
+    // 水的高度
+    this.waterPercent = 0
 
     this.hourglassNumber = 0
 
@@ -39,5 +41,7 @@ export default class DataBus {
     this.userInfo = {}
     // 当前最上面的盒子的偏移量
     this.boxPoint = 0
+
+
   }
 }

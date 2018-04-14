@@ -26,6 +26,7 @@ export default function update() {
 
     dataBus.score++
 
+
     // this.ctx.globalAlpha = dataBus.frame % 100 / 100
 
     // 创建下一个偏移量

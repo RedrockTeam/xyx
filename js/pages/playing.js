@@ -4,7 +4,7 @@ let funcs = {
   ctxAssociateRender() {
     this.background.render()
     this.boxes.drawBoxes()
-    // this.water.drawWater()
+    this.water.drawWater()
     this.light.drawLight()
   },
 

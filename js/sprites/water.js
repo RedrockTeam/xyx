@@ -17,10 +17,22 @@ export default class Water {
     this.ctx = ctx
 
     this.water = water
+
+    this.waterPercent = 0
+
+    this.ani = new Animation( dataBus, 'waterPercent',
+                              this, 'waterPercent',
+                              30, 'quadraticIn')
+
   }
 
 
   drawWater(ctx = this.ctx) {
+    this.ani.listen()
+    if (!this.waterPercent)
+      return false
+
+    this.water.y = -this.waterPercent * screenHeight / 100
     this.water.draw(ctx)
   }
 }
