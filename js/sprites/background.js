@@ -4,7 +4,7 @@ import Animation from '../interfaces/animation'
 const iconPath = 'images/background/'
 
 // 不同图片高度不一样
-const bgHeightListOrigin = [1334, 1416, 1375, 1375, 1000]
+const bgHeightListOrigin = [1334, 1416, 1375, 1375, 1375]
 // 维护前几个图片的高度梯度
 let bgStepListOrigin = []
 
@@ -52,7 +52,7 @@ export default class BackGround {
         // 这样的好处是日后新创建相同src的img对象的时候，无需再次从文件中读取
         imgSrc: (() => {
           return  index === 4
-                ? `${iconPath}05+.png`
+                ? `${iconPath}05+.jpg`
                 : `${iconPath}0${index + 1}.jpg`
         })(),
         height: bgHeightList[index] / 750 * screenWidth
@@ -64,7 +64,7 @@ export default class BackGround {
         // 如果已经创建过该键值，就不再创建
         return  typeof target[key] === 'undefined'
               ? target[key] = new Sprite(Object.assign(bgConfig, { 
-                   imgSrc: `${iconPath}05+.png`,
+                   imgSrc: `${iconPath}05+.jpg`,
                    height: bgHeightList[key] / 750 * screenWidth
                  }))
               : target[key]
