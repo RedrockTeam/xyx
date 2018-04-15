@@ -1,5 +1,7 @@
 # 红岩网校 - 微信小游戏
 
+
+
 基于微信小程序的平台而开发的一款叠箱子的微信小游戏。游戏使用了wx-adapter，开发API和使用原生的canvas几乎一样。
 
 未使用游戏引擎，纯原生的代码。借鉴了微信官方demo的设计思想（对象池，databus，继承class）的同时，本小游戏也开发了诸如自定义状态管理器，事件触发器等模块。
@@ -13,6 +15,18 @@
 还在开发中= =
 
 求✨star✨～～
+
+
+
+### 游戏截图
+
+游戏封面
+
+![clover](https://wx.idsbllp.cn/extension/img/xyx-images/assets/clover.jpg)
+
+游戏主界面
+
+![runtime](https://wx.idsbllp.cn/extension/img/xyx-images/assets/runtime.png)
 
 
 
