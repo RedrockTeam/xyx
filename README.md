@@ -22,13 +22,15 @@
 
 游戏封面
 
-![clover](https://wx.idsbllp.cn/extension/img/xyx-images/assets/clover.jpg)
+![clover](https://wx.idsbllp.cn/extension/img/xyx-images/assets/clover.png)
 
 游戏主界面
 
 ![runtime](https://wx.idsbllp.cn/extension/img/xyx-images/assets/runtime.png)
 
+得分显示
 
+![score](https://wx.idsbllp.cn/extension/img/xyx-images/assets/score.png)
 
 ### 交流
 
