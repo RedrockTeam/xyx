@@ -1,3 +1,8 @@
+// 是否在调试阶段
+// 如果是的话，入口实例main将会挂载到global对象下
+// 方便调试
+export const GAME_DEBUG = true
+
 // 请求接口
 export const API_PORT = 'https://wx.idsbllp.cn'
 

@@ -16,6 +16,7 @@ import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
 import userData from 'runtime/user-data'
 
+import { GAME_DEBUG } from 'configs/options'
 
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
@@ -30,8 +31,8 @@ let worker = wx.createWorker('js/worker/index.js')
 
 export default class Main {
   constructor () {
-
-    window.main = this
+    
+    if (GAME_DEBUG) window.main = this
 
     this.ctx = ctx
     this.ctxAssociate = ctxAssociate
