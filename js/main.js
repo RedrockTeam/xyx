@@ -14,6 +14,8 @@ import Clover from 'sprites/clover'
 import render from 'runtime/render'
 import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
+import userData from 'runtime/user-data'
+
 
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
@@ -54,21 +56,12 @@ export default class Main {
     this.gameOver = new GameOver(ctx)
     this.clover = new Clover(ctx)
 
+    this.userData = userData.bind(this)
     this.touchEvent = touchEvent.bind(this)
     this.render = render.bind(this)
     this.update = update.bind(this)
 
-    wx.getUserInfo({
-      success(res) {
-        dataBus.userInfo = res.userInfo
-      }
-    })
-    
-    wx.showShareMenu({
-    withShareTicket: false
-    })
-    
-    wx.onShareAppMessage(console.log)
+    this.userData()
 
     this.touchEvent()
 
@@ -80,5 +73,6 @@ export default class Main {
     this.render()
     this.aniId = window.requestAnimationFrame( this.loop.bind(this) )
   }
+
 }
 
