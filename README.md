@@ -1,4 +1,4 @@
-# 红岩网校 - 微信小游戏
+# 🎓StrongBox-使用纯原生canvas写的微信小游戏
 
 
 
@@ -46,5 +46,6 @@
 - 本小游戏已申请软件著作权，请勿大面积抄袭并商用，违者必究。
 
 
+### Contact
 
 [@CoderMing](https://github.com/coderming)
