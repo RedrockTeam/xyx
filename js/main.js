@@ -10,11 +10,12 @@ import Light from 'sprites/light'
 import GameOver from 'sprites/gameover'
 import Clover from 'sprites/clover'
 
-
 import render from 'runtime/render'
 import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
 import userData from 'runtime/user-data'
+
+import pluginFuncs from 'plugins/index'
 
 import { GAME_DEBUG } from 'configs/options'
 
@@ -48,6 +49,7 @@ export default class Main {
 
     this.worker = worker
 
+    this.pluginFuncs = pluginFuncs
 
     this.background = new BackGround(ctxAssociate)
     this.boxes = new Boxes(ctxAssociate)
@@ -67,9 +69,12 @@ export default class Main {
     this.render = render.bind(this)
     this.update = update.bind(this)
 
+
     this.userData()
 
     this.touchEvent()
+
+    this.pluginFuncs()
 
     this.loop()
   }
