@@ -41,7 +41,7 @@ let funcs = {
 
 export default function() {
   funcs.ctxAssociateRender.call(this)
-  this.ctx.drawImage(canvasAssociate, 0, -screenHeight)
+  this.ctx.drawImage(canvasAssociate, 0, -canvas.height)
 
   funcs.ctxRender.call(this)
 

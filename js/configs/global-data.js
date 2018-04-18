@@ -8,6 +8,7 @@ import DataBus from '../databus'
 // 屏幕长宽
 window.screenWidth = window.innerWidth
 window.screenHeight = window.innerHeight
+window.pixelRatio = window.devicePixelRatio
 
 // 副canvas
 // 主canvas wx-adapter已经创建，为window.canvas

@@ -18,14 +18,19 @@ import userData from 'runtime/user-data'
 
 import { GAME_DEBUG } from 'configs/options'
 
+canvas.width = canvas.width * pixelRatio
+canvas.height = canvas.height * pixelRatio
+canvasAssociate.height = canvasAssociate.height * pixelRatio
+canvasAssociate.width = canvasAssociate.width * pixelRatio
+
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
-    ctx.translate(0, screenHeight) 
+    ctx.translate(0, canvas.height)
 
 // 副屏，用来绘制背景等不是一直需要刷新的东西
 // 切换也简单。只需要给不同的元素传不同的ctx就好
 let ctxAssociate = canvasAssociate.getContext('2d')
-    ctxAssociate.translate(0, screenHeight)
+    ctxAssociate.translate(0, canvasAssociate.height)
 
 let worker = wx.createWorker('js/worker/index.js')
 

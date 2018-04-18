@@ -20,6 +20,7 @@ export default class Sprite {
       // isChain的作用是，判断该Sprite是否是外链
       isChain: false
     }
+
     let sprObj = Object.assign(defConf, obj)
 
     if (sprObj.isChain)
@@ -47,10 +48,10 @@ export default class Sprite {
     if (!this.visible && !enforce)
       return false
     ctx.drawImage(  this.img,
-                    this.x,
-                    this.y,
-                    this.width,
-                    this.height )
+                    this.x * pixelRatio,
+                    this.y * pixelRatio,
+                    this.width * pixelRatio,
+                    this.height * pixelRatio )
     return true
   }
 
@@ -63,10 +64,10 @@ export default class Sprite {
                     clipConf.sy,
                     clipConf.sWidth,
                     clipConf.sHeight,
-                    this.x,
-                    this.y,
-                    this.width,
-                    this.height )
+                    this.x * pixelRatio,
+                    this.y * pixelRatio,
+                    this.width * pixelRatio,
+                    this.height * pixelRatio )
     return true
   }
 
