@@ -40,10 +40,13 @@ let funcs = {
 }
 
 export default function() {
+
   funcs.ctxAssociateRender.call(this)
+
   this.ctx.drawImage(canvasAssociate, 0, -canvas.height)
 
-  funcs.ctxRender.call(this)
+  if (dataBus.gameControl.isNeedRefreshPlaying) 
+    funcs.ctxRender.call(this)
 
   funcs.listenEvent.call(this)
 }

@@ -53,6 +53,9 @@ export default class DataBus {
     // 当前最上面的盒子的偏移量
     this.boxPoint = 0
 
+    this.gameControl = {
+      isNeedRefreshPlaying: true
+    }
 
   }
 }
