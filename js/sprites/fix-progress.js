@@ -1,4 +1,5 @@
 import Sprite from '../interfaces/sprite'
+import Animation from '../interfaces/animation'
 
 const iconPath = 'images/fix-progress/'
 
@@ -63,15 +64,19 @@ export default class FixProgress {
     // 当前是否攒满
     this.isSuccess = false
 
+    this.ani = new Animation( dataBus, 'fixNumerator',
+                              this, 'numerator',
+                              20, 'ease')
+
     this.bindToDataBus()
   }
 
   bindToDataBus(dataBus = window.dataBus) {
-    twoWayBinding(dataBus, 'fixNumerator', this, 'numerator')
-    twoWayBinding(dataBus, 'fixDenominator', this, 'denominator')
+    twoWayBinding(this, 'denominator', dataBus, 'fixDenominator')
   }
 
   drawFixProgress(ctx = this.ctx) {
+    this.ani.listen()
     let boxOffsetY = this.numerator / this.denominator
 
     if (boxOffsetY >= 1) {

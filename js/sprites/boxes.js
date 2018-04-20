@@ -49,6 +49,7 @@ export default class Box {
     this.ani = new Animation( dataBus, 'height',
                               this, 'y',
                               60, 'quinticInOut' )
+
     // boxList 绑定
     twoWayBinding(this, 'boxList', dataBus, 'boxList')
     // twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')

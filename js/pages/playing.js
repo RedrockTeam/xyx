@@ -1,3 +1,4 @@
+
 let funcs = {
   // 两层ctx的绘画函数
   // 指游戏过程中
@@ -37,7 +38,37 @@ let funcs = {
 
     dataBus.touchEndPoint = {}
   }
+
 }
+// 事件处理函数
+// 监听出现在该页面的诸如使用道具，满槽修正之类的事件
+let eventFuncs = {
+  fixFill () {
+    if (fixFillControl) {
+      let length = dataBus.boxList.length,
+              index =  length - dataBus.fixDenominator >= 0
+                          ? length - dataBus.fixDenominator
+                          : 0
+      for (; index < length; index++) {
+        if (dataBus.boxList[index].x >= 3) {
+          dataBus.boxList[index].x -= 3
+        } 
+        else if (dataBus.boxList[index].x <= -3) {
+          dataBus.boxList[index].x += 3
+        } 
+        else {
+          dataBus.boxList[index].x = 0
+        }
+      }
+      if (dataBus.boxList.every(el => el.x === 0)) fixFillControl = false
+    }
+  }
+}
+
+// 使用这个的原因是为了实现一个动画效果
+// 因为我的animation类，无法实现绑定属性，而且每次绑定只能绑定一个值
+// 诸如此类的要绑定一个数组的，就不方便了
+let fixFillControl = false
 
 export default function() {
 
@@ -47,6 +78,13 @@ export default function() {
 
   if (dataBus.gameControl.isNeedRefreshPlaying) 
     funcs.ctxRender.call(this)
+
+  if (dataBus.fixNumerator >= dataBus.fixDenominator && fixFillControl === false) {
+    fixFillControl = true
+    dataBus.boxPoint = 0
+    dataBus.fixNumerator = 0
+  }
+  eventFuncs.fixFill.call(this)
 
   funcs.listenEvent.call(this)
 }
