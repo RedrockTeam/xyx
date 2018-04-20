@@ -3,7 +3,7 @@
  * 主要改变了头部的score和暂停按钮的位置
  * 解决了刘海屏的问题
  */
-const testReg = /iPhone\ X/
+const testReg = /iPhone\s?X/
 
 export default function iPhoneX() { 
   if (testReg.test(dataBus.systemInfo.model)) {

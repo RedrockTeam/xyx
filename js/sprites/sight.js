@@ -23,6 +23,12 @@ let iconLight = new Sprite({
   width: 157 / scallingRadio, height: 157 / scallingRadio
 })
 
+let activeLine = new Sprite({
+  imgSrc: 'images/sight/active-line.png',
+  x: -12,
+  y: -screenWidth / 9 * 16,
+  width: screenWidth, height: screenWidth / 9 * 16
+})
 
 
 export default class Sight {
@@ -32,16 +38,20 @@ export default class Sight {
     this.iconDark = iconDark
     this.iconLight = iconLight
     this.numberList = numberList
+    this.activeLine = activeLine
 
     this.numberStartX = this.numberList[0].x
+    this.activeLineStartX = this.activeLine.x
 
     this.sightNumber = 0
+    this.boxPoint = 0
 
     this.bindToDataBus()
   }
 
   bindToDataBus(dataBus = window.dataBus) {
     twoWayBinding(dataBus, 'sightNumber', this, 'sightNumber')
+    twoWayBinding(dataBus, 'boxPoint', this, 'boxPoint')
   }
 
   drawSight(ctx = this.ctx) {
@@ -50,6 +60,9 @@ export default class Sight {
       return
     }
     this.iconLight.draw(ctx)
+
+    this.activeLine.x = this.activeLineStartX + this.boxPoint
+    this.activeLine.draw(ctx)
 
     let numberLength = `${this.sightNumber}`.length;
     `${this.sightNumber}`.split('').forEach((el, index) => {
