@@ -20,8 +20,8 @@ export default function update() {
 
     dataBus.fixNumerator += 3
 
-    dataBus.sightNumber = ++dataBus.sightNumber >= 99 ? 99 : dataBus.sightNumber
-    dataBus.hourglassNumber = ++dataBus.hourglassNumber >= 99 ? 99 : dataBus.hourglassNumber
+    dataBus.sightNumber = 99
+    dataBus.hourglassNumber = 99
 
     dataBus.score++
 

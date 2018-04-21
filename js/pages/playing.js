@@ -79,6 +79,7 @@ export default function() {
   if (dataBus.gameControl.isNeedRefreshPlaying) 
     funcs.ctxRender.call(this)
 
+  // 修正条的函数
   if (dataBus.fixNumerator >= dataBus.fixDenominator && fixFillControl === false) {
     fixFillControl = true
     dataBus.boxPoint = 0
