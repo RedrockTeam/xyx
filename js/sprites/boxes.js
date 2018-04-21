@@ -1,5 +1,6 @@
 import Sprite from '../interfaces/sprite'
 import Animation from '../interfaces/animation'
+import { quadraticIn } from '../configs/ani-function'
 
 const iconPath = 'images/box/'
 const scallingRadio = 1.98 / screenWidth * 375
@@ -42,6 +43,7 @@ export default class Box {
     this.y = 0
     this.boxList = []
 
+    this.dropBoxFlag = []
     this.boxStartY = this.boxes[1].y
     this.boxStartX = this.boxes[1].x
     this.boxHeight = this.boxes[1].height
@@ -66,7 +68,14 @@ export default class Box {
           index < length;
           index++) {
       let el = this.boxList[index]
-      this.boxes[el.type].y = this.boxStartY - this.boxHeight * (index + 1) + this.y
+      if (length <= index + 3) {
+        if (el.isDown && (this.dropBoxFlag[index] || !el.isDowned)) {
+          this.dropBoxFlag[index] = el.isDowned ? this.dropBoxFlag[index] : 30
+          el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * this.boxList.dropStartY
+          el.isDowned = true
+        }
+      }
+      this.boxes[el.type].y = this.boxStartY - this.boxHeight * (index + 1) + this.y - el.y
       this.boxes[el.type].x = this.boxStartX + el.x
       this.boxes[el.type].draw(ctx)
     }

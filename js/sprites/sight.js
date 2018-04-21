@@ -52,11 +52,10 @@ export default class Sight {
 
   bindToDataBus(dataBus = window.dataBus) {
     twoWayBinding(dataBus, 'sightNumber', this, 'sightNumber')
-    this.ani = new Animation(dataBus, 'boxPoint', this, 'boxPoint', 20)
+    twoWayBinding(dataBus, 'boxPoint', this, 'boxPoint')
   }
 
   drawSight(ctx = this.ctx) {
-    this.ani.listen()
     if (this.sightNumber === 0) {
       this.iconDark.draw(ctx)
       return

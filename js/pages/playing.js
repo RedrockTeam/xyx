@@ -18,25 +18,31 @@ let funcs = {
   },
 
   listenEvent() {
-    if (!dataBus.touchEndPoint) return false
+    if (!dataBus.touchStartPoint) return false
 
     // 因为原图是全屏的，容易误点
     // 所以此处自定义了一个area
     if (    dataBus.isPaused
-         && dataBus.touchEndPoint.pageX >= screenWidth * 0.3
-         && dataBus.touchEndPoint.pageX <= screenWidth * 0.7
-         && -dataBus.touchEndPoint.pageY + screenHeight >= screenHeight * 0.3
-         && -dataBus.touchEndPoint.pageY + screenHeight <= screenHeight * 0.7  ) {
+         && dataBus.touchStartPoint.pageX >= screenWidth * 0.3
+         && dataBus.touchStartPoint.pageX <= screenWidth * 0.7
+         && -dataBus.touchStartPoint.pageY + screenHeight >= screenHeight * 0.3
+         && -dataBus.touchStartPoint.pageY + screenHeight <= screenHeight * 0.7  ) {
       dataBus.isPaused = false
+      dataBus.touchStartPoint = {}
     }
 
     if (this.pause.runningIcon.isCollideWith(
-              dataBus.touchEndPoint.pageX || 0,
-              dataBus.touchEndPoint.pageY - screenHeight || 0)) {
+              dataBus.touchStartPoint.pageX || 0,
+              dataBus.touchStartPoint.pageY - screenHeight || 0)) {
       dataBus.isPaused = true
+      dataBus.touchStartPoint = {}
     }
 
-    dataBus.touchEndPoint = {}
+
+    if (dataBus.touchStartPoint.pageX && dataBus.boxList.length)
+      dataBus.boxList[dataBus.boxList.length - 1].isDown = true
+
+    dataBus.touchStartPoint = {}
   }
 
 }
@@ -52,7 +58,7 @@ let eventFuncs = {
       for (; index < length; index++) {
         if (dataBus.boxList[index].x >= 3) {
           dataBus.boxList[index].x -= 3
-        } 
+        }
         else if (dataBus.boxList[index].x <= -3) {
           dataBus.boxList[index].x += 3
         } 
@@ -85,6 +91,7 @@ export default function() {
     dataBus.boxPoint = 0
     dataBus.fixNumerator = 0
   }
+
   eventFuncs.fixFill.call(this)
 
   funcs.listenEvent.call(this)

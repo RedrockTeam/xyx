@@ -31,6 +31,8 @@ export default class DataBus {
     this.hourglassNumber = 0
 
     this.boxList = []
+    this.boxList.dropStartY = 0.5 * screenHeight
+    
     /**
      * 用户数据存的对象
      * openid要进行初始化，这样子做的好处是用户以后再打开游戏的时候，openid会一直存在
@@ -47,7 +49,7 @@ export default class DataBus {
      * 改变状态是直接改变这个字符串，会自动检测并调用相应的渲染函数
      * @type {String}
      */
-    this.gameStatus = 'clover'
+    this.gameStatus = 'playing'
 
     this.userInfo = {}
     // 当前最上面的盒子的偏移量
