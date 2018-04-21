@@ -1,5 +1,6 @@
 import Sprite from '../interfaces/sprite'
 import NumberList from 'public/tools-number'
+import Animation from '../interfaces/animation'
 
 const iconPath = 'images/icon/'
 const scallingRadio = 1.6
@@ -51,10 +52,11 @@ export default class Sight {
 
   bindToDataBus(dataBus = window.dataBus) {
     twoWayBinding(dataBus, 'sightNumber', this, 'sightNumber')
-    twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')
+    this.ani = new Animation(dataBus, 'boxPoint', this, 'boxPoint', 20)
   }
 
   drawSight(ctx = this.ctx) {
+    this.ani.listen()
     if (this.sightNumber === 0) {
       this.iconDark.draw(ctx)
       return
