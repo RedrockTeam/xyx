@@ -8,8 +8,8 @@ import showScoreFuncs from '../pages/show-score'
  * ctx的层级永远在ctxAssociate之上
  */
 export default function render() {  
-  this.ctx.clearRect(0, 0, screenWidth, -screenHeight)
-  this.ctxAssociate.clearRect(0, 0, screenWidth, -screenHeight)
+  // this.ctx.clearRect(0, 0, screenWidth * pixelRatio, -screenHeight * pixelRatio)
+  // this.ctxAssociate.clearRect(0, 0, screenWidth * pixelRatio, -screenHeight * pixelRatio)
 
   if ( dataBus.gameStatus.toLowerCase() === "clover" ) {
     cloverFuncs.call(this)

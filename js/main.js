@@ -53,10 +53,10 @@ export default class Main {
 
     this.pluginFuncs = pluginFuncs
 
-    this.background = new BackGround(ctxAssociate)
-    this.boxes = new Boxes(ctxAssociate)
-    this.water = new Water(ctxAssociate)
-    this.light = new Light(ctxAssociate)
+    this.background = new BackGround(ctx)
+    this.boxes = new Boxes(ctx)
+    this.water = new Water(ctx)
+    this.light = new Light(ctx)
 
     this.score = new Score(ctx)
     this.fixProgress = new FixProgress(ctx)

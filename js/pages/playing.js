@@ -6,7 +6,7 @@ let funcs = {
     this.background.render()
     this.boxes.drawBoxes()
     this.water.drawWater()
-    this.light.drawLight()
+    // this.light.drawLight()
   },
 
   ctxRender() {
@@ -80,9 +80,9 @@ export default function() {
 
   funcs.ctxAssociateRender.call(this)
 
-  this.ctx.drawImage(canvasAssociate, 0, -canvas.height)
+  // this.ctx.drawImage(canvasAssociate, 0, -canvas.height)
 
-  if (dataBus.gameControl.isNeedRefreshPlaying) 
+  // if (dataBus.gameControl.isNeedRefreshPlaying) 
     funcs.ctxRender.call(this)
 
   // 修正条的函数

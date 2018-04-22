@@ -44,7 +44,7 @@ export default function update() {
         || dataBus.boxList[dataBus.boxList.length - 1].isDowned) {
         dataBus.boxList.push({  type: Math.floor(Math.random() * 3) + 1,
                                 x: Math.random() * boxWidth - (boxWidth / 2),
-                                y: screenHeight * 0.5,
+                                y: dataBus.boxList.dropStartY,
                                 direction: [-1, 1][Math.floor(Math.random() * 2)] })
         if (dataBus.boxList.length >= 4)
           this.dataBus.height += boxHeight
