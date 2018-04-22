@@ -1,1 +1,3 @@
-let a = 1
+worker.onMessage(function (res) {
+  console.log(res)
+})

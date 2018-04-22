@@ -35,7 +35,6 @@ let ctxAssociate = canvasAssociate.getContext('2d')
 
 wx.setPreferredFramesPerSecond(60)
 
-let worker = wx.createWorker('js/worker/index.js')
 
 export default class Main {
   constructor () {
@@ -49,7 +48,7 @@ export default class Main {
 
     this.dataBus = window.dataBus
 
-    this.worker = worker
+    this.worker = wx.createWorker('/js/worker/index.js')
 
     this.pluginFuncs = pluginFuncs
 
@@ -79,6 +78,7 @@ export default class Main {
     this.pluginFuncs()
 
     this.loop()
+    console.log(window.main)
   }
 
   loop() {
