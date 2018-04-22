@@ -56,7 +56,8 @@ export default class DataBus {
     this.boxPoint = 0
 
     this.gameControl = {
-      isNeedRefreshPlaying: true
+      isNeedRefreshPlaying: true,
+      isNeedNewBox: true
     }
 
   }
