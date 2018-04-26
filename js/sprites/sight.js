@@ -26,9 +26,9 @@ let iconLight = new Sprite({
 
 let activeLine = new Sprite({
   imgSrc: 'images/sight/active-line.png',
-  x: -12,
-  y: -screenWidth / 9 * 16,
-  width: screenWidth, height: screenWidth / 9 * 16
+  x: -screenWidth * .5,
+  y: -screenWidth * 2 * 1334 / 1600,
+  width: screenWidth * 2, height: screenWidth * 2 * 1334 / 1600
 })
 
 
