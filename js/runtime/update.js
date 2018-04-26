@@ -32,7 +32,6 @@ export default function update() {
 
     // 创建下一个偏移量
     let topBox = dataBus.boxList.length && dataBus.boxList[dataBus.boxList.length - 1]
-    dataBus.boxPoint = topBox.x
     // 元素添加
     // 每60帧检测一次
     if (dataBus.frame % 60 === 0) {
@@ -57,5 +56,7 @@ export default function update() {
       if (Math.abs(topBox.x) >= (screenWidth - boxWidth) * 0.5 - 10)
         topBox.direction = -topBox.direction
     }
+
+    dataBus.boxPoint = topBox.x
   }
 }

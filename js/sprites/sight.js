@@ -62,14 +62,16 @@ export default class Sight {
     }
     this.iconLight.draw(ctx)
 
-    this.activeLine.x = this.activeLineStartX + this.boxPoint
-    this.activeLine.draw(ctx)
-
     let numberLength = `${this.sightNumber}`.length;
     `${this.sightNumber}`.split('').forEach((el, index) => {
       this.numberList[el].x = this.numberStartX - numberLength * 6.5 + index * 13
       this.numberList[el].draw(ctx)
     })
+  }
+
+  drawSightLine(ctx = this.ctx) {
+    this.activeLine.x = this.activeLineStartX + this.boxPoint
+    this.activeLine.draw(ctx)
   }
 }
 

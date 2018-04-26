@@ -6,6 +6,7 @@ let funcs = {
     this.background.render()
     this.boxes.drawBoxes()
     this.water.drawWater()
+    this.sight.drawSightLine()
     // this.light.drawLight()
   },
 
