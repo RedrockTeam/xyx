@@ -6,8 +6,8 @@ const stopedIconHeight = screenWidth * 1623 / 750
 // Sprite
 let running = new Sprite({
   imgSrc: `${iconPath}pause.png`,
-  width: 65, height: 65,
-  x: screenWidth - 80,
+  width: 50, height: 50,
+  x: screenWidth - 65,
   y: -screenHeight + 55
 })
 

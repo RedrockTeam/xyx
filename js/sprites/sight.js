@@ -7,21 +7,21 @@ const scallingRadio = 1.6
 
 let numberList = new NumberList({
   size: 13,
-  x: screenWidth - 18,
-  y: -screenHeight + 242
+  x: screenWidth - 24,
+  y: -screenHeight + 237
 })
 
 let iconDark = new Sprite({
   imgSrc: `${iconPath}sight-n.png`,
-  x: screenWidth - 71,
+  x: screenWidth - 65,
   y: -screenHeight + 200,
-  width: 88 / scallingRadio, height: 88 / scallingRadio
+  width: 79 / scallingRadio, height: 79 / scallingRadio
 })
 let iconLight = new Sprite({
   imgSrc: `${iconPath}sight.png`,
-  x: screenWidth - 94,
-  y: -screenHeight + 179,
-  width: 157 / scallingRadio, height: 157 / scallingRadio
+  x: screenWidth - 81,
+  y: -screenHeight + 184,
+  width: 129 / scallingRadio, height: 129 / scallingRadio
 })
 
 let activeLine = new Sprite({

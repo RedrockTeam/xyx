@@ -14,8 +14,8 @@ let coin = new Sprite({
 let scoreNumber = [...Array(10)].map((el, index) => {
   return new Sprite({
     imgSrc: `${iconPath}${index}.png`,
-    y: -screenHeight + 22,
-    width: 14, height: 64 / 31 * 14
+    y: -screenHeight + 29,
+    width: 14, height: 56 / 31 * 14
   })
 })
 
