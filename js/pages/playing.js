@@ -80,7 +80,7 @@ export default function() {
 
   funcs.ctxAssociateRender.call(this)
 
-  // this.ctx.drawImage(canvasAssociate, 0, -canvas.height)
+  this.ctx.drawImage(canvasAssociate, 0, -canvas.height)
 
   // if (dataBus.gameControl.isNeedRefreshPlaying) 
     funcs.ctxRender.call(this)

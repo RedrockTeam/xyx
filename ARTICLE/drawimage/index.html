@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="1000" height="1000"
+      style="width: 1000px; height: 1000px; outline: 1px solid black"></canvas>
+    <script>
+      const ctx = document.querySelector("#canvas").getContext('2d')
+      
+      /**
+       * 绘制普通图片
+       **/
+      let img = new Image()
+      img.src = "./image.jpg"
+      imgList = Array(10000).fill(img)
+      function testImage() {
+        console.time('绘制图片')
+        imgList.forEach(el => {
+          ctx.drawImage(el, 0, 0, 1000, 1000)
+        })
+        console.timeEnd('绘制图片')
+      }
+      
+      /**
+       * 绘制canvas
+       **/
+       
+      let canvasList = Array(10000).fill().map(el => {
+        let canvas = document.createElement('canvas')
+        canvas.setAttribute('width', 1000)
+        canvas.setAttribute('height', 1000)    
+        return canvas
+      })
+      function testCanvas() {
+        console.time('绘制图片')
+        canvasList.forEach(el => {
+          ctx.drawImage(el, 0, 0, 1000, 1000)
+        })
+        console.timeEnd('绘制图片')
+      }
+
+    </script>
+  </body>
+</html>
