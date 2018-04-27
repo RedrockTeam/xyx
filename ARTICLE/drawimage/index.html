@@ -16,10 +16,10 @@
       let img = new Image()
       img.src = "./image.jpg"
       imgList = Array(10000).fill(img)
-      function testImage() {
+      function testImage(size = 1000) {
         console.time('绘制图片')
         imgList.forEach(el => {
-          ctx.drawImage(el, 0, 0, 1000, 1000)
+          ctx.drawImage(el, 0, 0, size, size)
         })
         console.timeEnd('绘制图片')
       }
