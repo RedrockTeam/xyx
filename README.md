@@ -12,7 +12,7 @@
 
 
 
-还在开发中，同时我会不定时地在本仓库的[issue区(https://github.com/RedrockTeam/xyx/issues)]更新一些分析/踩坑文章。
+还在开发中，同时我会不定时地在本仓库的[issue区](https://github.com/RedrockTeam/xyx/issues)更新一些分析/踩坑文章。
 
 
 订阅文章 Watch， 点赞收藏 Star
