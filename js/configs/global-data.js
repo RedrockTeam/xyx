@@ -1,4 +1,9 @@
+import '../libs/symbol'
+import '../libs/two-way-binding'
+import '../libs/get-last-one'
+
 import DataBus from '../databus'
+
 /**
  * 全局data
  * 这样做的好处是对于几乎所有页面都要import的模块，或者是一些配置参数

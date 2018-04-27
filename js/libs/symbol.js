@@ -15,3 +15,4 @@ if (!Symbol) {
 }
 
 window.Symbol = Symbol
+

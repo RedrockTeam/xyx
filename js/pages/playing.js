@@ -1,3 +1,5 @@
+import getLastOne from "../libs/get-last-one";
+import { boxHeight, boxWidth } from '../sprites/boxes'
 
 let funcs = {
   // 两层ctx的绘画函数
@@ -44,8 +46,24 @@ let funcs = {
       dataBus.boxList[dataBus.boxList.length - 1].isDown = true
 
     dataBus.touchStartPoint = {}
-  }
+  },
 
+  missionFall() {
+    dataBus.boxList.forEach(el => {
+      let offset = el.x <= 0 ? -.5 : .5
+      offset *= Math.random()
+      let flag = 30
+      let update = () => {
+        el.x += offset
+        el.y -= 1
+        if (flag--) update()
+      }
+      let timeout = setTimeout(update, 16)
+      setTimeout(() => {
+        dataBus.gameStatus = 'show_score'
+      }, 1000)
+    })
+  }
 }
 // 事件处理函数
 // 监听出现在该页面的诸如使用道具，满槽修正之类的事件
@@ -73,7 +91,7 @@ let eventFuncs = {
 }
 
 // 使用这个的原因是为了实现一个动画效果
-// 因为我的animation类，无法实现绑定属性，而且每次绑定只能绑定一个值
+// 因为我的animation类，每次绑定只能绑定一个值
 // 诸如此类的要绑定一个数组的，就不方便了
 let fixFillControl = false
 
@@ -92,8 +110,18 @@ export default function() {
     dataBus.boxPoint = 0
     dataBus.fixNumerator = 0
   }
-
   eventFuncs.fixFill.call(this)
 
+  let compareX =  dataBus.boxList[dataBus.boxList.length - 2]
+               && dataBus.boxList[dataBus.boxList.length - 2].x
+  if (  getLastOne(dataBus.boxList)
+     && getLastOne(dataBus.boxList).isDowned
+     && (   getLastOne(dataBus.boxList).x < compareX - (boxWidth / 2)
+         || getLastOne(dataBus.boxList).x > compareX + (boxWidth / 2))
+     && dataBus.gameStatus === 'playing') {
+       console.log('123')
+      funcs.missionFall()
+     }
+  
   funcs.listenEvent.call(this)
 }
