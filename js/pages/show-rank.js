@@ -6,15 +6,15 @@ let funcs = {
   },
 
   listenEvent () {
-    if (!dataBus.touchEndPoint) { return false }
+    if (!window.dataBus.touchEndPoint) { return false }
 
     gobFunc.call(this)
 
     if (this.gameOver.scoreBtn.isCollideWith(
-      dataBus.touchEndPoint.pageX || 0,
-      dataBus.touchEndPoint.pageY - screenHeight || 0)) { dataBus.gameStatus = 'show_score' }
+      window.dataBus.touchEndPoint.pageX || 0,
+      window.dataBus.touchEndPoint.pageY - screenHeight || 0)) { window.dataBus.gameStatus = 'show_score' }
 
-    dataBus.touchEndPoint = {}
+    window.dataBus.touchEndPoint = {}
   }
 }
 

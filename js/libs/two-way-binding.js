@@ -23,7 +23,8 @@ const twoWayBinding = function (bindStartObject,
       return bindTargetObject[bindTargetProper]
     },
     set (value) {
-      return bindTargetObject[bindTargetProper] = value
+      bindTargetObject[bindTargetProper] = value
+      return value
     }
   })
   return true
