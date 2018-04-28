@@ -1,22 +1,22 @@
 import { API_PORT, OPENID_PATH } from '../configs/options'
 
-export default function userData() {
+export default function userData () {
   // 获取用户信息，头像之类的
   wx.getUserInfo({
-    success(res) {
+    success (res) {
       dataBus.userInfo = res.userInfo
     }
   })
 
   // 登陆，获取openID
   wx.login({
-    success(res) {
+    success (res) {
       wx.request({
         url: `${API_PORT}/${OPENID_PATH}`,
         data: {
           code: res.code
         },
-        success(res) {
+        success (res) {
           dataBus.userData.openid = res.openid
           dataBus.userData.session_key = res.session_key
           // 此处刷新storage里的openid值
@@ -29,13 +29,10 @@ export default function userData() {
       })
     }
   })
-  
+
   wx.showShareMenu({
     withShareTicket: false
   })
-  
+
   wx.onShareAppMessage(console.log)
 }
-
-
-

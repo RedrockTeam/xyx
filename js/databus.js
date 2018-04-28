@@ -1,18 +1,16 @@
 let instance
 
 export default class DataBus {
-  constructor() {
+  constructor () {
     // 如果创建过DataBus了，就返回之前创造的
-    if (instance)
-      return instance
+    if (instance) { return instance }
 
     instance = this
 
     this.init()
-
   }
 
-  init() {
+  init () {
     this.height = 0
 
     this.frame = 0
@@ -58,6 +56,5 @@ export default class DataBus {
     this.gameControl = {
       isNeedRefreshPlaying: true
     }
-
   }
 }

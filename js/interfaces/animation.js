@@ -12,18 +12,16 @@ import * as func from '../configs/ani-function.js'
  * @param  {[String]} aniFuncName 动画函数名
  */
 export default class Animation {
-  constructor(bindStartObject, 
-              bindStartProper, 
-              bindTargetObject, 
-              bindTargetProper,
-              frameNum = 0,
-              aniFuncName = 'linear' ) {
-
+  constructor (bindStartObject,
+    bindStartProper,
+    bindTargetObject,
+    bindTargetProper,
+    frameNum = 0,
+    aniFuncName = 'linear') {
     // 如果不需要动画，就是简单的绑定一下
     // 就调用双向绑定的函数绑定即可
-    if (this.frameNum === 0)
-      return twoWayBinding(this.TO, this.TP, this.LO, this.LP)
-    
+    if (this.frameNum === 0) { return twoWayBinding(this.TO, this.TP, this.LO, this.LP) }
+
     this.prevData = 0
     this.changedData = 0
 
@@ -43,16 +41,14 @@ export default class Animation {
    * 注意：此处监听为单向绑定，并非双向绑定
    * 一般情况下只建议改变dataBus，然后动画同步到元素自身之中
    */
-  listen(isListen = true) {
-    if (!isListen || this.frameNum === 0)
-      return false
+  listen (isListen = true) {
+    if (!isListen || this.frameNum === 0) { return false }
 
-    let finishFlag = this.frameNum === this.nowFrame ? true : false
+    let finishFlag = this.frameNum === this.nowFrame
     // 没有发生变化的状态
-    if (finishFlag && this.TO[this.TP] === this.LO[this.LP])
-      return true
+    if (finishFlag && this.TO[this.TP] === this.LO[this.LP]) { return true }
 
-    //发生了变化，要进行动画的数据初始化
+    // 发生了变化，要进行动画的数据初始化
     if (finishFlag && this.TO[this.TP] !== this.LO[this.LP]) {
       this.prevData = this.TO[this.TP]
       this.changedData = this.LO[this.LP]
@@ -68,12 +64,8 @@ export default class Animation {
     // 小问题：此处如果不加判断，仅仅依据caculatedData计算的话，会出现在动画结尾处绑定双方的值不一定相同
     // 所以三元运算符就是为了解决这个问题
     // 具体原因仍未知
-    return this.TO[this.TP] =   this.nowFrame === this.frameNum
-                              ? this.changedData
-                              : this.prevData + Math.floor(caculatedData)
+    return this.TO[this.TP] = this.nowFrame === this.frameNum
+      ? this.changedData
+      : this.prevData + Math.floor(caculatedData)
   }
 }
-
-
-
-

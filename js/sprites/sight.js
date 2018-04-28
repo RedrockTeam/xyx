@@ -15,25 +15,27 @@ let iconDark = new Sprite({
   imgSrc: `${iconPath}sight-n.png`,
   x: screenWidth - 65,
   y: -screenHeight + 200,
-  width: 79 / scallingRadio, height: 79 / scallingRadio
+  width: 79 / scallingRadio,
+  height: 79 / scallingRadio
 })
 let iconLight = new Sprite({
   imgSrc: `${iconPath}sight.png`,
   x: screenWidth - 81,
   y: -screenHeight + 184,
-  width: 129 / scallingRadio, height: 129 / scallingRadio
+  width: 129 / scallingRadio,
+  height: 129 / scallingRadio
 })
 
 let activeLine = new Sprite({
   imgSrc: 'images/sight/active-line.png',
-  x: -screenWidth * .5,
+  x: -screenWidth * 0.5,
   y: -screenWidth * 2 * 1334 / 1600,
-  width: screenWidth * 2, height: screenWidth * 2 * 1334 / 1600
+  width: screenWidth * 2,
+  height: screenWidth * 2 * 1334 / 1600
 })
 
-
 export default class Sight {
-  constructor(ctx) {
+  constructor (ctx) {
     this.ctx = ctx
 
     this.iconDark = iconDark
@@ -50,12 +52,12 @@ export default class Sight {
     this.bindToDataBus()
   }
 
-  bindToDataBus(dataBus = window.dataBus) {
+  bindToDataBus (dataBus = window.dataBus) {
     twoWayBinding(dataBus, 'sightNumber', this, 'sightNumber')
     twoWayBinding(dataBus, 'boxPoint', this, 'boxPoint')
   }
 
-  drawSight(ctx = this.ctx) {
+  drawSight (ctx = this.ctx) {
     if (this.sightNumber === 0) {
       this.iconDark.draw(ctx)
       return
@@ -69,9 +71,8 @@ export default class Sight {
     })
   }
 
-  drawSightLine(ctx = this.ctx) {
+  drawSightLine (ctx = this.ctx) {
     this.activeLine.x = this.activeLineStartX + this.boxPoint
     this.activeLine.draw(ctx)
   }
 }
-

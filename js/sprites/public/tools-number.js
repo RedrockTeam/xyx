@@ -14,7 +14,7 @@ let defaultConf = {
 }
 
 export default class Number {
-  constructor(obj) {
+  constructor (obj) {
     let conf = Object.assign(defaultConf, obj)
 
     let numberList = [...Array(10)].map((el, index) => {

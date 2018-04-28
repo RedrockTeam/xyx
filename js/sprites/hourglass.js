@@ -14,19 +14,19 @@ let iconDark = new Sprite({
   imgSrc: `${iconPath}hourglass-n.png`,
   x: screenWidth - 65,
   y: -screenHeight + 270,
-  width: 79 / scallingRadio, height: 79 / scallingRadio
+  width: 79 / scallingRadio,
+  height: 79 / scallingRadio
 })
 let iconLight = new Sprite({
   imgSrc: `${iconPath}hourglass.png`,
   x: screenWidth - 81,
   y: -screenHeight + 254,
-  width: 127 / scallingRadio, height: 127 / scallingRadio
+  width: 127 / scallingRadio,
+  height: 127 / scallingRadio
 })
 
-
-
 export default class Hourglass {
-  constructor(ctx) {
+  constructor (ctx) {
     this.ctx = ctx
 
     this.iconDark = iconDark
@@ -40,11 +40,11 @@ export default class Hourglass {
     this.bindToDataBus()
   }
 
-  bindToDataBus(dataBus = window.dataBus) {
+  bindToDataBus (dataBus = window.dataBus) {
     twoWayBinding(dataBus, 'hourglassNumber', this, 'hourglassNumber')
   }
 
-  drawHourglass(ctx = this.ctx) {
+  drawHourglass (ctx = this.ctx) {
     if (this.hourglassNumber === 0) {
       this.iconDark.draw(ctx)
       return
@@ -57,6 +57,4 @@ export default class Hourglass {
       this.numberList[el].draw(ctx)
     })
   }
-
 }
-

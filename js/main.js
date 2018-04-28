@@ -26,19 +26,17 @@ canvasAssociate.width = canvasAssociate.width * pixelRatio
 
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
-    ctx.translate(0, canvas.height)
+ctx.translate(0, canvas.height)
 
 // 副屏，用来绘制背景等不是一直需要刷新的东西
 // 切换也简单。只需要给不同的元素传不同的ctx就好
 let ctxAssociate = canvasAssociate.getContext('2d')
-    ctxAssociate.translate(0, canvasAssociate.height)
+ctxAssociate.translate(0, canvasAssociate.height)
 
 wx.setPreferredFramesPerSecond(60)
 
-
 export default class Main {
   constructor () {
-    
     if (GAME_DEBUG) window.main = this
 
     this.ctx = ctx
@@ -70,7 +68,6 @@ export default class Main {
     this.render = render.bind(this)
     this.update = update.bind(this)
 
-
     this.userData()
 
     this.touchEvent()
@@ -81,11 +78,9 @@ export default class Main {
     console.log(window.main)
   }
 
-  loop() {
+  loop () {
     this.update()
     this.render()
-    this.aniId = window.requestAnimationFrame( this.loop.bind(this) )
+    this.aniId = window.requestAnimationFrame(this.loop.bind(this))
   }
-
 }
-

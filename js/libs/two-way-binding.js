@@ -8,25 +8,21 @@
  * @param  {[String]} bindTargetProper 绑定的目标对象名
  * @return {[Boolean]}                 是否绑定成功
  */
-const twoWayBinding = function( bindStartObject, 
-                                bindStartProper, 
-                                bindTargetObject, 
-                                bindTargetProper ) {
+const twoWayBinding = function (bindStartObject,
+  bindStartProper,
+  bindTargetObject,
+  bindTargetProper) {
+  if (typeof bindStartProper !== 'string' ||
+     typeof bindTargetProper !== 'string') { return false }
 
-  if (  typeof bindStartProper !== 'string' 
-     || typeof bindTargetProper !== 'string')
-    return false
-
-  if (  typeof bindStartObject !== 'object' 
-     || typeof bindTargetObject !== 'object' )
-    return false
-
+  if (typeof bindStartObject !== 'object' ||
+     typeof bindTargetObject !== 'object') { return false }
 
   Object.defineProperty(bindStartObject, bindStartProper, {
-    get() {
+    get () {
       return bindTargetObject[bindTargetProper]
     },
-    set(value) {
+    set (value) {
       return bindTargetObject[bindTargetProper] = value
     }
   })

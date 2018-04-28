@@ -8,41 +8,52 @@ const scalingRatio = 1.7
 // 进度条Sprite
 let progressFull = new Sprite({
   imgSrc: `${iconPath}progress/progress-full.png`,
-  width: 132 / scalingRatio, height: 300 / scalingRatio,
-  x: 10, y: -240
+  width: 132 / scalingRatio,
+  height: 300 / scalingRatio,
+  x: 10,
+  y: -240
 })
 let progressOut = new Sprite({
   imgSrc: `${iconPath}progress/progress-out.png`,
-  width: 29 / scalingRatio, height: 255 / scalingRatio,
-  x: 33, y: -225
+  width: 29 / scalingRatio,
+  height: 255 / scalingRatio,
+  x: 33,
+  y: -225
 })
 let progressIn = new Sprite({
   imgSrc: `${iconPath}progress/progress-in.png`,
-  width: 19 / scalingRatio, height: 243 / scalingRatio,
-  x: 36, y: -220
+  width: 19 / scalingRatio,
+  height: 243 / scalingRatio,
+  x: 36,
+  y: -220
 })
 // 箱子Sprite
 let box = new Sprite({
   imgSrc: `${iconPath}progress/box.png`,
-  width: 93 / scalingRatio, height: 42 / scalingRatio,
-  x: 22, y: -96
+  width: 93 / scalingRatio,
+  height: 42 / scalingRatio,
+  x: 22,
+  y: -96
 })
 let numberList = [...Array(10)].map((el, index) => {
   return new Sprite({
     imgSrc: `${iconPath}number/${index}.png`,
-    width: 15 / scalingRatio, height: 18 / scalingRatio,
-    x: 38, y: -110
+    width: 15 / scalingRatio,
+    height: 18 / scalingRatio,
+    x: 38,
+    y: -110
   })
 })
 numberList['/'] = new Sprite({
   imgSrc: `${iconPath}number/slash.png`,
-  width: 12 / scalingRatio, height: 19 / scalingRatio,
-  x: 38, y: -110
+  width: 12 / scalingRatio,
+  height: 19 / scalingRatio,
+  x: 38,
+  y: -110
 })
 
-
 export default class FixProgress {
-  constructor(ctx) {
+  constructor (ctx) {
     this.ctx = ctx
 
     this.progressFull = progressFull
@@ -51,7 +62,7 @@ export default class FixProgress {
     this.box = box
     this.numberList = numberList
 
-    //绘图起始地点存档
+    // 绘图起始地点存档
     this.boxStartY = this.box.y
     this.numberStartX = this.numberList[0].x
     this.numberStartY = this.numberList[0].y
@@ -64,18 +75,18 @@ export default class FixProgress {
     // 当前是否攒满
     this.isSuccess = false
 
-    this.ani = new Animation( dataBus, 'fixNumerator',
-                              this, 'numerator',
-                              20, 'ease')
+    this.ani = new Animation(dataBus, 'fixNumerator',
+      this, 'numerator',
+      20, 'ease')
 
     this.bindToDataBus()
   }
 
-  bindToDataBus(dataBus = window.dataBus) {
+  bindToDataBus (dataBus = window.dataBus) {
     twoWayBinding(this, 'denominator', dataBus, 'fixDenominator')
   }
 
-  drawFixProgress(ctx = this.ctx) {
+  drawFixProgress (ctx = this.ctx) {
     this.ani.listen()
     let boxOffsetY = this.numerator / this.denominator
 
@@ -97,7 +108,7 @@ export default class FixProgress {
     this.progressIn.height = this.progressInStartHeight * boxOffsetY
     // 因为图片裁剪是基于原图的，所以要乘个scalingRatio
     this.progressIn.drawClip(ctx, {
-      sx: 0, 
+      sx: 0,
       sy: this.progressInStartHeight * scalingRatio * (1 - boxOffsetY),
       sHeight: this.progressInStartHeight * scalingRatio * boxOffsetY,
       sWidth: this.progressIn.width * scalingRatio
@@ -112,4 +123,3 @@ export default class FixProgress {
     })
   }
 }
-

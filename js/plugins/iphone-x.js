@@ -5,7 +5,7 @@
  */
 const testReg = /iPhone\s?X/
 
-export default function iPhoneX() { 
+export default function iPhoneX () {
   if (testReg.test(dataBus.systemInfo.model)) {
     // score类下移
     this.score.coin.y += 35

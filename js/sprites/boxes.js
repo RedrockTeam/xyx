@@ -33,9 +33,8 @@ boxes[5] = new Sprite(Object.assign(boxConfig, {
   imgSrc: `${iconPath}5-score.png`
 }))
 
-
 export default class Box {
-  constructor(ctx) {
+  constructor (ctx) {
     this.ctx = ctx
 
     this.boxes = boxes
@@ -48,25 +47,24 @@ export default class Box {
     this.boxStartX = this.boxes[1].x
     this.boxHeight = this.boxes[1].height
 
-    this.ani = new Animation( dataBus, 'height',
-                              this, 'y',
-                              60, 'quinticInOut' )
+    this.ani = new Animation(dataBus, 'height',
+      this, 'y',
+      60, 'quinticInOut')
 
     // boxList 绑定
     twoWayBinding(this, 'boxList', dataBus, 'boxList')
     // twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')
   }
 
-
-  drawBoxes(ctx = this.ctx) {
+  drawBoxes (ctx = this.ctx) {
     this.ani.listen()
     // this.boxes.forEach((el, index) => {
     //   el.y = this.boxStartY - this.boxHeight * index + this.y
     // })
     // 减少绘画的盒子数目
-    for ( let length = this.boxList.length, index = length - 8 >= 0 ? length - 8 : 0;
-          index < length;
-          index++) {
+    for (let length = this.boxList.length, index = length - 8 >= 0 ? length - 8 : 0;
+      index < length;
+      index++) {
       let el = this.boxList[index]
       if (length <= index + 3) {
         if (el.isDown && (this.dropBoxFlag[index] || !el.isDowned)) {
@@ -81,7 +79,6 @@ export default class Box {
     }
   }
 }
-
 
 export const boxHeight = Math.ceil(88 / scallingRadio)
 
