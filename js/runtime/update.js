@@ -6,7 +6,7 @@ import { boxHeight, boxWidth } from '../sprites/boxes'
 
 
 export default function update() {
-  if (!dataBus.isPaused) {
+  if (!dataBus.isPaused && !dataBus.isStoped) {
     dataBus.frame++
 
 

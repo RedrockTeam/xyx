@@ -50,16 +50,10 @@ let funcs = {
 
   missionFall() {
     dataBus.boxList.forEach(el => {
-      let offset = el.x <= 0 ? -.5 : .5
-      offset *= Math.random()
-      let flag = 30
-      let update = () => {
-        el.x += offset
-        el.y -= 1
-        if (flag--) update()
-      }
-      let timeout = setTimeout(update, 16)
+      dataBus.isStoped = true
+      dataBus.boxList[dataBus.boxList.length - 1].y = 0
       setTimeout(() => {
+        dataBus.boxList.length = 0
         dataBus.gameStatus = 'show_score'
       }, 1000)
     })
@@ -71,16 +65,16 @@ let eventFuncs = {
   fixFill () {
     if (fixFillControl) {
       let length = dataBus.boxList.length,
-              index =  length - dataBus.fixDenominator >= 0
-                          ? length - dataBus.fixDenominator
-                          : 0
+              index =   length - dataBus.fixDenominator >= 0
+                      ? length - dataBus.fixDenominator
+                      : 0
       for (; index < length; index++) {
         if (dataBus.boxList[index].x >= 3) {
           dataBus.boxList[index].x -= 3
         }
         else if (dataBus.boxList[index].x <= -3) {
           dataBus.boxList[index].x += 3
-        } 
+        }
         else {
           dataBus.boxList[index].x = 0
         }
@@ -113,13 +107,13 @@ export default function() {
   eventFuncs.fixFill.call(this)
 
   let compareX =  dataBus.boxList[dataBus.boxList.length - 2]
-               && dataBus.boxList[dataBus.boxList.length - 2].x
+                ? dataBus.boxList[dataBus.boxList.length - 2].x
+                : 0
   if (  getLastOne(dataBus.boxList)
      && getLastOne(dataBus.boxList).isDowned
      && (   getLastOne(dataBus.boxList).x < compareX - (boxWidth / 2)
          || getLastOne(dataBus.boxList).x > compareX + (boxWidth / 2))
      && dataBus.gameStatus === 'playing') {
-       console.log('123')
       funcs.missionFall()
      }
   
