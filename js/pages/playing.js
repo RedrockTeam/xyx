@@ -53,6 +53,7 @@ let funcs = {
       dataBus.boxList[dataBus.boxList.length - 1].y = 0
       setTimeout(() => {
         dataBus.boxList.length = 0
+        dataBus.height = 0
         dataBus.gameStatus = 'show_score'
       }, 1000)
     })
