@@ -45,7 +45,7 @@ export default class Score {
   drawScoreNumber (num = this.num, ctx = this.ctx) {
     this.ani.listen()
     this.coin.draw(ctx);
-
+    
     `${num}`.split('').forEach((el, index) => {
       this.numberQueue[el].x = this.numStartX + index * 14
       this.numberQueue[el].draw(ctx)

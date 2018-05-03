@@ -22,7 +22,7 @@ export default function update () {
     // dataBus.sightNumber = 99
     // dataBus.hourglassNumber = 99
 
-    dataBus.score++
+    dataBus.score = dataBus.boxList.length * 5
 
     // this.ctx.globalAlpha = dataBus.frame % 100 / 100
 
