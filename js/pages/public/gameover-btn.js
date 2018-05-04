@@ -16,6 +16,7 @@ export default function () {
     dataBus.touchEndPoint.pageY - screenHeight || 0)) {
     dataBus.gameStatus = 'playing'
     dataBus.isStoped = false
+    dataBus.touchStartPoint = {}
   }
 
   if (this.gameOver.button.isCollideWith(
@@ -23,5 +24,6 @@ export default function () {
     dataBus.touchEndPoint.pageY - screenHeight || 0)) {
     dataBus.gameStatus = 'playing'
     dataBus.isStoped = false
+    dataBus.touchStartPoint = {}
   }
 }

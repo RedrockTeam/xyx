@@ -41,8 +41,10 @@ let funcs = {
       dataBus.touchStartPoint = {}
     }
 
-    if (dataBus.touchStartPoint.pageX && dataBus.boxList.length) 
-      { dataBus.boxList[dataBus.boxList.length - 1].isDown = true }
+    if (dataBus.touchStartPoint.pageX && dataBus.boxList.length) {
+      dataBus.boxList[dataBus.boxList.length - 1].isDown = true
+      dataBus.fixNumerator++
+    }
 
     dataBus.touchStartPoint = {}
   },
