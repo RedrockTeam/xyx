@@ -4,17 +4,17 @@ let funcs = {
   },
 
   listenEvent () {
-    if (!dataBus.touchEndPoint) { return false }
+    if (!dataBus.touchStartPoint) { return false }
 
     if (this.clover.playButton.isCollideWith(
-      dataBus.touchEndPoint.pageX || 0,
-      dataBus.touchEndPoint.pageY - screenHeight || 0)) { dataBus.gameStatus = 'playing' }
+      dataBus.touchStartPoint.pageX || 0,
+      dataBus.touchStartPoint.pageY - screenHeight || 0)) { dataBus.gameStatus = 'playing' }
 
     if (this.clover.rankingButton.isCollideWith(
-      dataBus.touchEndPoint.pageX || 0,
-      dataBus.touchEndPoint.pageY - screenHeight || 0)) { dataBus.gameStatus = 'show_rank' }
+      dataBus.touchStartPoint.pageX || 0,
+      dataBus.touchStartPoint.pageY - screenHeight || 0)) { dataBus.gameStatus = 'show_rank' }
 
-    dataBus.touchEndPoint = {}
+    dataBus.touchStartPoint = {}
   }
 }
 

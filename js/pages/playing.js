@@ -89,10 +89,10 @@ let eventFuncs = {
   fixFill () {
     if (fixFillControl) {
       let length = dataBus.boxList.length,
-        index = length - dataBus.fixDenominator >= 0
-          ? length - dataBus.fixDenominator
+        index = length - 10 >= 0
+          ? length - 10
           : 0
-      for (; index < length; index++) {
+      for (; index < length - 1; index++) {
         if (dataBus.boxList[index].x >= 3) {
           dataBus.boxList[index].x -= 3
         } else if (dataBus.boxList[index].x <= -3) {
@@ -101,7 +101,9 @@ let eventFuncs = {
           dataBus.boxList[index].x = 0
         }
       }
-      if (dataBus.boxList.every(el => el.x === 0)) fixFillControl = false
+      if (dataBus.boxList.some((el, index) => el.x === 0)) {
+        setTimeout(() => fixFillControl = false, 1000)
+      }
     }
   }
 }

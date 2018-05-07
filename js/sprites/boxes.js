@@ -45,7 +45,7 @@ export default class Box {
     this.dropBoxFlag = []
     this.boxStartY = this.boxes[1].y
     this.boxStartX = this.boxes[1].x
-    this.boxHeight = this.boxes[1].height
+    this.boxHeight = this.boxes[1].height - 2
 
     this.ani = new Animation(dataBus, 'height',
       this, 'y',
@@ -80,6 +80,6 @@ export default class Box {
   }
 }
 
-export const boxHeight = Math.ceil(88 / scallingRadio)
+export const boxHeight = Math.ceil(88 / scallingRadio) - 2
 
 export const boxWidth = 128 / scallingRadio

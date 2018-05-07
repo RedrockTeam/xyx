@@ -75,7 +75,6 @@ export default class Main {
     this.pluginFuncs()
 
     this.loop()
-    console.log(window.main)
   }
 
   loop () {
