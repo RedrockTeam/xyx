@@ -8,7 +8,7 @@ let funcs = {
     this.background.render()
     this.boxes.drawBoxes()
     this.water.drawWater()
-    this.sight.drawSightLine()
+    if (dataBus.isShowSight) this.sight.drawSightLine()
     // this.light.drawLight()
   },
 
@@ -37,8 +37,29 @@ let funcs = {
     if (this.pause.runningIcon.isCollideWith(
       dataBus.touchStartPoint.pageX || 0,
       dataBus.touchStartPoint.pageY - screenHeight || 0)) {
-      dataBus.isPaused = true
-      dataBus.touchStartPoint = {}
+        dataBus.isPaused = true
+        dataBus.touchStartPoint = {}
+    }
+
+    
+    if (this.sight.iconLight.isCollideWith(
+      dataBus.touchStartPoint.pageX || 0,
+      dataBus.touchStartPoint.pageY - screenHeight || 0)) {
+        if (dataBus.sightNumber === 0) return false
+        dataBus.sightNumber--
+        dataBus.isShowSight = true
+        setTimeout(() => dataBus.isShowSight = false, 5000)
+        dataBus.touchStartPoint = {}
+    }
+
+    if (this.hourglass.iconLight.isCollideWith(
+      dataBus.touchStartPoint.pageX || 0,
+      dataBus.touchStartPoint.pageY - screenHeight || 0)) {
+        if (dataBus.sightNumber === 0) return false
+        dataBus.hourglassNumber--
+        dataBus.isShowSight = true
+        setTimeout(() => dataBus.isShowSight = false, 5000)
+        dataBus.touchStartPoint = {}
     }
 
     if (dataBus.touchStartPoint.pageX && dataBus.boxList.length) {
@@ -56,6 +77,7 @@ let funcs = {
       setTimeout(() => {
         dataBus.boxList.length = 0
         dataBus.height = 0
+        dataBus.fixNumerator = 0
         dataBus.gameStatus = 'show_score'
       }, 1000)
     })

@@ -22,7 +22,10 @@ export default class DataBus {
 
     this.isPaused = false
 
-    this.sightNumber = 0
+    this.sightNumber = 10
+    this.isShowSight = false
+
+
     // 水的高度
     this.waterPercent = 0
 

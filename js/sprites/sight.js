@@ -53,8 +53,8 @@ export default class Sight {
   }
 
   bindToDataBus (dataBus = window.dataBus) {
-    twoWayBinding(dataBus, 'sightNumber', this, 'sightNumber')
-    twoWayBinding(dataBus, 'boxPoint', this, 'boxPoint')
+    twoWayBinding(this, 'sightNumber', dataBus, 'sightNumber')
+    twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')
   }
 
   drawSight (ctx = this.ctx) {
