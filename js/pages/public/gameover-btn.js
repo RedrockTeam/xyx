@@ -9,6 +9,7 @@ export default function () {
         console.log(res)
       }
     })
+    dataBus.touchStartPoint = {}
   }
 
   if (this.gameOver.gohomeBtn.isCollideWith(
@@ -22,8 +23,11 @@ export default function () {
   if (this.gameOver.button.isCollideWith(
     dataBus.touchStartPoint.pageX || 0,
     dataBus.touchStartPoint.pageY - screenHeight || 0)) {
+    dataBus.score = 0
+    dataBus.boxList.length = 0
     dataBus.gameStatus = 'playing'
     dataBus.isStoped = false
     dataBus.touchStartPoint = {}
   }
+
 }

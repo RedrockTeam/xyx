@@ -30,7 +30,7 @@ export default function update () {
     let topBox = dataBus.boxList.length && dataBus.boxList[dataBus.boxList.length - 1]
     // 元素添加
     // 每60帧检测一次
-    if (dataBus.frame % 60 === 0) {
+    if (dataBus.frame % 60 === 0 && dataBus.gameStatus === 'playing') {
       let newBoxPoint = Math.random() * boxWidth - (boxWidth / 2)
 
       if (dataBus.boxList.length === 0 ||
