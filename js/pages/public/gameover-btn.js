@@ -28,6 +28,7 @@ export default function () {
     dataBus.gameStatus = 'playing'
     dataBus.isStoped = false
     dataBus.touchStartPoint = {}
+    // dataBus.gameStatus = 'playing'
   }
 
 }
