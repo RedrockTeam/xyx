@@ -1,5 +1,7 @@
 import { API_PORT, OPENID_PATH } from '../configs/options'
+import { getInfo } from '../api/index.js'
 
+console.log(getInfo)
 export default function userData () {
   // 获取用户信息，头像之类的
   wx.getUserInfo({
@@ -17,18 +19,30 @@ export default function userData () {
           code: res.code
         },
         success (res) {
-          dataBus.userData.openid = res.openid
-          dataBus.userData.session_key = res.session_key
+          dataBus.userData.openid = res.data.openid
+          dataBus.userData.session_key = res.data.session_key
           // 此处刷新storage里的openid值
           // 因为并不会影响到游戏进程，所以采用异步的方式
           wx.setStorage({
             key: 'openid',
             data: res.openid
           })
+
+          getInfo(res => {
+            console.log(res.data)
+            if (res.status + '' !== '200')
+              return console.error('?')
+            // item1是瞄准镜，item2是沙漏
+            dataBus.sightNumber = res.data.item1
+            dataBus.hourglassNumber = res.data.item2
+            dataBus.userData.highestScore = res.data.highestScore
+            dataBus.userData.id = res.data.id
+          })
         }
       })
     }
   })
+
 
   wx.showShareMenu({
     withShareTicket: false

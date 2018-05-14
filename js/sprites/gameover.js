@@ -179,7 +179,7 @@ export default class Pause {
       this.winScoreNum[el].draw(ctx)
     });
 
-    `${this.score}`.split('').forEach((el, index, arr) => {
+    `${dataBus.userData.highestScore}`.split('').forEach((el, index, arr) => {
       this.winHistoryNum[el].x = this.winHistoryNumStartX -
                                 (arr.length / 2) * this.winHistoryNum[0].width +
                                 index * 35 / scallingRatio

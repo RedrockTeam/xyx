@@ -55,16 +55,18 @@ let funcs = {
     if (this.hourglass.iconLight.isCollideWith(
       dataBus.touchStartPoint.pageX || 0,
       dataBus.touchStartPoint.pageY - screenHeight || 0)) {
-        if (dataBus.sightNumber === 0) return false
+        if (dataBus.hourglassNumber === 0) return false
         dataBus.hourglassNumber--
-        dataBus.isShowSight = true
-        setTimeout(() => dataBus.isShowSight = false, 5000)
+        dataBus.isShowHourglass = true
+        setTimeout(() => dataBus.isShowHourglass = false, 5000)
         dataBus.touchStartPoint = {}
     }
 
     if (dataBus.touchStartPoint.pageX && dataBus.boxList.length) {
       dataBus.boxList[dataBus.boxList.length - 1].isDown = true
-      dataBus.fixNumerator++
+      setTimeout(() => {
+        dataBus.fixNumerator++
+      }, 600)
     }
 
     dataBus.touchStartPoint = {}
