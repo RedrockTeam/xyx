@@ -34,6 +34,9 @@ let funcs = {
       dataBus.touchStartPoint = {}
     }
 
+    if (dataBus.isPaused)
+      return void 0
+      
     if (this.pause.runningIcon.isCollideWith(
       dataBus.touchStartPoint.pageX || 0,
       dataBus.touchStartPoint.pageY - screenHeight || 0)) {
