@@ -33,6 +33,12 @@ boxes[5] = new Sprite(Object.assign(boxConfig, {
   imgSrc: `${iconPath}5-score.png`
 }))
 
+let diban = new Sprite({
+  imgSrc: `${iconPath}diban.png`,
+  width: 180 / scallingRadio,
+  height: Math.ceil(5 * scallingRadio),
+  x: 0, y: -screenHeight
+})
 export default class Box {
   constructor (ctx) {
     this.ctx = ctx
@@ -41,6 +47,7 @@ export default class Box {
 
     this.y = 0
     this.boxList = []
+    this.diban = diban
 
     this.dropBoxFlag = []
     this.boxStartY = this.boxes[1].y
@@ -76,6 +83,12 @@ export default class Box {
       this.boxes[el.type].y = this.boxStartY - this.boxHeight * (index + 1) + this.y - el.y
       this.boxes[el.type].x = this.boxStartX + el.x
       this.boxes[el.type].draw(ctx)
+
+      if (index === this.boxList.length - 1 && !el.isDown) {
+        this.diban.x = this.boxes[el.type].x - 26 / scallingRadio
+        this.diban.y = this.boxes[el.type].y + this.boxHeight
+        this.diban.draw(ctx)
+      }
     }
   }
 }
