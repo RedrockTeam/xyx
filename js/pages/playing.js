@@ -3,6 +3,7 @@ import { boxHeight, boxWidth } from '../sprites/boxes'
 import Socket from '../api/socket'
 
 let socket = new Socket()
+let fixDenoFlag = false
 
 let funcs = {
   // 两层ctx的绘画函数
@@ -70,9 +71,13 @@ let funcs = {
 
     if (dataBus.touchStartPoint.pageX && dataBus.boxList.length) {
       dataBus.boxList[dataBus.boxList.length - 1].isDown = true
-      setTimeout(() => {
-        dataBus.fixNumerator++
-      }, 600)
+      if (fixDenoFlag === false) {
+        setTimeout(() => {
+          dataBus.fixNumerator++
+          fixDenoFlag = false
+        }, 600)
+        fixDenoFlag = true
+      }
     }
 
     dataBus.touchStartPoint = {}
