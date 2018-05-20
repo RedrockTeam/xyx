@@ -28,6 +28,16 @@ export default function userData () {
             data: res.openid
           })
 
+          wx.setUserCloudStorage({
+            KVDataList: [{
+              key: 'aaa',
+              value: "{\"wxgame\":{\"score\":16,\"update_time\": 1513080573},\"cost_ms\":36500}"
+            }],
+            success() {
+              console.log('dfaf')
+            }
+          })
+
           getInfo(res => {
             console.log(res.data)
             if (res.status + '' !== '200')
