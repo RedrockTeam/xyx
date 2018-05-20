@@ -7,7 +7,7 @@ const GetInfo = function (cb) {
     header: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    data: {
+    data: { 
       // 'openid': dataBus.userData.openid
       'openid': 123
     },

@@ -15,6 +15,8 @@ import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
 import userData from 'runtime/user-data'
 
+import Socket from 'interfaces/socket'
+
 import pluginFuncs from 'plugins/index'
 
 import { GAME_DEBUG } from 'configs/options'
@@ -68,6 +70,8 @@ export default class Main {
     this.render = render.bind(this)
     this.update = update.bind(this)
 
+    this.socket = new Socket()
+
     this.userData()
 
     this.touchEvent()
@@ -75,6 +79,8 @@ export default class Main {
     this.pluginFuncs()
 
     this.loop()
+
+    this.socket.open()
   }
 
   loop () {
