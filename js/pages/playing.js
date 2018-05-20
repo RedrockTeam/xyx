@@ -1,5 +1,8 @@
 import getLastOne from '../libs/get-last-one'
 import { boxHeight, boxWidth } from '../sprites/boxes'
+import Socket from '../api/socket'
+
+let socket = new Socket()
 
 let funcs = {
   // 两层ctx的绘画函数
@@ -84,6 +87,7 @@ let funcs = {
         dataBus.height = 0
         dataBus.fixNumerator = 0
         dataBus.gameStatus = 'show_score'
+        // socket.close()
       }, 1000)
     })
   }

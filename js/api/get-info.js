@@ -1,6 +1,7 @@
 import { API_PORT } from '../configs/options.js'
 
 const GetInfo = function (cb) {
+  console.log(dataBus.userData.openid)
   wx.request({
     url: `${API_PORT}/StrongBox/user/info`,
     method: 'POST',
@@ -8,8 +9,8 @@ const GetInfo = function (cb) {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     data: { 
-      // 'openid': dataBus.userData.openid
-      'openid': 123
+      'openid': dataBus.userData.openid
+      // 'openid': 123
     },
     success(res) {
       console.log(res)

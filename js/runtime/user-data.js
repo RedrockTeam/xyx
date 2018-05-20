@@ -1,7 +1,6 @@
 import { API_PORT, OPENID_PATH } from '../configs/options'
 import { getInfo } from '../api/index.js'
 
-console.log(getInfo)
 export default function userData () {
   // 获取用户信息，头像之类的
   wx.getUserInfo({
@@ -23,11 +22,10 @@ export default function userData () {
           dataBus.userData.session_key = res.data.session_key
           // 此处刷新storage里的openid值
           // 因为并不会影响到游戏进程，所以采用异步的方式
-          wx.setStorage({
-            key: 'openid',
-            data: res.openid
-          })
-
+          console.log(res)
+          wx.setStorageSync('openid', res.data.openid)
+          dataBus.userData.openid = res.data.openid
+          
           wx.setUserCloudStorage({
             KVDataList: [{
               key: 'aaa',

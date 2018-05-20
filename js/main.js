@@ -15,7 +15,7 @@ import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
 import userData from 'runtime/user-data'
 
-import Socket from 'interfaces/socket'
+import Socket from 'api/socket'
 
 import pluginFuncs from 'plugins/index'
 

@@ -38,7 +38,7 @@ export default class DataBus {
      * 用户数据存的对象
      * openid要进行初始化，这样子做的好处是用户以后再打开游戏的时候，openid会一直存在
      */
-    this.userData = { openid: wx.getStorageSync('openid') || void 0 }
+    this.userData = { openid: wx.getStorageSync('openid') || null }
 
     wx.getSystemInfo({
       success: (res) => {
