@@ -25,6 +25,8 @@ canvas.width = canvas.width * pixelRatio
 canvas.height = canvas.height * pixelRatio
 canvasAssociate.height = canvasAssociate.height * pixelRatio
 canvasAssociate.width = canvasAssociate.width * pixelRatio
+sharedCanvas.height = sharedCanvas.height * pixelRatio
+sharedCanvas.width = sharedCanvas.width * pixelRatio
 
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
@@ -35,6 +37,9 @@ ctx.translate(0, canvas.height)
 let ctxAssociate = canvasAssociate.getContext('2d')
 ctxAssociate.translate(0, canvasAssociate.height)
 
+let sharedCtx = sharedCanvas.getContext('2d')
+sharedCtx.translate(0, sharedCanvas.height)
+
 wx.setPreferredFramesPerSecond(60)
 
 export default class Main {
@@ -43,6 +48,7 @@ export default class Main {
 
     this.ctx = ctx
     this.ctxAssociate = ctxAssociate
+    this.sharedCtx = sharedCtx
     // 维护aniID
     this.aniId = 0
 

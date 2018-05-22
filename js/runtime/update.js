@@ -46,7 +46,7 @@ export default function update () {
     // 顶部的箱子 移动
     if (topBox && !topBox.isDowned) {
       topBox.x += topBox.direction * dataBus.boxSpeed
-      if (Math.abs(topBox.x) >= (screenWidth + boxWidth) * 0.8 - 10) { topBox.direction = -topBox.direction }
+      if (Math.abs(topBox.x) >= (screenWidth + boxWidth) * .6 - 10) { topBox.x = -topBox.x }
     }
 
     dataBus.boxSpeed = dataBus.boxList.length * .2 + 3 * (dataBus.isShowHourglass ? .5 : 1)

@@ -133,11 +133,10 @@ let fixFillControl = false
 export default function () {
   funcs.ctxAssociateRender.call(this)
 
-  this.ctx.drawImage(canvasAssociate, 0, -canvas.height)
-
   // if (dataBus.gameControl.isNeedRefreshPlaying)
   funcs.ctxRender.call(this)
 
+  this.ctx.drawImage(sharedCanvas, 0, -sharedCanvas.height)
   // 修正条的函数
   if (dataBus.fixNumerator >= dataBus.fixDenominator && fixFillControl === false) {
     fixFillControl = true

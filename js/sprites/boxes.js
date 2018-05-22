@@ -74,12 +74,14 @@ export default class Box {
       index++) {
       let el = this.boxList[index]
       if (length <= index + 3) {
-        if (el.isDown && (this.dropBoxFlag[index] || !el.isDowned)) {
+        if (el.isDown && (this.dropBoxFlag[index] || !el.isDowned)) {            
           this.dropBoxFlag[index] = el.isDowned ? this.dropBoxFlag[index] : 30
-          if (dataBus.isStoped)
+          if (dataBus.isStoped) {
             el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * (this.boxList.dropStartY + 300) - 300
-          else
+          }
+          else {
             el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * this.boxList.dropStartY
+          }
           el.isDowned = true
         }
       }
