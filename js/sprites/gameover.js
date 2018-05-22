@@ -180,6 +180,8 @@ export default class Pause {
     });
 
     `${dataBus.userData.highestScore}`.split('').forEach((el, index, arr) => {
+      if (!this.winHistoryNum[el])
+        return void 0
       this.winHistoryNum[el].x = this.winHistoryNumStartX -
                                 (arr.length / 2) * this.winHistoryNum[0].width +
                                 index * 35 / scallingRatio

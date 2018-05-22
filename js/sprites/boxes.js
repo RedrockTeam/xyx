@@ -76,7 +76,10 @@ export default class Box {
       if (length <= index + 3) {
         if (el.isDown && (this.dropBoxFlag[index] || !el.isDowned)) {
           this.dropBoxFlag[index] = el.isDowned ? this.dropBoxFlag[index] : 30
-          el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * this.boxList.dropStartY
+          if (dataBus.isStoped)
+            el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * (this.boxList.dropStartY + 300) - 300
+          else
+            el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * this.boxList.dropStartY
           el.isDowned = true
         }
       }
