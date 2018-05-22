@@ -25,6 +25,7 @@ export default class DataBus {
     this.sightNumber = 10
     this.isShowSight = false
 
+    this.boxSpeed = 3
 
     // 水的高度
     this.waterPercent = 0
@@ -59,5 +60,7 @@ export default class DataBus {
     this.gameControl = {
       isNeedRefreshPlaying: true
     }
+  
+
   }
 }

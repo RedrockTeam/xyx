@@ -92,7 +92,10 @@ let funcs = {
         dataBus.height = 0
         dataBus.fixNumerator = 0
         dataBus.gameStatus = 'show_score'
-        // socket.close()
+        socket.pushScore()
+        // score及时更新
+        if (dataBus.score > dataBus.userData.highestScore)
+          dataBus.userData.highestScore = dataBus.score
       }, 1000)
     })
   }

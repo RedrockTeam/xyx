@@ -36,7 +36,7 @@ export default function update () {
       if (dataBus.boxList.length === 0 ||
         dataBus.boxList[dataBus.boxList.length - 1].isDowned) {
         dataBus.boxList.push({ type: Math.floor(Math.random() * 3) + 1,
-          x: Math.random() * boxWidth - (boxWidth / 2),
+          x: Math.random() * screenWidth - (screenWidth / 2),
           y: dataBus.boxList.dropStartY,
           direction: [-1, 1][Math.floor(Math.random() * 2)] })
         if (dataBus.boxList.length >= 4) { this.dataBus.height += boxHeight }
@@ -45,9 +45,11 @@ export default function update () {
 
     // 顶部的箱子 移动
     if (topBox && !topBox.isDowned) {
-      topBox.x += topBox.direction * 3
-      if (Math.abs(topBox.x) >= (screenWidth - boxWidth) * 0.5 - 10) { topBox.direction = -topBox.direction }
+      topBox.x += topBox.direction * dataBus.boxSpeed
+      if (Math.abs(topBox.x) >= (screenWidth + boxWidth) * 0.8 - 10) { topBox.direction = -topBox.direction }
     }
+
+    dataBus.boxSpeed = dataBus.boxList.length * .2 + 3 * (dataBus.isShowHourglass ? .5 : 1)
 
     dataBus.boxPoint = topBox.x
   }
