@@ -86,7 +86,6 @@ let funcs = {
   missionFall () {
     dataBus.boxList.forEach(el => {
       dataBus.isStoped = true
-      dataBus.boxList[dataBus.boxList.length - 1].y = -150
       setTimeout(() => {
         dataBus.boxList.length = 0
         dataBus.height = 0
