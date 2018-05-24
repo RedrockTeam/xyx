@@ -22,4 +22,6 @@ export default function () {
   funcs.ctxRender.call(this)
 
   funcs.listenEvent.call(this)
+  
+  this.ctx.drawImage(sharedCanvas, 0, -sharedCanvas.height)
 }

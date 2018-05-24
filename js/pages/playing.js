@@ -1,8 +1,6 @@
 import getLastOne from '../libs/get-last-one'
 import { boxHeight, boxWidth } from '../sprites/boxes'
-import Socket from '../api/socket'
 
-let socket = new Socket()
 let fixDenoFlag = false
 
 let funcs = {
@@ -92,6 +90,16 @@ let funcs = {
         dataBus.fixNumerator = 0
         dataBus.gameStatus = 'show_score'
         socket.pushScore()
+        wx.setUserCloudStorage({
+          KVDataList: [{
+            key: 'all',
+            value: JSON.stringify({
+              sightNumber: dataBus.sightNumber,
+              hourglassNumber: dataBus.hourglassNumber,
+              score: dataBus.score
+            })
+          }]
+        })
         // score及时更新
         if (dataBus.score > dataBus.userData.highestScore)
           dataBus.userData.highestScore = dataBus.score
@@ -135,7 +143,6 @@ export default function () {
   // if (dataBus.gameControl.isNeedRefreshPlaying)
   funcs.ctxRender.call(this)
 
-  this.ctx.drawImage(sharedCanvas, 0, -sharedCanvas.height)
   // 修正条的函数
   if (dataBus.fixNumerator >= dataBus.fixDenominator && fixFillControl === false) {
     fixFillControl = true

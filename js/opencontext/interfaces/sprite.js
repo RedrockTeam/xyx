@@ -1,4 +1,3 @@
-import { API_PORT, IMG_PATH } from '../configs/options'
 /**
  * 精灵类
  */
@@ -25,8 +24,6 @@ export default class Sprite {
     }
 
     let sprObj = Object.assign(defConf, obj)
-
-    if (sprObj.isChain) { sprObj.imgSrc = `${API_PORT}/${IMG_PATH}/${sprObj.imgSrc}` }
 
     this.img = wx.createImage()
     this.img.src = sprObj.imgSrc;

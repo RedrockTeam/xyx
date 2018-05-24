@@ -1,13 +1,12 @@
-let outPut = wx.getFriendCloudStorage({ keyList: ['openid'], success(res) {
-    console.log(res)
+export default function (ctx) {
+  wx.getFriendCloudStorage({
+    keyList: ['all'],
+    success(res) {
+      console.log(res)
 
-    let idList = []
-    res.data.forEach(el => {
-      idList.push(el.openid)  
-    })
+      ctx.fillStyle = 'red'
+      ctx.fillRect(0, 0, sharedCanvas.width, -sharedCanvas.height)
 
-    console.log(idList)
-  } 
-})
-
-export default outPut
+    }
+  })
+}

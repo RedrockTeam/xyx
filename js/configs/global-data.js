@@ -20,8 +20,8 @@ window.pixelRatio = window.devicePixelRatio
 window.canvasAssociate = wx.createCanvas()
 
 
-let openDataContext = wx.getOpenDataContext()
-window.sharedCanvas = openDataContext.canvas
+window.openDataContext = wx.getOpenDataContext()
+window.sharedCanvas = window.openDataContext.canvas
 /**
  * 引入dataBus
  * 官方demo是在main函数中引入的dataBus，这样的缺点是，需要的地方都要再次引入

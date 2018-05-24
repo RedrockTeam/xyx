@@ -52,5 +52,8 @@ export default function update () {
     dataBus.boxSpeed = dataBus.boxList.length * .2 + 3 * (dataBus.isShowHourglass ? .5 : 1)
 
     dataBus.boxPoint = topBox.x
+
+    if (dataBus.gameStatus === 'show_rank' && !(dataBus.frame % 60))
+      openDataContext.postMessage({type: 'show_rank'})
   }
 }

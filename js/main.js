@@ -77,6 +77,7 @@ export default class Main {
     this.update = update.bind(this)
 
     this.socket = new Socket()
+    window.socket = this.socket
 
     this.userData()
 
