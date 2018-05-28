@@ -28,16 +28,13 @@ export default function (ctx) {
         if (el.KVDataList.find(e => e.key === 'all')) {
           el.data = JSON.parse(el.KVDataList.find(e => e.key === 'all').value)
           drawData.push(el)
-          drawData.push(el)
-          drawData.push(el)
         }
       })
       console.log(drawData)
 
       ctx.clearRect(0, 0, canvasWidth, -canvasHeight)
-      ctx.globalAlpha = .9
 
-      ctx.fillStyle = 'black'
+      drawData.sort((a, b) => a.data.score < b.data.score)
       drawData.forEach((el, index) => {
         ctx.font = `${screenWidth * .1}px Arial`
         ctx.fillText(el.nickname, 
@@ -45,7 +42,7 @@ export default function (ctx) {
                      -canvasHeight * .655 + (index * canvasHeight * .081));
         
         `${el.data.score}`.split('').forEach((_num, _index) => {
-          numberList[_num].x = screenWidth * .70 + _index * 16
+          numberList[_num].x = screenWidth * .69 + _index * 16
           numberList[_num].y = -screenHeight * .685 + (index * screenHeight * .081)
           numberList[_num].draw(ctx)
         })
