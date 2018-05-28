@@ -15,7 +15,7 @@ export default function () {
   if (this.gameOver.gohomeBtn.isCollideWith(
     dataBus.touchStartPoint.pageX || 0,
     dataBus.touchStartPoint.pageY - screenHeight || 0)) {
-    dataBus.gameStatus = 'playing'
+    dataBus.gameStatus = 'clover'
     dataBus.isStoped = false
     dataBus.touchStartPoint = {}
   }

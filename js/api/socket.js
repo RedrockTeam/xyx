@@ -78,6 +78,9 @@ export default class Socket {
   }
 
   close() {
-    this.__socket.close()
+    this.isOpen = false
+    setTimeout(() => {
+      this.__socket.close()
+    }, 2000)
   }
 }

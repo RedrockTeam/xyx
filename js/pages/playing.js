@@ -2,6 +2,7 @@ import getLastOne from '../libs/get-last-one'
 import { boxHeight, boxWidth } from '../sprites/boxes'
 
 let fixDenoFlag = false
+let msFlag = false
 
 let funcs = {
   // 两层ctx的绘画函数
@@ -53,6 +54,7 @@ let funcs = {
         if (dataBus.sightNumber === 0) return false
         dataBus.sightNumber--
         dataBus.isShowSight = true
+        socket.pushItem('1')
         setTimeout(() => dataBus.isShowSight = false, 5000)
         dataBus.touchStartPoint = {}
     }
@@ -61,7 +63,8 @@ let funcs = {
       dataBus.touchStartPoint.pageX || 0,
       dataBus.touchStartPoint.pageY - screenHeight || 0)) {
         if (dataBus.hourglassNumber === 0) return false
-        dataBus.hourglassNumber--
+        dataBus.hourglassNumber--        
+        socket.pushItem('2')
         dataBus.isShowHourglass = true
         setTimeout(() => dataBus.isShowHourglass = false, 5000)
         dataBus.touchStartPoint = {}
@@ -84,26 +87,32 @@ let funcs = {
   missionFall () {
     dataBus.boxList.forEach(el => {
       dataBus.isStoped = true
-      setTimeout(() => {
-        dataBus.boxList.length = 0
-        dataBus.height = 0
-        dataBus.fixNumerator = 0
-        dataBus.gameStatus = 'show_score'
-        socket.pushScore()
-        wx.setUserCloudStorage({
-          KVDataList: [{
-            key: 'all',
-            value: JSON.stringify({
-              sightNumber: dataBus.sightNumber,
-              hourglassNumber: dataBus.hourglassNumber,
-              score: Math.max(dataBus.userData.highestScore, dataBus.score)
-            })
-          }]
-        })
-        // score及时更新
-        if (dataBus.score > dataBus.userData.highestScore)
-          dataBus.userData.highestScore = dataBus.score
-      }, 1000)
+      if (msFlag === false) {
+        msFlag = true
+        setTimeout(() => {
+          msFlag = false
+          dataBus.boxList.length = 0
+          dataBus.height = 0
+          dataBus.fixNumerator = 0
+          dataBus.gameStatus = 'show_score'
+          console.log('123')
+          socket.pushScore()
+          socket.close()
+          wx.setUserCloudStorage({
+            KVDataList: [{
+              key: 'all',
+              value: JSON.stringify({
+                sightNumber: dataBus.sightNumber,
+                hourglassNumber: dataBus.hourglassNumber,
+                score: Math.max(dataBus.userData.highestScore, dataBus.score)
+              })
+            }]
+          })
+          // score及时更新
+          if (dataBus.score > dataBus.userData.highestScore)
+            dataBus.userData.highestScore = dataBus.score
+        }, 1000)
+      }
     })
   }
 }
