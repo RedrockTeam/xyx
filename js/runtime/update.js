@@ -61,6 +61,6 @@ export default function update () {
   if (dataBus.gameStatus === 'show_rank' && !showRankFlag) {
     openDataContext.postMessage({type: 'show_rank'})
     showRankFlag = true
-    setTimeout(() => showRankFlag = false, 1000)
+    setTimeout(() => showRankFlag = false, 5000)
   }
 }

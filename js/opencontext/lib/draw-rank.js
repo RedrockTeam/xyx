@@ -56,15 +56,13 @@ export default function (ctx) {
   wx.getFriendCloudStorage({
     keyList: ['all'],
     success(res) {
-      console.log(res)
-
       res.data.forEach(el => {
         if (el.KVDataList.find(e => e.key === 'all')) {
           el.data = JSON.parse(el.KVDataList.find(e => e.key === 'all').value)
           drawData.push(el)
         }
       })
-      console.log(drawData)
+      drawData.length = 6
 
       ctx.clearRect(0, 0, canvasWidth, -canvasHeight)
 
@@ -75,16 +73,16 @@ export default function (ctx) {
                      canvasWidth * .35, 
                      -canvasHeight * .655 + (index * canvasHeight * .081));
         
-        rankIcon[1].draw(ctx)
-        rankIcon[2].draw(ctx)
-        rankIcon[3].draw(ctx)
-
+        
         if (index >= 3) {
           rankNumberList[index + 1].x = screenWidth * .285
           rankNumberList[index + 1].y = -screenHeight * .675 + (index * screenHeight * .081)
           rankIcon[0].y = -screenHeight * .685 + (index * screenHeight * .081)
           rankIcon[0].draw(ctx)
           rankNumberList[index + 1].draw(ctx)
+        }
+        else {
+          rankIcon[index + 1].draw(ctx)
         }
 
         

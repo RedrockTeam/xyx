@@ -51,7 +51,7 @@ export default class DataBus {
      * 改变状态是直接改变这个字符串，会自动检测并调用相应的渲染函数
      * @type {String}
      */
-    this.gameStatus = 'show_rank'
+    this.gameStatus = 'clover'
 
     this.userInfo = {}
     // 当前最上面的盒子的偏移量
