@@ -1,7 +1,7 @@
 /**
  * 精灵类
  */
-pixelRatio = wx.getSystemInfoSync().pixelRatio
+let pixelRatio = wx.getSystemInfoSync().pixelRatio
 
 export default class Sprite {
   /**
@@ -43,6 +43,7 @@ export default class Sprite {
    */
   draw (ctx, enforce = false) {
     if (!this.visible && !enforce) { return false }
+
     ctx.drawImage(this.img,
       this.x * pixelRatio,
       this.y * pixelRatio,
