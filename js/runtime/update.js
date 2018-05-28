@@ -3,6 +3,7 @@ import { boxHeight, boxWidth } from '../sprites/boxes'
 /**
  * 逻辑更新函数
  */
+let showRankFlag = false
 
 export default function update () {
   if (!dataBus.isPaused && !dataBus.isStoped) {
@@ -53,7 +54,13 @@ export default function update () {
 
     dataBus.boxPoint = topBox.x
 
-    if (dataBus.gameStatus === 'show_rank' && !(dataBus.frame % 60))
-      openDataContext.postMessage({type: 'show_rank'})
+  }
+  /**
+   * 给开放域传值
+   */
+  if (dataBus.gameStatus === 'show_rank' && !showRankFlag) {
+    openDataContext.postMessage({type: 'show_rank'})
+    showRankFlag = true
+    setTimeout(() => showRankFlag = false, 5000)
   }
 }

@@ -48,7 +48,6 @@ export default class Socket {
   pingSet() {
     setTimeout(() => {
       this.ping()
-      console.log('fasdfdas')
       if (this.isOpen)
         this.pingSet()
     }, 1000)

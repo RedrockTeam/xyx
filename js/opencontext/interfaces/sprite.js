@@ -1,8 +1,7 @@
 /**
  * 精灵类
  */
-const screenWidth = window.innerWidth
-const screenHeight = window.innerHeight
+pixelRatio = wx.getSystemInfoSync().pixelRatio
 
 export default class Sprite {
   /**
