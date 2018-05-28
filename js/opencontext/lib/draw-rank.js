@@ -15,8 +15,8 @@ let numberList = [...Array(10)].map((el, index) => {
 let rankNumberList = [...Array(10)].map((el, index) => {
   return new Sprite({
     imgSrc: `images/score/${index}.png`,
-    width: (screenWidth * .03),
-    height: 42 / 27 * (screenWidth * .03)
+    width: (screenWidth * .02),
+    height: 42 / 27 * (screenWidth * .02)
   })
 })
 
@@ -38,9 +38,14 @@ let rankIcon = [...Array(4)].map((el, index) => {
   return new Sprite({
     imgSrc: `images/rank/${iconName}.png`,
     width: (screenWidth * .06),
-    height: (screenHeight * .06)
+    height: (screenHeight * .035),
+    x: screenWidth * .265,
   })
 })
+
+rankIcon[1].y = -screenHeight * .685
+rankIcon[2].y = -screenHeight * .685 + (1 * screenHeight * .081)
+rankIcon[3].y = -screenHeight * .685 + (2 * screenHeight * .081)
 
 
 export default function (ctx) {
@@ -70,9 +75,19 @@ export default function (ctx) {
                      canvasWidth * .35, 
                      -canvasHeight * .655 + (index * canvasHeight * .081));
         
-        rankNumberList[index + 1].x = screenWidth * .28
-        rankNumberList[index + 1].y = -screenHeight * .685 + (index * screenHeight * .081)
-        rankNumberList[index + 1].draw(ctx)
+        rankIcon[1].draw(ctx)
+        rankIcon[2].draw(ctx)
+        rankIcon[3].draw(ctx)
+
+        if (index >= 3) {
+          rankNumberList[index + 1].x = screenWidth * .285
+          rankNumberList[index + 1].y = -screenHeight * .675 + (index * screenHeight * .081)
+          rankIcon[0].y = -screenHeight * .685 + (index * screenHeight * .081)
+          rankIcon[0].draw(ctx)
+          rankNumberList[index + 1].draw(ctx)
+        }
+
+        
 
         ;`${el.data.score}`.split('').forEach((_num, _index) => {
           numberList[_num].x = screenWidth * .69 + _index * 16

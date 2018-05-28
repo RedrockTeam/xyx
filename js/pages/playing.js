@@ -96,7 +96,7 @@ let funcs = {
             value: JSON.stringify({
               sightNumber: dataBus.sightNumber,
               hourglassNumber: dataBus.hourglassNumber,
-              score: dataBus.score
+              score: Math.max(dataBus.userData.highestScore, dataBus.score)
             })
           }]
         })
