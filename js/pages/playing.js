@@ -111,7 +111,6 @@ let funcs = {
           dataBus.gameStatus = 'show_score'
           console.log('123')
           socket.pushScore()
-          socket.close()
           wx.setUserCloudStorage({
             KVDataList: [{
               key: 'all',

@@ -7,6 +7,12 @@ export default function () {
     wx.shareAppMessage({
       success (res) {
         console.log(res)
+        let ranNum = Math.ceil(Math.random() * 2)
+        socket.getItem(ranNum)
+        dataBus[ranNum === 1 ? 'sight' : 'hourglass']++
+        wx.showToast({
+          title: `获得${ranNum === 1 ? '瞄准镜' : '沙漏'}一个`
+        })
       }
     })
     dataBus.touchStartPoint = {}

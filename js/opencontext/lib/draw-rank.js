@@ -59,6 +59,11 @@ export default function (ctx) {
       res.data.forEach(el => {
         if (el.KVDataList.find(e => e.key === 'all')) {
           el.data = JSON.parse(el.KVDataList.find(e => e.key === 'all').value)
+          if (!el.data.score) el.data.score = 0
+          if (el.nickname.length > 5) {
+            el.nickname = el.nickname.slice(0, 6)
+            el.nickname += '...'
+          }
           drawData.push(el)
         }
       })

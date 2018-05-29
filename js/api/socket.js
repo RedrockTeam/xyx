@@ -77,6 +77,18 @@ export default class Socket {
     })
   }
 
+  getItem(arg) {
+    this.__socket.send({
+      data: JSON.stringify({
+        type: 'add' + arg,
+        num: 0
+      }),
+      fail (err) {
+        console.log('道具消耗失败', err)
+      }
+    })
+  }
+
   close() {
     this.isOpen = false
     setTimeout(() => {
