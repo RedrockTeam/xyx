@@ -3,6 +3,8 @@ import { boxHeight, boxWidth } from '../sprites/boxes'
 
 let fixDenoFlag = false
 let msFlag = false
+let hourglassFlag = false
+let sightFlag = false
 
 let funcs = {
   // 两层ctx的绘画函数
@@ -52,10 +54,16 @@ let funcs = {
       dataBus.touchStartPoint.pageX || 0,
       dataBus.touchStartPoint.pageY - screenHeight || 0)) {
         if (dataBus.sightNumber === 0) return false
-        dataBus.sightNumber--
-        dataBus.isShowSight = true
-        socket.pushItem('1')
-        setTimeout(() => dataBus.isShowSight = false, 5000)
+        if (sightFlag === false) {
+          sightFlag = true
+          dataBus.sightNumber--
+          dataBus.isShowSight = true
+          socket.pushItem('1')
+          setTimeout(() => {
+            sightFlag = false
+            dataBus.isShowSight = false
+          }, 5000)
+        }
         dataBus.touchStartPoint = {}
     }
 
@@ -63,10 +71,16 @@ let funcs = {
       dataBus.touchStartPoint.pageX || 0,
       dataBus.touchStartPoint.pageY - screenHeight || 0)) {
         if (dataBus.hourglassNumber === 0) return false
-        dataBus.hourglassNumber--        
-        socket.pushItem('2')
-        dataBus.isShowHourglass = true
-        setTimeout(() => dataBus.isShowHourglass = false, 5000)
+        if (hourglassFlag === false) {
+          hourglassFlag = true
+          dataBus.hourglassNumber--        
+          socket.pushItem('2')
+          dataBus.isShowHourglass = true
+          setTimeout(() => {
+            hourglassFlag = false
+            dataBus.isShowHourglass = false
+          }, 5000)
+        }
         dataBus.touchStartPoint = {}
     }
 
