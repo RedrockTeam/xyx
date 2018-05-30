@@ -64,11 +64,6 @@ export default function (ctx, isReq) {
 
     ctx.clearRect(0, 0, canvasWidth, -canvasHeight)
 
-    drawData.sort((a, b) => {
-      if (a.data.score !== b.data.score) 
-        return a.data.score < b.data.score
-      return a.openid < b.openid
-    })
     drawData.forEach((el, index) => {
       ctx.font = `${canvasWidth * .04}px Arial`
       ctx.fillText(el.nickname, 
@@ -126,6 +121,13 @@ export default function (ctx, isReq) {
             drawData.push(el)
           }
         })
+        
+        drawData.sort((a, b) => {
+          if (a.data.score !== b.data.score) 
+            return a.data.score < b.data.score
+          return a.openid < b.openid
+        })
+
         drawData.length = 6
   
         drawFunc()
