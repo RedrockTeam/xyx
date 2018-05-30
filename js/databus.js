@@ -22,7 +22,7 @@ export default class DataBus {
 
     this.isPaused = false
 
-    this.sightNumber = 10
+    this.sightNumber = 0
     this.isShowSight = false
 
     this.boxSpeed = 3

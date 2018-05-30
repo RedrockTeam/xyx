@@ -9,7 +9,8 @@ export default function () {
         console.log(res)
         let ranNum = Math.ceil(Math.random() * 2)
         socket.getItem(ranNum)
-        dataBus[ranNum === 1 ? 'sight' : 'hourglass']++
+        dataBus[ranNum === 1 ? 'sight' : 'hourglass' + 'Number']++        
+
         wx.showToast({
           title: `获得${ranNum === 1 ? '瞄准镜' : '沙漏'}一个`
         })
