@@ -1,5 +1,6 @@
 import getLastOne from '../libs/get-last-one'
 import { boxHeight, boxWidth } from '../sprites/boxes'
+import { changeCanDown } from '../runtime/update'
 
 let fixDenoFlag = false
 let msFlag = false
@@ -87,9 +88,11 @@ let funcs = {
     if (dataBus.touchStartPoint.pageX && dataBus.boxList.length) {
       dataBus.boxList[dataBus.boxList.length - 1].isDown = true
       if (fixDenoFlag === false) {
+        changeCanDown(false)
         setTimeout(() => {
           dataBus.fixNumerator++
           fixDenoFlag = false
+          changeCanDown(true)
         }, 600)
         fixDenoFlag = true
       }

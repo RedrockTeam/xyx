@@ -4,6 +4,7 @@ import { boxHeight, boxWidth } from '../sprites/boxes'
  * 逻辑更新函数
  */
 let showRankFlag = false
+let canDown = true
 
 export default function update () {
   if (!dataBus.isPaused && !dataBus.isStoped) {
@@ -31,7 +32,7 @@ export default function update () {
     let topBox = dataBus.boxList.length && dataBus.boxList[dataBus.boxList.length - 1]
     // 元素添加
     // 每60帧检测一次
-    if (dataBus.frame % 60 === 0 && dataBus.gameStatus === 'playing') {
+    if (dataBus.frame % 10 === 0 && dataBus.gameStatus === 'playing' && canDown) {
       let newBoxPoint = Math.random() * boxWidth - (boxWidth / 2)
 
       if (dataBus.boxList.length === 0 ||
@@ -61,6 +62,10 @@ export default function update () {
   if (dataBus.gameStatus === 'show_rank' && !showRankFlag) {
     openDataContext.postMessage({type: 'show_rank'})
     showRankFlag = true
-    setTimeout(() => showRankFlag = false, 5000)
+    setTimeout(() => showRankFlag = false, 1000)
   }
+}
+
+export function changeCanDown (arg) {
+  canDown = arg
 }
