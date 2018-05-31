@@ -6,7 +6,6 @@ export default function (ctx) {
 
       ctx.fillStyle = 'red'
       ctx.fillRect(0, 0, sharedCanvas.width, -sharedCanvas.height)
-
     }
   })
 }

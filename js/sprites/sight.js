@@ -72,7 +72,11 @@ export default class Sight {
   }
 
   drawSightLine (ctx = this.ctx) {
-    this.activeLine.x = this.activeLineStartX + this.boxPoint
-    this.activeLine.draw(ctx)
+    if (dataBus.boxList.length <= 1)
+      return false
+
+    this.activeLine.x =  this.activeLineStartX 
+                       + dataBus.boxList[dataBus.boxList.length - 2].x
+    this.activeLine.draw(ctx)   
   }
 }
