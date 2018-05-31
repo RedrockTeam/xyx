@@ -76,7 +76,8 @@ export default class Sight {
       return false
 
     this.activeLine.x =  this.activeLineStartX 
-                       + dataBus.boxList[dataBus.boxList.length - 2].x
+                       + (  dataBus.boxList[dataBus.boxList.length - 2].x
+                          + this.boxPoint) / 2
     this.activeLine.draw(ctx)   
   }
 }
