@@ -9,7 +9,7 @@ import Water from 'sprites/water'
 import Light from 'sprites/light'
 import GameOver from 'sprites/gameover'
 import Clover from 'sprites/clover'
-
+import ScorePlus from 'sprites/score-plus'
 import render from 'runtime/render'
 import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
@@ -70,6 +70,7 @@ export default class Main {
     this.hourglass = new Hourglass(ctx)
     this.gameOver = new GameOver(ctx)
     this.clover = new Clover(ctx)
+    this.scorePlus = new ScorePlus(ctx)
 
     this.userData = userData.bind(this)
     this.touchEvent = touchEvent.bind(this)

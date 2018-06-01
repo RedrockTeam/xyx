@@ -4,6 +4,7 @@ import { changeCanDown } from '../runtime/update'
 
 let fixDenoFlag = false
 let msFlag = false
+let exFlag = false
 let hourglassFlag = false
 let sightFlag = false
 
@@ -130,6 +131,16 @@ let funcs = {
         }, 1000)
       }
     })
+  },
+
+  excllent () {
+    if (exFlag === false) {
+      exFlag = true
+      console.log('q2321312')
+      setTimeout(() => {
+        exFlag = false
+      }, 1000)
+    }
   }
 }
 // 事件处理函数
@@ -185,6 +196,13 @@ export default function () {
          getLastOne(dataBus.boxList).x > compareX + (boxWidth / 2)) &&
      dataBus.gameStatus === 'playing') {
     funcs.missionFall()
+  }
+  else if ( getLastOne(dataBus.boxList) &&
+            getLastOne(dataBus.boxList).isDowned &&
+            getLastOne(dataBus.boxList).x > compareX - (boxWidth / 4) &&
+            getLastOne(dataBus.boxList).x < compareX + (boxWidth / 4) &&
+            dataBus.gameStatus === 'playing' ) {
+    funcs.excllent()
   }
   
   funcs.listenEvent.call(this)

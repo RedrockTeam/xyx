@@ -6,7 +6,7 @@ import { boxHeight, boxWidth } from '../sprites/boxes'
 let showRankFlag = false
 let canDown = true
 
-export default function update () {
+export default function  () {
   if (!dataBus.isPaused && !dataBus.isStoped) {
     dataBus.frame++
 
