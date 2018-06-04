@@ -25,6 +25,7 @@ let funcs = {
     this.sight.drawSight()
     this.hourglass.drawHourglass()
     this.pause.drawPauseButton()
+    this.scorePlus.drawPlus()
   },
 
   listenEvent () {
@@ -136,9 +137,11 @@ let funcs = {
   excllent () {
     if (exFlag === false) {
       exFlag = true
-      console.log('q2321312')
+      dataBus.isShowScore = true
+      dataBus.plusShow = dataBus.boxList[dataBus.boxList.length - 1].type * 2
       setTimeout(() => {
         exFlag = false
+        dataBus.isShowScore = false
       }, 1000)
     }
   }
@@ -195,14 +198,14 @@ export default function () {
      (getLastOne(dataBus.boxList).x < compareX - (boxWidth / 2) ||
          getLastOne(dataBus.boxList).x > compareX + (boxWidth / 2)) &&
      dataBus.gameStatus === 'playing') {
-    funcs.missionFall()
+    funcs.missionFall.call(this)
   }
   else if ( getLastOne(dataBus.boxList) &&
             getLastOne(dataBus.boxList).isDowned &&
             getLastOne(dataBus.boxList).x > compareX - (boxWidth / 4) &&
             getLastOne(dataBus.boxList).x < compareX + (boxWidth / 4) &&
             dataBus.gameStatus === 'playing' ) {
-    funcs.excllent()
+    funcs.excllent.call(this)
   }
   
   funcs.listenEvent.call(this)
