@@ -139,6 +139,7 @@ let funcs = {
       exFlag = true
       dataBus.isShowScore = true
       dataBus.plusShow = dataBus.boxList[dataBus.boxList.length - 1].type * 2
+      console.log('fdsafasdfdasfdsdas')
       setTimeout(() => {
         exFlag = false
         dataBus.isShowScore = false

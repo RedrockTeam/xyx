@@ -56,7 +56,7 @@ export default class ScorePlus {
   drawPlus (type = dataBus.plusShow, isDraw = dataBus.isShowScore) {
     if (!isDraw)
       return false
-    
+
     this.sprIcon[type].y = -screenHeight / 2 - 50
     this.sprIcon[type].x = screenWidth * .5 - 100
     this.sprIcon[type].draw(this.ctx)
