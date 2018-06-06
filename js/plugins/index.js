@@ -1,8 +1,9 @@
 import iPhoneX from './iphone-x'
-
+import switchAni from './switch-ani.js'
 // 插件队列
 let pluginList = [
-  iPhoneX
+  iPhoneX,
+  switchAni
 ]
 
 // 接口输出的函数

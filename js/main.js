@@ -10,6 +10,8 @@ import Light from 'sprites/light'
 import GameOver from 'sprites/gameover'
 import Clover from 'sprites/clover'
 import ScorePlus from 'sprites/score-plus'
+import Mook from 'sprites/mook'
+
 import render from 'runtime/render'
 import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
@@ -71,6 +73,7 @@ export default class Main {
     this.gameOver = new GameOver(ctx)
     this.clover = new Clover(ctx)
     this.scorePlus = new ScorePlus(ctx)
+    this.mook = new Mook(ctx)
 
     this.userData = userData.bind(this)
     this.touchEvent = touchEvent.bind(this)

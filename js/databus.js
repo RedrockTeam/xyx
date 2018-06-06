@@ -60,7 +60,8 @@ export default class DataBus {
     this.gameControl = {
       isNeedRefreshPlaying: true
     }
-  
+    
+    this.drawMookFlag = 0
 
   }
 }

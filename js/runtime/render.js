@@ -13,23 +13,27 @@ export default function render () {
 
   if (dataBus.gameStatus.toLowerCase() === 'clover') {
     cloverFuncs.call(this)
+    this.mook.drawMook()
 
     return
   }
 
   if (dataBus.gameStatus.toLowerCase() === 'playing') {
     playingFuncs.call(this)
+    this.mook.drawMook()
 
     return
   }
 
   if (dataBus.gameStatus.toLowerCase() === 'show_score') {
     showScoreFuncs.call(this)
+    this.mook.drawMook()
 
     return
   }
 
   if (dataBus.gameStatus.toLowerCase() === 'show_rank') {
     showRankList.call(this)
+    this.mook.drawMook()
   }
 }

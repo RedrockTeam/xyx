@@ -43,6 +43,7 @@ export default class ScorePlus {
     this.sprIcon = sprIcon
 
     this.num = 0
+    this.numFlag = 1
   }
 
   /**
@@ -54,11 +55,22 @@ export default class ScorePlus {
   }
 
   drawPlus (type = dataBus.plusShow, isDraw = dataBus.isShowScore) {
-    if (!isDraw)
+    if (!isDraw) {
+      this.numFlag = 1
+      this.num = 0
       return false
+    }
+
+    this.ctx.globalAlpha = this.num / 10
+    this.num += this.numFlag
+    if (this.num > 30) this.numFlag = -1
+    else if (this.num <= 0) this.numFlag = 1
 
     this.sprIcon[type].y = -screenHeight / 2 - 50
     this.sprIcon[type].x = screenWidth * .5 - 100
     this.sprIcon[type].draw(this.ctx)
+
+    this.ctx.globalAlpha = 1
+
   }
 }

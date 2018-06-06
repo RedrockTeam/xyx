@@ -4,6 +4,15 @@ import '../libs/get-last-one'
 
 import DataBus from '../databus'
 
+
+/**
+ * 好了 下面全是废话
+ * 我违反了代码的基本规范。。。
+ * 这样写的代码，不好理解
+ * 还好本项目没用库。。。
+ * 用库的话，更有问题了。tree shaking都做不了了。。。
+ */
+
 /**
  * 全局data
  * 这样做的好处是对于几乎所有页面都要import的模块，或者是一些配置参数
