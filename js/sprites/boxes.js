@@ -1,6 +1,6 @@
 import Sprite from '../interfaces/sprite'
 import Animation from '../interfaces/animation'
-import { quadraticIn } from '../configs/ani-function'
+import { quadraticIn, easeOutBounce, easeInOutBack } from '../configs/ani-function'
 
 const iconPath = 'images/box/'
 const scallingRadio = 1.98 / screenWidth * 375
@@ -81,12 +81,30 @@ export default class Box {
           }
           else {
             el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * this.boxList.dropStartY
+            if (this.dropBoxFlag[index] === 0) {
+              console.log(el)
+              let aniFlag = 30,
+                prevHeight = el.height,
+                prevWidth = el.width,
+                prevX = el.x,
+                prevY = el.y
+              let aniFunc = () => {
+                el.height = prevHeight * (1 - .2 * easeInOutBack(--aniFlag / 30))
+                el.width = prevWidth * (1 + .2 * easeInOutBack(aniFlag / 30))
+                el.x = prevX + (prevWidth - el.width) / 2
+                el.y = prevY - (prevHeight - el.height)
+                if (aniFlag) setTimeout(aniFunc, 16)
+              }
+              setTimeout(aniFunc, 16)
+            }
           }
           el.isDowned = true
         }
       }
       this.boxes[el.type].y = this.boxStartY - this.boxHeight * (index + 1) + this.y - el.y
+      this.boxes[el.type].height = el.height
       this.boxes[el.type].x = this.boxStartX + el.x
+      this.boxes[el.type].width = el.width
       this.boxes[el.type].draw(ctx)
 
       if (index === this.boxList.length - 1 && !el.isDown) {

@@ -40,6 +40,8 @@ export default function  () {
         dataBus.boxList.push({ type: Math.floor(Math.random() * 3) + 1,
           x: Math.random() * screenWidth - (screenWidth / 2),
           y: dataBus.boxList.dropStartY,
+          height: boxHeight + 2,
+          width: boxWidth,
           direction: [-1, 1][Math.floor(Math.random() * 2)] })
         if (dataBus.boxList.length >= 4) { this.dataBus.height += boxHeight }
       }
