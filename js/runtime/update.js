@@ -23,8 +23,8 @@ export default function  () {
 
     // dataBus.sightNumber = 99
     // dataBus.hourglassNumber = 99
-
-    dataBus.score = dataBus.boxList.length * 5
+    if (!dataBus.boxList.score) dataBus.boxList.score = 0
+    dataBus.score = dataBus.boxList.score
 
     // this.ctx.globalAlpha = dataBus.frame % 100 / 100
 
@@ -35,7 +35,7 @@ export default function  () {
     if (dataBus.frame % 10 === 0 && dataBus.gameStatus === 'playing' && canDown) {
       let newBoxPoint = Math.random() * boxWidth - (boxWidth / 2)
 
-      if (dataBus.boxList.length === 0 ||
+      if (dataBus.boxList.length == 0 ||
         dataBus.boxList[dataBus.boxList.length - 1].isDowned) {
         dataBus.boxList.push({ 
           type: (() => {
@@ -46,12 +46,15 @@ export default function  () {
             else if (d === 4) d = 3
             
             return d
-          }),
+          })(),
           x: Math.random() * screenWidth - (screenWidth / 2),
           y: dataBus.boxList.dropStartY,
           height: boxHeight + 2,
           width: boxWidth,
           direction: [-1, 1][Math.floor(Math.random() * 2)] })
+        
+        // dataBus.boxList.scoreCount += dataBus.boxList[dataBus.boxList.length - 1].type
+
         if (dataBus.boxList.length >= 4) { this.dataBus.height += boxHeight }
       }
     }

@@ -64,6 +64,7 @@ export default class Box {
   }
 
   drawBoxes (ctx = this.ctx) {
+    if (dataBus.boxList.length === 0) return false
     this.ani.listen()
     // this.boxes.forEach((el, index) => {
     //   el.y = this.boxStartY - this.boxHeight * index + this.y
@@ -73,6 +74,7 @@ export default class Box {
       index < length;
       index++) {
       let el = this.boxList[index]
+      if (el.type == 0) return false
       if (length <= index + 3) {
         if (el.isDown && (this.dropBoxFlag[index] || !el.isDowned)) {            
           this.dropBoxFlag[index] = el.isDowned ? this.dropBoxFlag[index] : 30
@@ -80,10 +82,9 @@ export default class Box {
             el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * (this.boxList.dropStartY + 300) - 300
           }
           else {
-            // 一定要能整除
+            console.log(this.boxList)
             el.y = (1 - quadraticIn(1 - ((this.dropBoxFlag[index] -= 1.5) / 30))) * this.boxList.dropStartY
             if (this.dropBoxFlag[index] <= 0) {
-              console.log(el)
               let aniFlag = 30,
                 prevHeight = el.height,
                 prevWidth = el.width,
@@ -95,6 +96,7 @@ export default class Box {
                 el.x = prevX + (prevWidth - el.width) / 2
                 el.y = prevY - (prevHeight - el.height)
                 if (aniFlag) setTimeout(aniFunc, 16)
+                else this.boxList.score += el.type
               }
               setTimeout(aniFunc, 16)
             }
@@ -102,6 +104,7 @@ export default class Box {
           el.isDowned = true
         }
       }
+      
       this.boxes[el.type].y = this.boxStartY - this.boxHeight * (index + 1) + this.y - el.y
       this.boxes[el.type].height = el.height
       this.boxes[el.type].x = this.boxStartX + el.x
