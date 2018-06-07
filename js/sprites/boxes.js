@@ -80,8 +80,9 @@ export default class Box {
             el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * (this.boxList.dropStartY + 300) - 300
           }
           else {
-            el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * this.boxList.dropStartY
-            if (this.dropBoxFlag[index] === 0) {
+            // 一定要能整除
+            el.y = (1 - quadraticIn(1 - ((this.dropBoxFlag[index] -= 1.5) / 30))) * this.boxList.dropStartY
+            if (this.dropBoxFlag[index] <= 0) {
               console.log(el)
               let aniFlag = 30,
                 prevHeight = el.height,

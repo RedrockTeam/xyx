@@ -11,7 +11,10 @@ export default function switchAni() {
     },
     set(value) {
       let func = () => {
-        console.log(dataBus.drawMookFlag)
+        if ( (__gameStatus === 'show_rank' && value === 'show_score')
+          || (__gameStatus === 'show_score' && value === 'show_rank') ) 
+            return __gameStatus = value
+          
         dataBus.drawMookFlag += couFlag
         if (dataBus.drawMookFlag >= 15 && couFlag === 1) {
           couFlag = -1
@@ -26,13 +29,6 @@ export default function switchAni() {
         }
       }
       setTimeout(func, 16)
-      // let inter = setInterval(() => {
-      //   if (aniCounter++ >= 30) aniCounter = -30
-      //   this.ctx.globalAlpha = (30 - Math.abs(aniCounter)) / 30
-      //   this.ctx.fillRect(0, 0, screenWidh, -screenHeight)
-      //   if (aniCounter === 0)
-      //     return dataBus.gameStatus = value
-      // }, 16)
     }
   })
 }

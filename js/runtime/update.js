@@ -37,7 +37,16 @@ export default function  () {
 
       if (dataBus.boxList.length === 0 ||
         dataBus.boxList[dataBus.boxList.length - 1].isDowned) {
-        dataBus.boxList.push({ type: Math.floor(Math.random() * 3) + 1,
+        dataBus.boxList.push({ 
+          type: (() => {
+            let d = Math.floor(Math.random() * 3) + 1
+
+            if (d < 3 && dataBus.score >= 50) d = Math.random() > .5 ? 2 : 1
+            else if (d === 4 && dataBus.score >= 50) d = 4
+            else if (d === 4) d = 3
+            
+            return d
+          }),
           x: Math.random() * screenWidth - (screenWidth / 2),
           y: dataBus.boxList.dropStartY,
           height: boxHeight + 2,

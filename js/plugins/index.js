@@ -3,7 +3,7 @@ import switchAni from './switch-ani.js'
 // 插件队列
 let pluginList = [
   iPhoneX,
-  switchAni
+  // switchAni
 ]
 
 // 接口输出的函数
