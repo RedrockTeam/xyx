@@ -1,7 +1,6 @@
 import { API_PORT } from '../configs/options.js'
 
 const GetInfo = function (cb) {
-  console.log(dataBus.userData.openid)
   wx.request({
     url: `${API_PORT}/StrongBox/user/info`,
     method: 'POST',
@@ -13,7 +12,6 @@ const GetInfo = function (cb) {
       // 'openid': 123
     },
     success(res) {
-      console.log(res)
       cb(res.data)
     },
     fail (err) {

@@ -25,6 +25,7 @@ let rankingButton = new Sprite({
   width: screenWidth * 0.34
 })
 
+
 export default class Clover {
   constructor (ctx) {
     this.ctx = ctx
@@ -40,3 +41,5 @@ export default class Clover {
     this.rankingButton.draw(ctx)
   }
 }
+
+export { playButton }

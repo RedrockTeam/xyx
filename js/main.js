@@ -92,6 +92,7 @@ export default class Main {
     this.loop()
 
     this.socket.open()
+
   }
 
   loop () {

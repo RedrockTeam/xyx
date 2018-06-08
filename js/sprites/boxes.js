@@ -82,7 +82,6 @@ export default class Box {
             el.y = (1 - quadraticIn(1 - (--this.dropBoxFlag[index] / 30))) * (this.boxList.dropStartY + 300) - 300
           }
           else {
-            console.log(this.boxList)
             el.y = (1 - quadraticIn(1 - ((this.dropBoxFlag[index] -= 1.5) / 30))) * this.boxList.dropStartY
             if (this.dropBoxFlag[index] <= 0) {
               let aniFlag = 30,

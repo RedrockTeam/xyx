@@ -15,7 +15,6 @@ export default function touchEvent () {
   })
 
   wx.onTouchEnd(e => {
-    console.log(e)
     let tData = e.changedTouches[0]
 
     dataBus.touchEndPoint = tData

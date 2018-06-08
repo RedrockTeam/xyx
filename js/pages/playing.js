@@ -104,34 +104,32 @@ let funcs = {
   },
 
   missionFall () {
-    dataBus.boxList.forEach(el => {
-      dataBus.isStoped = true
-      if (msFlag === false) {
-        msFlag = true
-        setTimeout(() => {
-          msFlag = false
-          dataBus.boxList.length = 0
-          dataBus.height = 0
-          dataBus.fixNumerator = 0
-          dataBus.gameStatus = 'show_score'
-          console.log('123')
-          socket.pushScore()
-          wx.setUserCloudStorage({
-            KVDataList: [{
-              key: 'all',
-              value: JSON.stringify({
-                sightNumber: dataBus.sightNumber,
-                hourglassNumber: dataBus.hourglassNumber,
-                score: Math.max(dataBus.userData.highestScore, dataBus.score)
-              })
-            }]
-          })
-          // score及时更新
-          if (dataBus.score > dataBus.userData.highestScore)
-            dataBus.userData.highestScore = dataBus.score
-        }, 1000)
-      }
-    })
+    dataBus.isStoped = true
+    if (msFlag === false) {
+      msFlag = true
+      setTimeout(() => {
+        msFlag = false
+        dataBus.boxList.length = 0
+        dataBus.height = 0
+        dataBus.fixNumerator = 0
+        dataBus.gameStatus = 'show_score'
+        socket.pushScore()
+        dataBus.boxList.score = 0
+        wx.setUserCloudStorage({
+          KVDataList: [{
+            key: 'all',
+            value: JSON.stringify({
+              sightNumber: dataBus.sightNumber,
+              hourglassNumber: dataBus.hourglassNumber,
+              score: Math.max(dataBus.userData.highestScore, dataBus.score)
+            })
+          }]
+        })
+        // score及时更新
+        if (dataBus.score > dataBus.userData.highestScore)
+          dataBus.userData.highestScore = dataBus.score
+      }, 1000)
+    }
   },
 
   excllent () {
@@ -139,7 +137,6 @@ let funcs = {
       exFlag = true
       dataBus.isShowScore = true
       dataBus.plusShow = dataBus.boxList[dataBus.boxList.length - 1].type * 2
-      console.log('fdsafasdfdasfdsdas')
       setTimeout(() => {
         exFlag = false
         dataBus.isShowScore = false
@@ -183,6 +180,8 @@ export default function () {
   // if (dataBus.gameControl.isNeedRefreshPlaying)
   funcs.ctxRender.call(this)
 
+
+  
   // 修正条的函数
   if (dataBus.fixNumerator >= dataBus.fixDenominator && fixFillControl === false) {
     fixFillControl = true

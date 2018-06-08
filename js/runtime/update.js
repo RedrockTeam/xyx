@@ -39,11 +39,16 @@ export default function  () {
         dataBus.boxList[dataBus.boxList.length - 1].isDowned) {
         dataBus.boxList.push({ 
           type: (() => {
-            let d = Math.floor(Math.random() * 3) + 1
+            let d = Math.floor(Math.random() * 5) + 1
 
-            if (d < 3 && dataBus.score >= 50) d = Math.random() > .5 ? 2 : 1
-            else if (d === 4 && dataBus.score >= 50) d = 4
-            else if (d === 4) d = 3
+            if (d > 3 && dataBus.score < 50) 
+              d = Math.random() > .5 ? Math.floor(Math.random() * 2) + 1 : 3
+            else if (d < 3 && dataBus.score >= 50) 
+              d = Math.random() > .5 ? 2 : 1
+            else if (d === 4 && dataBus.score >= 50) 
+              d = 5
+            else if (d === 4) 
+              d = 3
             
             return d
           })(),
@@ -65,7 +70,7 @@ export default function  () {
       if (Math.abs(topBox.x) >= (screenWidth + boxWidth) * .6 - 10) { topBox.x = -topBox.x }
     }
 
-    dataBus.boxSpeed = dataBus.boxList.length * .2 + 3 * (dataBus.isShowHourglass ? .5 : 1)
+    dataBus.boxSpeed = dataBus.boxList.length * .2 + 3 * (dataBus.isShowHourglass ? .3 : 1)
 
     dataBus.boxPoint = topBox.x
 

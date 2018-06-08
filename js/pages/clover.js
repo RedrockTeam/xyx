@@ -1,3 +1,7 @@
+import { playButton } from '../sprites/clover'
+
+let plbFlag = false
+
 let funcs = {
   ctxRender () {
     this.clover.drawClover()
@@ -22,4 +26,24 @@ export default function () {
   funcs.ctxRender.call(this)
 
   funcs.listenEvent.call(this)
+
+  if (!plbFlag) {
+    let button = wx.createUserInfoButton({
+      type: 'text',
+      text: '',
+      style: {
+          left: playButton.x,
+          top: playButton.y + screenHeight,
+          width: playButton.width,
+          height: playButton.height,
+      }
+    })
+    plbFlag = true
+
+    button.onTap((res) => {
+      dataBus.userInfo = res.userInfo
+      button.hide()
+      dataBus.gameStatus = 'playing'
+    })
+  }
 }

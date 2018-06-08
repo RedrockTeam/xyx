@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "game",
-	"libVersion": "1.9.93",
+	"libVersion": "2.0.9",
 	"appid": "touristappid",
 	"projectname": "%E5%B0%8F%E6%B8%B8%E6%88%8F",
 	"isGameTourist": true,

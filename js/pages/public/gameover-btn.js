@@ -6,7 +6,6 @@ export default function () {
     dataBus.touchStartPoint.pageY - screenHeight || 0)) {
     wx.shareAppMessage({
       success (res) {
-        console.log(res)
         let ranNum = Math.ceil(Math.random() * 2)
         socket.getItem(ranNum)
         dataBus[ranNum === 1 ? 'sight' : 'hourglass' + 'Number']++        
