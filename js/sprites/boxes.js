@@ -84,6 +84,7 @@ export default class Box {
           else {
             el.y = (1 - quadraticIn(1 - ((this.dropBoxFlag[index] -= 1.5) / 30))) * this.boxList.dropStartY
             if (this.dropBoxFlag[index] <= 0) {
+              el.isOK = true
               let aniFlag = 30,
                 prevHeight = el.height,
                 prevWidth = el.width,
@@ -95,7 +96,9 @@ export default class Box {
                 el.x = prevX + (prevWidth - el.width) / 2
                 el.y = prevY - (prevHeight - el.height)
                 if (aniFlag) setTimeout(aniFunc, 16)
-                else this.boxList.score += el.type
+                else {
+                  this.boxList.score += el.type
+                }
               }
               setTimeout(aniFunc, 16)
             }

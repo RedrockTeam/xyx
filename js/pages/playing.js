@@ -153,11 +153,13 @@ let eventFuncs = {
         index = length - 10 >= 0
           ? length - 10
           : 0
-      for (; index < length - 1; index++) {
-        if (dataBus.boxList[index].x >= 3) {
-          dataBus.boxList[index].x -= 3
-        } else if (dataBus.boxList[index].x <= -3) {
-          dataBus.boxList[index].x += 3
+          for (; index < length; index++) {
+            if (index === length - 1 && dataBus.boxList[index].isDown === false)
+              return false
+            if (dataBus.boxList[index].x >= 3) {
+              dataBus.boxList[index].x -= 3
+            } else if (dataBus.boxList[index].x <= -3) {
+              dataBus.boxList[index].x += 3    
         } else {
           dataBus.boxList[index].x = 0
         }
@@ -192,18 +194,20 @@ export default function () {
 
   let compareX = dataBus.boxList[dataBus.boxList.length - 2]
     ? dataBus.boxList[dataBus.boxList.length - 2].x
-    : 0
-  if (getLastOne(dataBus.boxList) &&
-     getLastOne(dataBus.boxList).isDowned &&
-     (getLastOne(dataBus.boxList).x < compareX - (boxWidth / 2) ||
-         getLastOne(dataBus.boxList).x > compareX + (boxWidth / 2)) &&
+    : 0,
+    lastOne = getLastOne(dataBus.boxList)
+  if (lastOne &&
+     lastOne.isDown &&
+     (!lastOne.isOK) &&
+     (lastOne.x < compareX - (boxWidth / 2) ||
+         lastOne.x > compareX + (boxWidth / 2)) &&
      dataBus.gameStatus === 'playing') {
     funcs.missionFall.call(this)
   }
-  else if ( getLastOne(dataBus.boxList) &&
-            getLastOne(dataBus.boxList).isDowned &&
-            getLastOne(dataBus.boxList).x > compareX - (boxWidth / 4) &&
-            getLastOne(dataBus.boxList).x < compareX + (boxWidth / 4) &&
+  else if ( lastOne &&
+            lastOne.isDowned &&
+            lastOne.x > compareX - (boxWidth / 4) &&
+            lastOne.x < compareX + (boxWidth / 4) &&
             dataBus.gameStatus === 'playing' ) {
     funcs.excllent.call(this)
   }
