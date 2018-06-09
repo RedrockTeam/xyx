@@ -6,33 +6,33 @@ const iconPath = 'images/score-plus/'
 let sprIcon = []
 sprIcon[2] = new Sprite({
   imgSrc: `${iconPath}+2.png`,
-  width: 132,
-  height: 79,  
+  width: 132 * .6,
+  height: 79 * .6,  
 })
 sprIcon[3] = new Sprite({
   imgSrc: `${iconPath}+3.png`,
-  width: 132,
-  height: 79
+  width: 132 * .6,
+  height: 79 * .6
 })
 sprIcon[5] = new Sprite({
   imgSrc: `${iconPath}+5.png`,
-  width: 132,
-  height: 79
+  width: 132 * .6,
+  height: 79 * .6
 })
 sprIcon[4] = new Sprite({
   imgSrc: `${iconPath}2X2.png`,
-  width: 190,
-  height: 82
+  width: 190 * .6,
+  height: 82 * .6
 })
 sprIcon[6] = new Sprite({
   imgSrc: `${iconPath}2X3.png`,
-  width: 190,
-  height: 82
+  width: 190 * .6,
+  height: 82 * .6
 })
 sprIcon[10] = new Sprite({
   imgSrc: `${iconPath}2X5.png`,
-  width: 190,
-  height: 82
+  width: 190 * .6,
+  height: 82 * .6
 })
 
 export default class ScorePlus {
@@ -68,10 +68,10 @@ export default class ScorePlus {
     if (this.num > 30) this.numFlag = -1
     else if (this.num <= 0) this.numFlag = 1
 
-    this.sprIcon[type].y = -screenHeight / 2 - 50
-    this.sprIcon[type].x = screenWidth * .5 - 100
+    this.sprIcon[type].y = -screenHeight / 2 - 50 * .6
+    this.sprIcon[type].x = screenWidth * .5 - 100 * .6
     if (type == 2)
-      this.sprIcon[type].x += 35
+      this.sprIcon[type].x += 35 * .6
 
     this.sprIcon[type].draw(this.ctx)
 

@@ -206,8 +206,8 @@ export default function () {
   }
   else if ( lastOne &&
             lastOne.isDowned &&
-            lastOne.x > compareX - (boxWidth / 4) &&
-            lastOne.x < compareX + (boxWidth / 4) &&
+            lastOne.x > compareX - (boxWidth / 6) &&
+            lastOne.x < compareX + (boxWidth / 6) &&
             dataBus.gameStatus === 'playing' ) {
     funcs.excllent.call(this)
   }
