@@ -1,5 +1,6 @@
 import Sprite from '../interfaces/sprite'
-import Animation from '../interfaces/animation'
+// import Animation from '../interfaces/animation'
+
 // 最简单的sprite了
 // 除了渲染 什么功能都没有
 const iconPath = 'images/'

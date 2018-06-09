@@ -71,8 +71,8 @@ export default class ScorePlus {
     this.sprIcon[type].y = -screenHeight / 2 - 50
     this.sprIcon[type].x = screenWidth * .5 - 100
     if (type == 2)
-      this.sprIcon[type].x += 50
-      
+      this.sprIcon[type].x += 35
+
     this.sprIcon[type].draw(this.ctx)
 
     this.ctx.globalAlpha = 1
