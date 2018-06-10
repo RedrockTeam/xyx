@@ -28,19 +28,21 @@ export default function () {
   funcs.listenEvent.call(this)
 
   if (!plbFlag) {
-    let button = wx.createUserInfoButton({
+    let infoButton = wx.createUserInfoButton({
       type: 'text',
       text: '',
       style: {
           left: playButton.x,
           top: playButton.y + screenHeight,
           width: playButton.width,
-          height: playButton.height,
+          height: playButton.height * 2,
       }
     })
     plbFlag = true
 
-    button.onTap((res) => {
+    infoButton.onTap((res) => {
+      if (!res.rawData)
+        return false
       dataBus.userInfo = res.userInfo
       button.hide()
       dataBus.gameStatus = 'playing'
