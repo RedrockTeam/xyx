@@ -44,7 +44,7 @@ export default function () {
       if (!res.rawData)
         return false
       dataBus.userInfo = res.userInfo
-      button.hide()
+      infoButton.hide()
       dataBus.gameStatus = 'playing'
     })
   }
