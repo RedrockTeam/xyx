@@ -17,10 +17,10 @@ let bg = new Sprite({
 let winScoreDesk = new Sprite({
   isChain: true,
   imgSrc: `${iconPath}win-score/desk.png`,
-  x: screenWidth * 0.12,
+  x: screenWidth * 0.13,
   y: -screenHeight * 0.735,
-  width: screenWidth * 0.77,
-  height: screenHeight * 0.545
+  width: screenWidth * 0.75,
+  height: screenHeight * 0.53
 })
 let winScoreNum = [...Array(10)].map((el, index) => {
   return new Sprite({
@@ -47,10 +47,10 @@ let winHistoryNum = [...Array(10)].map((el, index) => {
 let rankListDesk = new Sprite({
   isChain: true,
   imgSrc: `${iconPath}rank/desk.png`,
-  x: screenWidth * 0.12,
+  x: screenWidth * 0.13,
   y: -screenHeight * 0.735,
-  width: screenWidth * 0.77,
-  height: screenHeight * 0.545
+  width: screenWidth * 0.75,
+  height: screenHeight * 0.53
 })
 // 共用的Sprite
 let stoneDesk = new Sprite({

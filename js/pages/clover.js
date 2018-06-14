@@ -35,7 +35,7 @@ export default function () {
           left: playButton.x,
           top: playButton.y + screenHeight,
           width: playButton.width,
-          height: playButton.height * 2,
+          height: playButton.height,
       }
     })
     plbFlag = true

@@ -91,7 +91,7 @@ export default function (ctx, isReq) {
 
       ;`${el.data.score}`.split('').forEach((_num, _index) => {
         rankNumberList[_num].x = screenWidth * .69 + _index * 12
-        rankNumberList[_num].y = -screenHeight * .675 + (index * screenHeight * .081)
+        rankNumberList[_num].y = -screenHeight * .68 + (index * screenHeight * .08)
         if (_num === '1') rankNumberList[_num].x += screenWidth * .005
         rankNumberList[_num].draw(ctx)
       })
