@@ -115,6 +115,7 @@ let funcs = {
         dataBus.gameStatus = 'show_score'
         socket.pushScore()
         dataBus.boxList.score = 0
+        // dataBus.userData.highestScore = Math.max(dataBus.userData.highestScore, dataBus.score)
         wx.setUserCloudStorage({
           KVDataList: [{
             key: 'all',
