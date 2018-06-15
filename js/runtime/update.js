@@ -52,7 +52,12 @@ export default function  () {
             
             return d
           })(),
-          x: Math.random() * screenWidth - (screenWidth / 2),
+          x: (() => {
+            let ranNum = Math.random() - .5
+            return ranNum < 0 ? 
+                   (-screenWidth / 2 - boxWidth) : 
+                   (screenWidth / 2 + boxWidth)
+          })(),
           y: dataBus.boxList.dropStartY,
           height: boxHeight + 2,
           width: boxWidth,
