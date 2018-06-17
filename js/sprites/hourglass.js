@@ -15,13 +15,13 @@ let iconDark = new Sprite({
   x: screenWidth - 65,
   y: -screenHeight + 270,
   width: 79 / scallingRadio,
-  height: 79 / scallingRadio
+  height: 79 / scallingRadio * 125 / 127
 })
 let iconLight = new Sprite({
   imgSrc: `${iconPath}hourglass.png`,
   x: screenWidth - 81,
   y: -screenHeight + 254,
-  width: 127 / scallingRadio,
+  width: 125 / scallingRadio,
   height: 127 / scallingRadio
 })
 

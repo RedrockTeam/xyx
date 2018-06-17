@@ -23,7 +23,8 @@ let rankNumberList = [...Array(10)].map((el, index) => {
 })
 
 let rankIcon = [...Array(4)].map((el, index) => {
-  let iconName = ''
+  let iconName = '',
+      iconSize = 0
   switch (index) {
     case 0: 
       iconName = 'th'
@@ -39,8 +40,30 @@ let rankIcon = [...Array(4)].map((el, index) => {
   }
   return new Sprite({
     imgSrc: `images/rank/${iconName}.png`,
-    width: (screenWidth * .055),
-    height: (screenHeight * .03),
+    width: (() => {
+      switch (index) {
+        case 0: 
+          return (screenWidth * .055)
+        case 1:
+          return (screenWidth * .055)
+        case 2: 
+          return (screenWidth * .055) * .9
+        default: 
+          return (screenWidth * .055) * .9
+      }
+    })(),
+    height: (() => {
+      switch (index) {
+        case 0: 
+          return screenHeight * .03
+        case 1:
+          return screenHeight * .03
+        case 2: 
+          return screenHeight * .03
+        default: 
+          return screenHeight * .03 * .9
+      }
+    })(),
     x: screenWidth * .225,
   })
 })

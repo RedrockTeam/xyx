@@ -80,10 +80,10 @@ let shareBtn = new Sprite({
 let shareTipBtn = new Sprite({
   isChain: true,
   imgSrc: `${iconPath}share-tip.png`,
-  width: 330 / scallingRatio,
-  height: 75 / scallingRatio,
-  x: screenWidth - 250,
-  y: -screenHeight + 68
+  width: 330 / scallingRatio * .8,
+  height: 75 / scallingRatio * .8,
+  x: screenWidth - 220,
+  y: -screenHeight + 70
 })
 let gohomeBtn = new Sprite({
   isChain: true,
