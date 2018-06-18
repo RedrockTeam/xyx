@@ -1,9 +1,14 @@
 import Sprite from '../interfaces/sprite'
 import NumberList from 'public/tools-number'
 import Animation from '../interfaces/animation'
+import { boxHeight } from './boxes';
 
 const iconPath = 'images/icon/'
 const scallingRadio = 1.6
+
+let flagO = 60
+let prevLineX = 0
+let flagT = 60
 
 let numberList = new NumberList({
   size: 13,
@@ -45,6 +50,7 @@ export default class Sight {
 
     this.numberStartX = this.numberList[0].x
     this.activeLineStartX = this.activeLine.x
+    this.activeLineStartY = this.activeLine.y
 
     this.sightNumber = 0
     this.boxPoint = 0
@@ -55,9 +61,19 @@ export default class Sight {
   bindToDataBus (dataBus = window.dataBus) {
     twoWayBinding(this, 'sightNumber', dataBus, 'sightNumber')
     twoWayBinding(this, 'boxPoint', dataBus, 'boxPoint')
+    this.ani = new Animation(dataBus, 'height',
+      this, 'y',
+      60, 'quinticInOut')
   }
 
   drawSight (ctx = this.ctx) {
+    this.ani.listen()
+    let lineX = (dataBus.boxList.length <= 1 ? 0 : dataBus.boxList[dataBus.boxList.length - 2].x)
+    if (prevLineX != lineX) {
+      if (Math.abs(prevLineX - lineX) <= 3) prevLineX = lineX
+      else if (prevLineX > lineX) prevLineX -= 2
+      else prevLineX += 2
+    }
     if (this.sightNumber === 0) {
       this.iconDark.draw(ctx)
       return
@@ -75,11 +91,13 @@ export default class Sight {
     if (dataBus.boxList.length <= 0)
       return false
 
-    this.activeLine.x =  this.activeLineStartX 
-                       + (  dataBus.boxList.length === 1 ? 
-                              0 :  
-                              dataBus.boxList[dataBus.boxList.length - 2].x
-                          + this.boxPoint) / 2
+    this.activeLine.x = this.activeLineStartX + prevLineX
+
+                        
+    // this.activeLine.y =   this.activeLineStartY
+    //                     - (dataBus.height - this.y)
+    //                     + (dataBus.boxList.length - 3) * boxHeight
+
     this.activeLine.draw(ctx)   
   }
 }

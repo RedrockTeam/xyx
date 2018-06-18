@@ -115,6 +115,7 @@ let funcs = {
         dataBus.gameStatus = 'show_score'
         socket.pushScore()
         dataBus.boxList.score = 0
+        dataBus.fixDenominator = 10
         // dataBus.userData.highestScore = Math.max(dataBus.userData.highestScore, dataBus.score)
         wx.setUserCloudStorage({
           KVDataList: [{
@@ -190,6 +191,7 @@ export default function () {
     fixFillControl = true
     dataBus.boxPoint = 0
     dataBus.fixNumerator = 0
+    dataBus.fixDenominator += 10
   }
   eventFuncs.fixFill.call(this)
 

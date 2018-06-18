@@ -17,7 +17,7 @@ export default class DataBus {
     // 分数
     this.score = 0
     // fix进度条
-    this.fixDenominator = 5
+    this.fixDenominator = 10
     this.fixNumerator = 0
 
     this.isPaused = false
