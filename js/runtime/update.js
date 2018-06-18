@@ -41,11 +41,11 @@ export default function  () {
           type: (() => {
             let d = Math.floor(Math.random() * 5) + 1
 
-            if (d > 3 && dataBus.score < 30) 
+            if (d > 3 && dataBus.score < 50) 
               d = Math.random() > .5 ? Math.floor(Math.random() * 2) + 1 : 3
-            else if (d < 3 && dataBus.score >= 30) 
+            else if (d < 3 && dataBus.score >= 50) 
               d = Math.random() > .5 ? 2 : 1
-            else if (d === 4 && dataBus.score >= 30) 
+            else if (d === 4 && dataBus.score >= 50) 
               d = 5
             else if (d === 4) 
               d = 3

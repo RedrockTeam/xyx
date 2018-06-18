@@ -97,7 +97,7 @@ export default class Box {
                 el.y = prevY - (prevHeight - el.height)
                 if (aniFlag) setTimeout(aniFunc, 16)
                 else {
-                  this.boxList.score += el.type
+                  this.boxList.score += el.type * (dataBus.isShowScore ? 2 : 1)
                 }
               }
               setTimeout(aniFunc, 16)
