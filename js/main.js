@@ -2,6 +2,7 @@ import BackGround from 'sprites/background'
 import FixProgress from 'sprites/fix-progress'
 import Score from 'sprites/score'
 import Pause from 'sprites/pause'
+import Music from 'sprites/music'
 import Sight from 'sprites/sight'
 import Hourglass from 'sprites/hourglass'
 import Boxes from 'sprites/boxes'
@@ -68,6 +69,7 @@ export default class Main {
     this.score = new Score(ctx)
     this.fixProgress = new FixProgress(ctx)
     this.pause = new Pause(ctx)
+    this.music = new Music(ctx)
     this.sight = new Sight(ctx)
     this.hourglass = new Hourglass(ctx)
     this.gameOver = new GameOver(ctx)

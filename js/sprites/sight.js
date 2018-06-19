@@ -13,20 +13,20 @@ let flagT = 60
 let numberList = new NumberList({
   size: 13,
   x: screenWidth - 24,
-  y: -screenHeight + 237
+  y: -screenHeight + 287
 })
 
 let iconDark = new Sprite({
   imgSrc: `${iconPath}sight-n.png`,
   x: screenWidth - 65,
-  y: -screenHeight + 200,
+  y: -screenHeight + 250,
   width: 79 / scallingRadio,
   height: 79 / scallingRadio
 })
 let iconLight = new Sprite({
   imgSrc: `${iconPath}sight.png`,
   x: screenWidth - 81,
-  y: -screenHeight + 184,
+  y: -screenHeight + 234,
   width: 129 / scallingRadio,
   height: 129 / scallingRadio
 })

@@ -21,6 +21,8 @@ export default class DataBus {
     this.fixNumerator = 0
 
     this.isPaused = false
+    
+    this.isMusic = true
 
     this.sightNumber = 0
     this.isShowSight = false

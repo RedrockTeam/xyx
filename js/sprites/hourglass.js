@@ -7,20 +7,20 @@ const scallingRadio = 1.6
 let numberList = new NumberList({
   size: 13,
   x: screenWidth - 24,
-  y: -screenHeight + 307
+  y: -screenHeight + 357
 })
 
 let iconDark = new Sprite({
   imgSrc: `${iconPath}hourglass-n.png`,
   x: screenWidth - 65,
-  y: -screenHeight + 270,
+  y: -screenHeight + 320,
   width: 79 / scallingRadio,
   height: 79 / scallingRadio * 125 / 127
 })
 let iconLight = new Sprite({
   imgSrc: `${iconPath}hourglass.png`,
   x: screenWidth - 81,
-  y: -screenHeight + 254,
+  y: -screenHeight + 304,
   width: 125 / scallingRadio,
   height: 127 / scallingRadio
 })
