@@ -53,6 +53,16 @@ let funcs = {
         dataBus.touchStartPoint = {}
     }
 
+    if ( this.music.stopIcon.isCollideWith(
+      dataBus.touchStartPoint.pageX || 0,
+      dataBus.touchStartPoint.pageY - screenHeight || 0)
+    || this.music.stopIcon.isCollideWith(
+      dataBus.touchStartPoint.pageX || 0,
+      dataBus.touchStartPoint.pageY - screenHeight || 0) ) {
+      dataBus.isMusic = !dataBus.isMusic
+      dataBus.touchStartPoint = {}
+    }
+
     
     if (this.sight.iconLight.isCollideWith(
       dataBus.touchStartPoint.pageX || 0,
@@ -100,7 +110,7 @@ let funcs = {
         fixDenoFlag = true
       }
     }
-
+    
     dataBus.touchStartPoint = {}
   },
 
