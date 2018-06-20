@@ -5,6 +5,7 @@ export default function touchEvent () {
   wx.onTouchStart(e => {
     let tData = e.changedTouches[0]
 
+    this.audio.tap.play()
     dataBus.touchStartPoint = tData
   })
 

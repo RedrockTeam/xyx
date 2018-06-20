@@ -13,6 +13,8 @@ import Clover from 'sprites/clover'
 import ScorePlus from 'sprites/score-plus'
 import Mook from 'sprites/mook'
 
+import audio from 'music/index'
+
 import render from 'runtime/render'
 import update from 'runtime/update'
 import touchEvent from 'runtime/touch-event'
@@ -60,6 +62,8 @@ export default class Main {
     this.worker = wx.createWorker('/js/worker/index.js')
 
     this.pluginFuncs = pluginFuncs
+
+    this.audio = audio
 
     this.background = new BackGround(ctx)
     this.boxes = new Boxes(ctx)
