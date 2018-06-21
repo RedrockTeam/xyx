@@ -5,7 +5,10 @@ export default function touchEvent () {
   wx.onTouchStart(e => {
     let tData = e.changedTouches[0]
 
-    this.audio.tap.play()
+    // 16ms 的延迟，是为了让在静音的时候能及时反馈
+    // 考虑到用户体验，16ms还是能够接受
+    setTimeout(this.audio.tap.play.bind(this.audio.tap), 16)
+
     dataBus.touchStartPoint = tData
   })
 

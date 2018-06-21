@@ -35,7 +35,7 @@ export default function () {
           left: playButton.x,
           top: playButton.y + screenHeight,
           width: playButton.width,
-          height: playButton.height,
+          height: playButton.height * 2,
       }
     })
     plbFlag = true
@@ -45,7 +45,9 @@ export default function () {
         return false
       dataBus.userInfo = res.userInfo
       infoButton.hide()
-      dataBus.gameStatus = 'playing'
+      wx.showToast({
+        title: '授权成功'
+      })
     })
   }
 }
