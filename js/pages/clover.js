@@ -1,6 +1,7 @@
 import { playButton } from '../sprites/clover'
 
 let plbFlag = false
+// let delFlag = false
 
 let funcs = {
   ctxRender () {
@@ -28,6 +29,9 @@ export default function () {
   funcs.listenEvent.call(this)
 
   if (!plbFlag) {
+    plbFlag = true
+    if (dataBus.userInfo.avatarUrl)
+      return false
     let infoButton = wx.createUserInfoButton({
       type: 'text',
       text: '',
@@ -38,8 +42,6 @@ export default function () {
           height: playButton.height * 2,
       }
     })
-    plbFlag = true
-
     infoButton.onTap((res) => {
       if (!res.rawData)
         return false
@@ -50,4 +52,5 @@ export default function () {
       })
     })
   }
+  
 }
