@@ -42,6 +42,22 @@ export default function () {
           height: playButton.height * 2,
       }
     })
+    
+    let check = (function () {
+      let flag = false
+      let func = () => {
+        if (dataBus.userInfo.avatarUrl) {
+          infoButton.hide()
+          flag = true
+        }
+        if (!flag) setTimeout(func, 100)
+      }
+      return function () {
+        setTimeout(func, 100)
+      }
+    })()
+    check()
+
     infoButton.onTap((res) => {
       if (!res.rawData)
         return false
