@@ -1,6 +1,6 @@
 /**
  * iPhoneX的适配函数
- * 主要改变了头部的score和暂停按钮的位置
+ * 主要改变了头部的score和暂停，音乐按钮的位置
  * 解决了刘海屏的问题
  */
 const testReg = /iPhone\s?X/
@@ -14,6 +14,8 @@ export default function iPhoneX () {
     })
     // 暂停类下移
     this.pause.runningIcon.y += 33
+    this.music.playIcon.y += 33
+    this.music.stopIcon.y += 33
     // gameover 分享按钮下移
     this.gameOver.shareBtn.y += 28
     this.gameOver.shareTipBtn.y += 28
