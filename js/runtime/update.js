@@ -80,6 +80,13 @@ export default function  () {
     dataBus.boxPoint = topBox.x
 
   }
+
+  if (dataBus.gameStatus === 'playing') {
+    this.audio.bg.play()
+  } else {
+    this.audio.bg.stop()
+  }
+
   /**
    * 给开放域传值
    */

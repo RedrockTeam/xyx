@@ -103,7 +103,11 @@ let funcs = {
       if (fixDenoFlag === false) {
         changeCanDown(false)
         setTimeout(() => {
+          this.audio.boxDown.play()
+        }, 0)
+        setTimeout(() => {
           dataBus.fixNumerator++
+          this.audio.boxDown.stop()
           fixDenoFlag = false
           changeCanDown(true)
         }, 600)

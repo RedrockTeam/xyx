@@ -18,7 +18,10 @@ export default class Music {
     
     let tmpPlay = ado.play
     ado.play = function () {
-      if (!dataBus.isMusic) { return false }
+      if (!dataBus.isMusic) { 
+        ado.pause()
+        return false 
+      }
       tmpPlay.call(this)
       return true
     }
