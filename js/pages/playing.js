@@ -128,6 +128,8 @@ let funcs = {
         dataBus.height = 0
         dataBus.fixNumerator = 0
         dataBus.gameStatus = 'show_score'
+        dataBus.isShowHourglass = false
+        dataBus.isShowSight = false
         socket.pushScore()
         dataBus.boxList.score = 0
         dataBus.fixDenominator = 10
