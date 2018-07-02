@@ -27,9 +27,7 @@ export default class userAvator extends Sprite {
   }
 
   listenLoaded () {
-    console.log(dataBus.userInfo.avatarUrl)
     if (dataBus.userInfo && dataBus.userInfo.avatarUrl) {
-      console.log('1231')
       this.imgSrc = dataBus.userInfo.avatarUrl
       this.img.src = dataBus.userInfo.avatarUrl
       this.isLoaded--

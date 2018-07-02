@@ -43,7 +43,7 @@ export default function userData () {
             // item1是瞄准镜，item2是沙漏
             dataBus.sightNumber = res.data.item1
             dataBus.hourglassNumber = res.data.item2
-            dataBus.userData.highestScore = res.data.highestScore
+            dataBus.userData.highestScore = res.data.highestScore || 0
             dataBus.userData.id = res.data.id
           })
         }
