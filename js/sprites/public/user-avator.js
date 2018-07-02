@@ -17,7 +17,7 @@ export default class userAvator extends Sprite {
 
     super(sprObj)
 
-    this.isLoaded = false
+    this.isLoaded = 5
 
     this.border = new Sprite(Object.assign(sprObj, {
       imgSrc: 'images/gameover/border.png'
@@ -27,12 +27,15 @@ export default class userAvator extends Sprite {
   }
 
   listenLoaded () {
+    console.log(dataBus.userInfo.avatarUrl)
     if (dataBus.userInfo && dataBus.userInfo.avatarUrl) {
+      console.log('1231')
+      this.imgSrc = dataBus.userInfo.avatarUrl
       this.img.src = dataBus.userInfo.avatarUrl
-      this.isLoaded = true
+      this.isLoaded--
     }
 
-    if (!this.isLoaded) { setTimeout(this.listenLoaded.bind(this), 100) }
+    if (this.isLoaded) { setTimeout(this.listenLoaded.bind(this), 100) }
   }
 
   drawCicle (ctx = this.ctx) {

@@ -24,9 +24,9 @@ let funcs = {
     this.score.drawScoreNumber()
     this.sight.drawSight()
     this.hourglass.drawHourglass()
-    this.pause.drawPauseButton()
     this.music.drawMusicButton()
     this.scorePlus.drawPlus()
+    this.pause.drawPauseButton()
   },
 
   listenEvent () {
