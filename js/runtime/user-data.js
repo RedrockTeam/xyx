@@ -45,6 +45,14 @@ export default function userData () {
             dataBus.hourglassNumber = res.data.item2
             dataBus.userData.highestScore = res.data.highestScore || 0
             dataBus.userData.id = res.data.id
+            // 修 bug
+            if (dataBus.userData.highestScore === 0) {
+              setInterval(() => {
+                getInfo(res => {
+                  dataBus.userData.highestScore = res.data.highestScore || 0
+                })
+              }, 5000)
+            }
           })
         }
       })
