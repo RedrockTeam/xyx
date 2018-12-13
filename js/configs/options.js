@@ -7,7 +7,7 @@ export const GAME_DEBUG = true
 export const API_PORT = 'https://wx.idsbllp.cn'
 
 // 外链图片接口
-export const IMG_PATH = '/extension/img/xyx-images/'
+export const IMG_PATH = 'https://hongyan.cqupt.edu.cn/xyx-images/'
 
 // 获取用户 openid 的接口
 // 因为安全原因，secret放在了后端进行处理

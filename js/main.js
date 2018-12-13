@@ -43,7 +43,6 @@ let ctxAssociate = canvasAssociate.getContext('2d')
 ctxAssociate.translate(0, canvasAssociate.height)
 
 let sharedCtx = sharedCanvas.getContext('2d')
-sharedCtx.translate(0, sharedCanvas.height)
 
 wx.setPreferredFramesPerSecond(60)
 
