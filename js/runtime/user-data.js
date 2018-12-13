@@ -1,23 +1,27 @@
 import { API_PORT, OPENID_PATH } from '../configs/options'
 import { getInfo } from '../api/index.js'
 
-export default function userData () {
+export default function userData() {
   // 获取用户信息，头像之类的
   wx.getUserInfo({
-    success (res) {
+    success(res) {
       dataBus.userInfo = res.userInfo
     }
   })
 
   // 登陆，获取openID
   wx.login({
-    success (res) {
+    success(res) {
+      console.log(res)
       wx.request({
-        url: `${API_PORT}/${OPENID_PATH}`,
+        url: `${API_PORT}${OPENID_PATH}`,
         data: {
           code: res.code
         },
-        success (res) {
+        fail(err) {
+          console.log('12321312312312312312', err)
+        },
+        success(res) {
           dataBus.userData.openid = res.data.openid
           dataBus.userData.session_key = res.data.session_key
           // 此处刷新storage里的openid值
@@ -25,7 +29,7 @@ export default function userData () {
           console.log(res)
           wx.setStorageSync('openid', res.data.openid)
           dataBus.userData.openid = res.data.openid
-          
+
           // wx.setUserCloudStorage({
           //   KVDataList: [{
           //     key: 'aaa',
@@ -37,9 +41,8 @@ export default function userData () {
           // })
 
           getInfo(res => {
-            console.log(res.data)
-            if (res.status + '' !== '200')
-              return console.error('?')
+            console.log(res)
+            if (res.status + '' !== '200') return console.error('?')
             // item1是瞄准镜，item2是沙漏
             dataBus.sightNumber = res.data.item1
             dataBus.hourglassNumber = res.data.item2
@@ -58,7 +61,6 @@ export default function userData () {
       })
     }
   })
-
 
   wx.showShareMenu({
     withShareTicket: false

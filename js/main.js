@@ -48,7 +48,7 @@ sharedCtx.translate(0, sharedCanvas.height)
 wx.setPreferredFramesPerSecond(60)
 
 export default class Main {
-  constructor () {
+  constructor() {
     if (GAME_DEBUG) window.main = this
 
     this.ctx = ctx
@@ -100,9 +100,13 @@ export default class Main {
     this.socket.open()
   }
 
-  loop () {
-    this.update()
-    this.render()
+  loop() {
+    try {
+      this.update()
+      this.render()
+    } catch (err) {
+      console.warn(err)
+    }
     this.aniId = window.requestAnimationFrame(this.loop.bind(this))
   }
 }

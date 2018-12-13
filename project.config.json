@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -9,7 +9,7 @@
 	},
 	"compileType": "game",
 	"libVersion": "2.0.9",
-	"appid": "touristappid",
+	"appid": "wx4cf70fa9420c633b",
 	"projectname": "%E5%B0%8F%E6%B8%B8%E6%88%8F",
 	"isGameTourist": true,
 	"condition": {
